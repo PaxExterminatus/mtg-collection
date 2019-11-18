@@ -1,0 +1,4 @@
+.idea/
+/electron/node_modules/
+/vue/dist/
+/vue/node_modules/

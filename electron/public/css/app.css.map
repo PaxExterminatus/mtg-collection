@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///src/D:/dev/mtg-collection/mtg-collection-web/src/App.vue","webpack:///src/scss/main.scss"],"names":[],"mappings":"AAWA,KACE,uBAAA,CCRE,SDQsB","file":"app.css","sourcesContent":["\n\n\n\n\n\n\n\n\n\n\nbody {\n  background-color: bisque;\n}\n","//@import \"default\";\r\n//@import \"template\";\r\n\r\nbody {\r\n    color: red;\r\n}\r\n"]}

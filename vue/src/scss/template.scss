@@ -1,0 +1,9 @@
+.app-content-box {
+    min-height: 100vh;
+    display: flex;
+    .app-content {
+        border: solid 1px darkblue;
+        padding: 15px;
+        flex: 1;
+    }
+}
