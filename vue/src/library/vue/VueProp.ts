@@ -18,7 +18,7 @@ class VueProp {
         return this;
     }
 
-    type(type) {
+    type(type: any) {
         this.tp = type;
         return this;
     }

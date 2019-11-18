@@ -6,7 +6,7 @@ import {VueComponentEntity, VueEvents} from '../vue'
 import WindowsTabTrap from '../window/WindowsTabTrap'
 
 class FormComponentEntity extends VueComponentEntity {
-    private trap: WindowsTabTrap;
+    private trap: WindowsTabTrap | null = null;
 
     // private keysHandler = (event: KeyboardEvent) => {
     //     const keys = new Keyboard(event);
@@ -19,8 +19,8 @@ class FormComponentEntity extends VueComponentEntity {
     // };
 
     mounted() {
-        const items = this.vue.$el.querySelectorAll('[tabindex]');
-        this.trap = new WindowsTabTrap(items);
+        const items = this?.vue?.$el.querySelectorAll('[tabindex]');
+        if (items) this.trap = new WindowsTabTrap(items);
 
         //this.trap.addEvent(this.vue, this.keysHandler);
     }
