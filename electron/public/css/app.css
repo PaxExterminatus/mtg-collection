@@ -1,2 +1,2 @@
-body{background-color:bisque;color:red}
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);*{-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0}body{font-family:Source Sans Pro,sans-serif}.btn,.form-control{-webkit-box-shadow:none!important;box-shadow:none!important}.app-content-box{min-height:100vh;display:-webkit-box;display:-ms-flexbox;display:flex}.app-content-box .app-content{border:1px solid #00008b;padding:15px;-webkit-box-flex:1;-ms-flex:1;flex:1}body{color:red}
 /*# sourceMappingURL=app.css.map */

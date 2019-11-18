@@ -7,9 +7,3 @@
     <router-view/>
   </div>
 </template>
-
-<style lang="scss">
-  body {
-    background-color: bisque;
-  }
-</style>
