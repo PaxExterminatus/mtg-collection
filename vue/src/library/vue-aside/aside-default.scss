@@ -1,0 +1,14 @@
+.aside-box-cmp {
+    min-width: 200px;
+    .aside-item {
+        padding: 15px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .aside-item:hover {
+        text-decoration: underline;
+    }
+    .aside-item.as-router {
+        display: block;
+    }
+}

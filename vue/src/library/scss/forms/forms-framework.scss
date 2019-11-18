@@ -1,0 +1,22 @@
+
+.form-line {
+    display: flex;
+    align-items: flex-end;
+
+    & > * {
+        flex: 1;
+        margin-right: 15px;
+    }
+    & > *:last-child {
+        margin-right: 0;
+    }
+
+    button {
+        flex: 0 150px;
+        height: 38px;
+    }
+}
+
+.form-input {
+
+}
