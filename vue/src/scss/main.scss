@@ -1,6 +1,11 @@
+@import "fonts";
 @import "default";
 @import "template";
 
-body {
-    color: red;
+h1 {
+    @include font-decorate-bold;
+}
+
+h2 {
+    @include font-decorate;
 }
