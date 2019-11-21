@@ -2,6 +2,9 @@ const path = require('path');
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 
 module.exports = {
+    entry: {
+        inline: ['./src-style/inline.scss'],
+    },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
