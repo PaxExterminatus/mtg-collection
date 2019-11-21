@@ -1,0 +1,11 @@
+@mixin font-decor {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 400;
+    font-display: optional;
+}
+
+@mixin font-decor-bold {
+    font-family: 'Amatic SC', cursive;
+    font-weight: 700;
+    font-display: optional;
+}

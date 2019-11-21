@@ -5,7 +5,9 @@ module.exports = {
     outputDir: '../electron/public',
     chainWebpack: config =>
     {
-        config.entry('app').add('./src/scss/main.scss').end();
+        config.entry('app').add('./src-style/app.scss').end();
+
+        //config.module.rule('fonts').uses.clear();
 
         if(config.plugins.has('extract-css'))
         {

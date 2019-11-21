@@ -1,0 +1,11 @@
+@import "main/fonts";
+@import "main/default";
+@import "main/template";
+
+h1 {
+    @include font-decor-bold;
+}
+
+h2 {
+    @include font-decor;
+}
