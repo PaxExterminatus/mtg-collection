@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { createStore } from 'vuex-smart-module'
+import CollectionModule from './CollectionStore'
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+const store = createStore(
+    CollectionModule
+);
+console.log('store make');
+export default store;

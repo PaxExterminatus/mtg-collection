@@ -7,3 +7,10 @@
     <router-view/>
   </div>
 </template>
+
+<script lang="ts">
+  console.log('app make');
+export default {
+
+}
+</script>
