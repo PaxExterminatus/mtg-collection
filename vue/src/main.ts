@@ -6,14 +6,8 @@ import axios from 'axios'
 
 Vue.config.productionTip = false;
 
-
-axios.get('/api/collection/index.json').then( resp => {
-      new Vue({
-        router,
-        store,
-        render: h => h(App)
-      }).$mount('#app');
-
-      store.commit('collectionSet', resp.data);
-}
-);
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app');
