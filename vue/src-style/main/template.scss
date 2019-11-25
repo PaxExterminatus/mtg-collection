@@ -1,9 +1,11 @@
-.app-content-box {
-    min-height: 100vh;
+@import "../mixins";
+
+.application {
     display: flex;
+    .aside-main {
+        @include aside-left
+    }
     .app-content {
-        border: solid 1px darkblue;
-        padding: 15px;
-        flex: 1;
+
     }
 }
