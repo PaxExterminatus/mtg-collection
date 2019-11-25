@@ -1,15 +1,9 @@
 @import 'main/fonts';
 @import 'main/default';
 @import 'main/template';
-@import '../src/library/scss/default-height';
-@import '../src/library/scss/default-margin';
 
 .aside-main {
     @include aside-left;
-}
-
-body {
-    padding: 0 15px;
 }
 
 h1 {
