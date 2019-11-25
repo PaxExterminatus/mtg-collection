@@ -1,0 +1,11 @@
+html {
+    background-color: #323234;
+    color: #B2B2B2;
+}
+
+a {
+    color: #B2B2B2;
+    &:hover {
+        color: #FFFFFF;
+    }
+}
