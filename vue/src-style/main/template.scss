@@ -2,13 +2,16 @@
 
 .application {
     margin: 15px;
-    display: flex;
-    .aside-main {
-        @include aside-left;
-        border-right: solid 1px darkgray;
-        text-transform: uppercase;
+    .application-content-box {
+        display: flex;
+        .aside-main {
+            @include aside-left;
+            border-right: solid 1px darkgray;
+            text-transform: uppercase;
+        }
+        .application-content {
+            width: 100%;
+        }
     }
-    .application-content {
-        width: 100%;
-    }
+
 }

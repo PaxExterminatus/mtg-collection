@@ -4,7 +4,8 @@ import { CollectionState } from './'
 class CollectionGetters extends Getters<CollectionState> {
     get counter() {
         return {
-            cards: this.state.collection.cards.length + 1,
+            cards: this.state.collection.cards.length,
+            tokens: this.state.collection.tokens.length,
         }
     }
 }
