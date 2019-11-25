@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import FromAdding from "@/components/FromAdding";
+import FromAdding from "@/components/from-adding";
 
 export default {
   components: { FromAdding },

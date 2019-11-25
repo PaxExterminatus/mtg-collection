@@ -1,6 +1,6 @@
 <template>
   <div class="form-adding">
-    form-adding
+
   </div>
 </template>
 

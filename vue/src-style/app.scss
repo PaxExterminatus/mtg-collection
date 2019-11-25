@@ -6,8 +6,15 @@
     @include aside-left;
 }
 
-h1 {
-    @include font-decor-bold;
+h1, h2 {
     font-size: 42px;
     text-transform: uppercase;
+}
+
+h1 {
+     @include font-decor-bold;
+}
+
+h2 {
+    @include font-decor;
 }
