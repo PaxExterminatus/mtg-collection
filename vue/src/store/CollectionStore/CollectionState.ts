@@ -1,17 +1,10 @@
-import axios from "axios";
-import { CollectionRawType } from '../CollectionEntity'
-
-let collectionData: CollectionRawType;
-
-(async function waitCollectionData() {
-    await axios.get('/api/collection/index.json')
-        .then( resp => {
-            collectionData = resp.data;
-        });
-})();
+import {
+    CollectionFace,
+    CollectionDataInitial,
+} from '../CollectionEntity'
 
 class CollectionState {
-    collection: CollectionRawType = collectionData;
+    collection: CollectionFace = new CollectionDataInitial();
 }
 
 export default CollectionState

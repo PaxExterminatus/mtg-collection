@@ -8,5 +8,5 @@ Vue.use(Vuex);
 const store = createStore(
     CollectionModule
 );
-console.log('store make');
+
 export default store;

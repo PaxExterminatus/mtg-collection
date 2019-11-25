@@ -1,6 +1,9 @@
-import {CollectionRawType, CardRawType} from './CollectionRawTypes'
+import CollectionDataInitial  from './CollectionDataInitial'
+import { CardFace } from './CardFace'
+import { CollectionFace } from './CollectionFace'
 
 export {
-    CardRawType,
-    CollectionRawType,
+    CollectionFace,
+    CollectionDataInitial,
+    CardFace,
 }

@@ -1,6 +1,8 @@
 @import "main/fonts";
 @import "main/default";
 @import "main/template";
+@import "../src/library/scss/default-height";
+@import "../src/library/scss/default-margin";
 
 h1 {
     @include font-decor-bold;
