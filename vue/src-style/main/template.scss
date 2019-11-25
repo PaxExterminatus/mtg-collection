@@ -1,11 +1,14 @@
 @import "../mixins";
 
 .application {
+    margin: 15px;
     display: flex;
     .aside-main {
-        @include aside-left
+        @include aside-left;
+        border-right: solid 1px darkgray;
+        text-transform: uppercase;
     }
-    .app-content {
-
+    .application-content {
+        width: 100%;
     }
 }

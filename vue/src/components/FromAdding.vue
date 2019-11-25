@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>Home page</h1>
+  <div class="form-adding">
+    form-adding
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component
-export default class HelloWorld extends Vue {
+export default class AddForm extends Vue {
   @Prop() private msg!: string;
 }
 </script>
