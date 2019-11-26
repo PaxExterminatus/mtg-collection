@@ -1,0 +1,27 @@
+@import "mixins";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  @include main-back;
+}
+
+a {
+  @include main-link;
+}
+
+h1, h2 {
+  font-size: 42px;
+  text-transform: uppercase;
+}
+
+h1 {
+  @include font-decor-bold;
+}
+
+h2 {
+  @include font-decor;
+}

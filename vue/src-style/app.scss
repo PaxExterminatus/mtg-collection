@@ -1,21 +1,3 @@
-@import 'main/fonts';
-@import 'main/default';
-@import 'main/template';
-@import '../src/library/scss/themes/firefox-dark';
+@import './default';
+@import './template';
 
-.aside-main {
-    @include aside-left;
-}
-
-h1, h2 {
-    font-size: 42px;
-    text-transform: uppercase;
-}
-
-h1 {
-     @include font-decor-bold;
-}
-
-h2 {
-    @include font-decor;
-}

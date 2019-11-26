@@ -1,13 +1,13 @@
 import store from '../'
+import { CardFace } from './'
 
 class CollectionEntity {
     constructor() {}
 }
 
 class CollectionStoreEntity {
-    get counter() {
-        return store.getters.counter;
-    }
+    cards: CardFace[] = [];
+    tokens: CardFace[] = [];
 }
 
 export {

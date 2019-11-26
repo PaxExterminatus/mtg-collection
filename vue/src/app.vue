@@ -1,7 +1,7 @@
 <template>
   <div class="application">
 
-    <div class="counter">
+    <div class="counter-panel">
       cards: {{counter.cards}}, tokens: {{counter.tokens}}
     </div>
 

@@ -1,12 +1,16 @@
-@import "../mixins";
+@import "./mixins";
 
 .application {
-    margin: 15px;
+    .counter-panel {
+        padding: 10px;
+        margin-bottom: 5px;
+        @include panel-borders-bottom;
+    }
     .application-content-box {
         display: flex;
         .aside-main {
             @include aside-left;
-            border-right: solid 1px darkgray;
+            @include panel-borders-right;
             text-transform: uppercase;
         }
         .application-content {
@@ -15,3 +19,5 @@
     }
 
 }
+
+
