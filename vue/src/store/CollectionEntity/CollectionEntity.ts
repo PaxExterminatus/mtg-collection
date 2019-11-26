@@ -1,15 +1,12 @@
-import store from '../'
-import { CardFace } from './'
+import { Card, Collection } from './'
 
-class CollectionEntity {
-    constructor() {}
-}
-
-class CollectionStoreEntity {
-    cards: CardFace[] = [];
-    tokens: CardFace[] = [];
+class CollectionEntity implements Collection {
+    cards: Card[] = [];
+    tokens: Card[] = [];
 }
 
 export {
-    CollectionStoreEntity,
+    CollectionEntity,
 }
+
+export default CollectionEntity

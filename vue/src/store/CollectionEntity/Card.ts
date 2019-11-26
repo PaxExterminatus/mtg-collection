@@ -1,8 +1,8 @@
-interface CardFace {
+interface Card {
     code: string
     number: number
 }
 
 export {
-    CardFace,
+    Card,
 }

@@ -1,11 +1,13 @@
+import { Card } from './Card'
+import { Collection } from './Collection'
+
 import CollectionDataInitial  from './CollectionDataInitial'
-import { CardFace } from './CardFace'
-import { CollectionFace } from './CollectionFace'
-import { CollectionStoreEntity } from './CollectionEntity'
+import CollectionEntity  from './CollectionEntity'
 
 export {
-    CollectionFace,
+    Card,
+    Collection,
+
     CollectionDataInitial,
-    CardFace,
-    CollectionStoreEntity,
+    CollectionEntity,
 }

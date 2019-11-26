@@ -1,8 +1,8 @@
-import { CollectionFace, CardFace } from './'
+import { Collection, Card } from './'
 
-class CollectionDataInitial implements CollectionFace {
-    cards: CardFace[] = [];
-    tokens: CardFace[] = [];
+class CollectionDataInitial implements Collection {
+    cards: Card[] = [];
+    tokens: Card[] = [];
 }
 
 export {

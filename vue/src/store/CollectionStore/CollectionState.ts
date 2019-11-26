@@ -1,13 +1,7 @@
-import {
-    CollectionFace,
-    CollectionDataInitial, CollectionStoreEntity,
-} from '../CollectionEntity'
-
-const collection =  new CollectionStoreEntity();
+import { CollectionEntity, Collection } from '../CollectionEntity'
 
 class CollectionState {
-    //collection: CollectionFace = new CollectionDataInitial();
-    collection: CollectionStoreEntity = new CollectionStoreEntity()
+    collection: Collection = new CollectionEntity()
 }
 
 export default CollectionState
