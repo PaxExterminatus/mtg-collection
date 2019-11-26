@@ -1,4 +1,4 @@
-import { Collection, Card } from './'
+import { Collection, Card } from '@/store/Collection'
 
 class CollectionDataInitial implements Collection {
     cards: Card[] = [];

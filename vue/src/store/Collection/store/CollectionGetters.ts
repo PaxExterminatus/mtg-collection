@@ -1,5 +1,5 @@
 import { Getters } from 'vuex-smart-module'
-import { CollectionState } from './'
+import { CollectionState } from 'src/store/Collection/store/index'
 
 class CollectionGetters extends Getters<CollectionState> {
     get counter() {

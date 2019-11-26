@@ -1,4 +1,4 @@
-import { Card, Collection } from './'
+import { Card, Collection } from '../index'
 
 class CollectionEntity implements Collection {
     cards: Card[] = [];
