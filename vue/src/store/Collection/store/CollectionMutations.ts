@@ -1,5 +1,5 @@
 import { Mutations } from 'vuex-smart-module'
-import { CollectionState } from 'src/store/Collection/store/index'
+import CollectionState  from './CollectionState'
 
 class CollectionMutations extends Mutations<CollectionState> {
 

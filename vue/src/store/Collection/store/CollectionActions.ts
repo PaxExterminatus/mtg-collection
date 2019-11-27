@@ -1,6 +1,7 @@
-import axios from "axios";
 import { Actions } from 'vuex-smart-module'
-import { CollectionState, CollectionGetters, CollectionMutations } from 'src/store/Collection/store/index'
+import CollectionState from './CollectionState'
+import CollectionGetters from './CollectionGetters'
+import CollectionMutations from './CollectionMutations'
 
 class CollectionActions extends Actions<CollectionState, CollectionGetters, CollectionMutations, CollectionActions> {
     save() {
