@@ -1,8 +1,5 @@
 import {Module} from "vuex-smart-module";
-import CollectionActions from "./CollectionActions";
-import CollectionGetters from "./CollectionGetters";
-import CollectionMutations from "./CollectionMutations";
-import CollectionState from "./CollectionState";
+import { CollectionState, CollectionGetters, CollectionMutations, CollectionActions } from './'
 
 export default new Module({
     state: CollectionState,

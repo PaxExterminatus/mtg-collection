@@ -1,7 +1,5 @@
 import { Actions } from 'vuex-smart-module'
-import CollectionState from './CollectionState'
-import CollectionGetters from './CollectionGetters'
-import CollectionMutations from './CollectionMutations'
+import { CollectionState, CollectionGetters, CollectionMutations } from './'
 
 class CollectionActions extends Actions<CollectionState, CollectionGetters, CollectionMutations, CollectionActions> {
     save() {
