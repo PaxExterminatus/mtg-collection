@@ -1,13 +1,13 @@
 import CollectionState from './CollectionState'
 import CollectionGetters from './CollectionGetters'
-import CollectionMutations from './CollectionMutations'
+import {CollectionMutations, mutations} from './CollectionMutations'
 import CollectionActions from './CollectionActions'
 import CollectionModule from './CollectionModule'
 
 export {
     CollectionState,
     CollectionGetters,
-    CollectionMutations,
+    CollectionMutations, mutations,
     CollectionActions,
     CollectionModule,
 }

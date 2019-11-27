@@ -1,6 +1,6 @@
 import { Card, Collection } from './types'
-import { CollectionEntity, CollectionDataInitial }  from './entity'
-import { CollectionState, CollectionGetters, CollectionMutations, CollectionActions, CollectionModule } from './store'
+import { CollectionEntity, CollectionDataInitial, CardEntity }  from './entity'
+import { CollectionState, CollectionGetters, CollectionMutations, CollectionActions, CollectionModule, mutations } from './store'
 
 export {
     Card,
@@ -8,10 +8,13 @@ export {
 
     CollectionDataInitial,
     CollectionEntity,
+    CardEntity,
 
     CollectionState,
     CollectionGetters,
     CollectionMutations,
     CollectionActions,
     CollectionModule,
+
+    mutations,
 }

@@ -2,7 +2,7 @@
   <div class="application">
 
     <div class="counter-panel">
-      cards: {{counter.cards}}, tokens: {{counter.tokens}}
+      cards: {{counter.cards}}, tokens: {{counter.tokens}}, <a @click="collection.add">add</a>
     </div>
 
     <div class="application-content-box">
@@ -21,7 +21,11 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class App extends Vue {
   get counter() {
-    return this.$store.getters.counter;
+    return this.$store.state.collection.counter;
+  }
+
+  get collection() {
+    return this.$store.state.collection;
   }
 }
 </script>
