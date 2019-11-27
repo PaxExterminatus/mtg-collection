@@ -1,14 +1,6 @@
-import { Card } from './types/Card'
-import { Collection } from './types/Collection'
-
-import CollectionEntity  from './entity/CollectionEntity'
-import CollectionDataInitial  from './entity/CollectionDataInitial'
-
-import CollectionState from './store/CollectionState'
-import CollectionGetters from './store/CollectionGetters'
-import CollectionMutations from './store/CollectionMutations'
-import CollectionActions from './store/CollectionActions'
-import CollectionModule from './store/CollectionModule'
+import { Card, Collection } from './types'
+import { CollectionEntity, CollectionDataInitial }  from './entity'
+import { CollectionState, CollectionGetters, CollectionMutations, CollectionActions, CollectionModule } from './store'
 
 export {
     Card,

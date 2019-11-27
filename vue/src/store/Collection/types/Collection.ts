@@ -1,4 +1,4 @@
-import {Card} from '@/store/Collection'
+import { Card } from './'
 
 interface Collection {
     cards: Card[]
