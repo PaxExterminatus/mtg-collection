@@ -1,6 +1,5 @@
-import { Card, Collection } from '../index'
-import { mutations } from '../'
-import store from '@/store'
+import { Card, Collection, mutations as collectionMutations } from '@/store/Collection'
+import storage from '../../index'
 
 class CollectionEntity implements Collection {
     cards: Card[] = [];
@@ -14,7 +13,7 @@ class CollectionEntity implements Collection {
     }
 
     add(card: Card) {
-        store.commit(mutations.add, card);
+        storage.commit(collectionMutations.add, card);
     }
 }
 

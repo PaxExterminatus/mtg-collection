@@ -1,6 +1,5 @@
 import { Mutations } from 'vuex-smart-module'
-import { CardEntity } from '../'
-import { CollectionState } from './'
+import { CollectionState, CardEntity } from '@/store/Collection'
 
 const mutations = {
     add: 'collection.add'

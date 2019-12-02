@@ -1,4 +1,4 @@
-import { CollectionEntity, Collection } from '../'
+import { CollectionEntity, Collection } from '@/store/Collection'
 
 class CollectionState {
     collection: Collection = new CollectionEntity()
