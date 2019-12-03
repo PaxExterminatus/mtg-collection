@@ -21,7 +21,10 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component
 export default class App extends Vue {
   get counter() {
-    return this.$store.state.collection.counter;
+    return {
+      cards: this.$store.state.collection.cards.length,
+      tokens: this.$store.state.collection.tokens.length,
+    }
   }
 
   get collection() {

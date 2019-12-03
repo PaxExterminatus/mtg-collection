@@ -1,15 +1,28 @@
-import { ItemsTypes, ItemDataStructure } from './CollectionTypes'
+import store from "@/store"
+import { ItemDataFace } from './CollectionItem'
+import { CollectionMutations } from "./CollectionStore"
 
-class CollectionItemInput implements ItemDataStructure {
-    public code: string = '';
-    public number: number = 0;
-    public type: ItemsTypes;
 
-    constructor(type: ItemsTypes) {
-        this.type = type;
+interface CollectionDataFace {
+    cards: ItemDataFace[];
+    tokens: ItemDataFace[];
+}
+
+interface CollectionActionFace {
+    add(card: ItemDataFace): void
+}
+
+class CollectionEntity implements CollectionDataFace, CollectionActionFace {
+    public cards: ItemDataFace[] = [];
+    public tokens: ItemDataFace[] = [];
+
+    add(card: ItemDataFace) {
+        store.commit(CollectionMutations.mutations.add, card);
     }
 }
 
 export {
-    CollectionItemInput,
+    CollectionDataFace,
+    CollectionActionFace,
+    CollectionEntity,
 }
