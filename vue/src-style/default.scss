@@ -6,11 +6,11 @@
 }
 
 html {
-  @include main-back;
+  @include color-main-back;
 }
 
 a {
-  @include main-link;
+  @include color-main-link;
 }
 
 h1, h2 {

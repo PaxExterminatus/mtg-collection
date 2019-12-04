@@ -1,0 +1,20 @@
+@import '../../src/library/scss/color-themes/firefox-dark';
+
+@mixin color-main-back {
+    color: $color-text-main;
+    background-color: $color-background-main;
+}
+
+@mixin color-main-link {
+    color: $color-text-main;
+    &:hover {
+        color: $color-text-lighted;
+    }
+}
+
+$border-style-panel: solid 1px $color-border-main;
+
+@mixin color-forms-input {
+    background-color: $color-forms-input-background;
+    color: $color-text-lighted;
+}

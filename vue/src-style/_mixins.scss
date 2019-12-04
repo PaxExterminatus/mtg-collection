@@ -1,4 +1,5 @@
-@import '../src/library/scss/aside/mixins';
-@import 'schemes/color-scheme';
-@import 'schemes/font-scheme';
-@import 'schemes/margin-scheme';
+@import '../src/library/scss/library-mixins';
+
+@import 'mixin-schemes/color';
+@import 'mixin-schemes/font';
+@import 'mixin-schemes/margin';

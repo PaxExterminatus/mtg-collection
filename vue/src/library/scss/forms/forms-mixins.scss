@@ -1,0 +1,7 @@
+@mixin forms-font-size($input: 32px) {
+    & {
+        .form-input {
+            font-size: $input;
+        }
+    }
+}

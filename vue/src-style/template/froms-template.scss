@@ -1,0 +1,10 @@
+@import "../mixins";
+
+.form-box {
+    @include forms-font-size(24px);
+    .form-input {
+        @include color-forms-input;
+    }
+}
+
+.form-box.adding {}

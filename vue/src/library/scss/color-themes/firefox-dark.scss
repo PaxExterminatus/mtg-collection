@@ -1,11 +1,15 @@
-$color-background-main: #323234;
-$color-text-main: #B2B2B2;
-$color-text-lighted: #fff;
-$color-border-main: #5A5A5C;
+$color1: #0C0C0D;
+$color2: #313133;
+$color3: #474749;
+$color4: #5A5A5C;
+$color5: #4D4D4F;
+$color6: #BEBEBE;
+$color7: #323234;
+$color8: #B2B2B2;
+$color9: #FFFFFF;
 
-// #0C0C0D
-// #313133
-// #474749
-// #5A5A5C
-// #4D4D4F
-// #BEBEBE
+$color-background-main: $color7;
+$color-text-main: $color8;
+$color-text-lighted: $color9;
+$color-border-main: $color4;
+$color-forms-input-background: $color3;

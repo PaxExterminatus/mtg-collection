@@ -2,7 +2,7 @@
   <div class="page adding">
     <h1>Adding</h1>
 
-    <div class="form-box">
+    <div class="form-box adding">
 
       <div class="form-line">
         <input class="form-input" v-model="newItem.code">

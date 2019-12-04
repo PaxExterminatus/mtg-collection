@@ -1,14 +1,15 @@
-@import "./mixins";
+@import '../mixins';
+@import './froms-template';
 
 .application {
     .counter-panel {
         padding: 10px;
         margin-bottom: 5px;
-        @include panel-borders-bottom;
+        border-bottom: $border-style-panel;
     }
     .page {
         padding: 10px;
-        @include panel-borders-left;
+        border-left: $border-style-panel;;
     }
     .application-content-box {
         display: flex;
@@ -20,7 +21,4 @@
             width: 100%;
         }
     }
-
 }
-
-
