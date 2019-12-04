@@ -19,3 +19,7 @@
 @mixin panel-borders-right {
     border-right: solid 1px $color-border-main;
 }
+
+@mixin panel-borders-left {
+    border-left: solid 1px $color-border-main;
+}

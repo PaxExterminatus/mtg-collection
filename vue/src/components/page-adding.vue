@@ -1,12 +1,14 @@
 <template>
-  <div class="adding-page">
+  <div class="page adding">
     <h1>Adding</h1>
 
-    <div class="form-adding">
-      <div>
-        <label>Code <input v-model="newItem.code"></label>
-        <label>Number <input v-model="newItem.number"></label>
+    <div class="form-box">
+
+      <div class="form-line">
+        <input class="form-input" v-model="newItem.code">
+        <input class="form-input" v-model="newItem.number">
       </div>
+
       <div>
         {{newItem}}
       </div>
