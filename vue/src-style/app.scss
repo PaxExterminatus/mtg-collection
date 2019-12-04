@@ -1,4 +1,5 @@
-@import './default';
-@import 'template/template';
-@import '../src/library/scss/forms/forms-default';
+@import '../src/library/scss/reset';
+@import '../src/library/scss/forms/forms-style';
 
+@import 'default/default-tags';
+@import 'template/content';

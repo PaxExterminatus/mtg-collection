@@ -1,9 +1,4 @@
-@import "mixins";
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
+@import "../mixins";
 
 html {
   @include color-main-back;

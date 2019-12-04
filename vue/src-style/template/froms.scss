@@ -1,7 +1,7 @@
-@import "../mixins";
+@import '../mixins';
 
 .form-box {
-    @include forms-font-size(24px);
+    @include form-box-template-font-size(24px);
     .form-input {
         @include color-forms-input;
     }
