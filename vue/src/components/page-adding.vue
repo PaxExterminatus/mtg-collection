@@ -5,8 +5,8 @@
     <div class="form-box adding">
 
       <div class="form-line">
-        <input class="form-input" v-model="newItem.code">
-        <input class="form-input" v-model="newItem.number">
+        <input class="form-input" v-model="newItem.code" title="Code">
+        <input class="form-input" v-model="newItem.number" title="Number">
       </div>
 
       <div>

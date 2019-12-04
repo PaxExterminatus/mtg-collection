@@ -7,12 +7,26 @@ interface ItemDataFace {
 }
 
 class ItemDataModel implements ItemDataFace {
-    public code: string = '';
-    public number: number = 0;
+    private _code: string = '';
+    private _number: number = 0;
     public type: ItemsTypeVarieties;
 
     constructor(type: ItemsTypeVarieties) {
         this.type = type;
+    }
+
+    set code(code: string) {
+        this._code = code.toUpperCase();
+    }
+    get code() {
+        return this._code;
+    }
+
+    get number(): number {
+        return this._number;
+    }
+    set number(value: number) {
+        this._number = value;
     }
 }
 
