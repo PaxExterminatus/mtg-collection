@@ -1,14 +1,16 @@
+import { StrFilter } from '@/library/string-filter/StringFilter'
+
 type ItemsTypeVarieties = 'card' | 'token'
 
 interface ItemDataFace {
     code: string
-    number: number
+    number: string
     type: ItemsTypeVarieties
 }
 
 class ItemDataModel implements ItemDataFace {
     private _code: string = '';
-    private _number: number = 0;
+    private _number: string = '';
     public type: ItemsTypeVarieties;
 
     constructor(type: ItemsTypeVarieties) {
@@ -16,17 +18,17 @@ class ItemDataModel implements ItemDataFace {
     }
 
     set code(code: string) {
-        this._code = code.toUpperCase();
+        this._code = StrFilter(code).letters.toUpperCase();
     }
     get code() {
         return this._code;
     }
 
-    get number(): number {
-        return this._number;
+    set number(number: string) {
+        this._number = StrFilter(number).numbers;
     }
-    set number(value: number) {
-        this._number = value;
+    get number() {
+        return this._number;
     }
 }
 
