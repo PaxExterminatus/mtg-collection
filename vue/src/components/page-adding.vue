@@ -4,9 +4,10 @@
 
     <div class="form-box adding">
 
-      <div class="form-line">
-        <input class="form-input" v-model="newItem.code" title="card code">
-        <input class="form-input" v-model="newItem.number" title="card number">
+      <div class="form-line" v-tab-trap>
+        <input tabindex="1" class="form-input" v-model="newItem.code" title="card code">
+        <input tabindex="2" class="form-input" v-model="newItem.number" title="card number">
+        <a tabindex="3" class="btn">Check</a>
       </div>
 
       <div>
@@ -19,12 +20,13 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import numbersOnly from '@/library/vue-directives/input-numbers'
+import { onlyNumbers, tabTrap } from '@/library/vue-directives/vue-forms-directives'
 import { ItemDataFace, ItemVModel } from '@/store/Collection/CollectionItem'
 
 @Component({
   directives: {
-    numbersOnly,
+    tabTrap,
+    onlyNumbers,
   }
 })
 

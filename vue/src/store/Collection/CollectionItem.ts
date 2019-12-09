@@ -34,8 +34,21 @@ class ItemVModel implements ItemDataFace {
     }
 }
 
+class CardInfo {
+    constructor(private item: ItemDataFace, private language: string = '') {}
+
+    get id() {
+        return `${this.item.code}/${this.item.number}`
+    }
+
+    get link() {
+        return `https://scryfall.com/card/${this.item.code}/${this.item.number}`
+    }
+}
+
 export {
     ItemsTypeVarieties,
     ItemDataFace,
     ItemVModel,
+    CardInfo,
 }

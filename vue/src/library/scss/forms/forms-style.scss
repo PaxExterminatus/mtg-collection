@@ -11,9 +11,14 @@
         margin-right: 0;
     }
 
-    button {
+    .btn {
         flex: 0 150px;
         height: 38px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 1px;
+        cursor: pointer;
     }
 }
 

@@ -4,10 +4,12 @@ import {
     SequenceStateFace,
 } from './'
 
-class Sequence implements SequenceFace {
+class Sequence implements SequenceFace
+{
     protected state: SequenceStateFace;
     constructor(first: number, last: number, current: number = first) {
         this.state = new SequenceState(first, last, current);
+        console.log('next', this.state);
     }
 
     // Sequences
@@ -46,9 +48,31 @@ class Sequence implements SequenceFace {
     }
 }
 
+class SequenceLoop extends Sequence implements SequenceFace
+{
+    next(steps: number = 1): Sequence {
+        if (this.state.current === this.state.last) {
+            this.state.current = this.state.first;
+        } else {
+            this.state.current++;
+        }
+        return this;
+    }
+
+    prev(steps: number = 1): Sequence {
+        if (this.state.current === this.state.first) {
+            this.state.current = this.state.last;
+        } else {
+            this.state.current--;
+        }
+        return this;
+    }
+}
+
 export {
     Sequence,
     SequenceFace,
+    SequenceLoop,
 }
 
 export default Sequence
