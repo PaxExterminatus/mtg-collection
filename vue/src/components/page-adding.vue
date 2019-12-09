@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import numbersOnly from '@/library/vue-directives/input-numbers'
-import { ItemDataFace, ItemDataModel } from '@/store/Collection/CollectionItem'
+import { ItemDataFace, ItemVModel } from '@/store/Collection/CollectionItem'
 
 @Component({
   directives: {
@@ -30,6 +30,6 @@ import { ItemDataFace, ItemDataModel } from '@/store/Collection/CollectionItem'
 
 export default class addingPage extends Vue {
   @Prop() private msg!: string;
-  newItem: ItemDataFace = new ItemDataModel('card');
+  newItem: ItemDataFace = new ItemVModel('card');
 }
 </script>

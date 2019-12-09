@@ -9,8 +9,8 @@ class StringFilter {
     get numbers() {
         return this.str.replace( RegexTemplates.notNumber , '') || '';
     }
-    get letters() {
-        return this.str.replace( RegexTemplates.notLetters, '') || '';
+    get latinLetters() {
+        return this.str.replace( RegexTemplates.notLatinLetters, '') || '';
     }
 
     get holdNumbers() {
@@ -19,7 +19,7 @@ class StringFilter {
     }
 
     get holdLetters() {
-        this.str = this.letters;
+        this.str = this.latinLetters;
         return this;
     }
 

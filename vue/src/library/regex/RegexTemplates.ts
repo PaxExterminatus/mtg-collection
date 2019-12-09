@@ -3,7 +3,7 @@ class RegexTemplates {
         return /[^0-9]/g;
     }
 
-    static get notLetters() {
+    static get notLatinLetters() {
         return /[^a-zA-Z]/g
     }
 }

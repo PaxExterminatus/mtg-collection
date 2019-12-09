@@ -8,7 +8,7 @@ interface ItemDataFace {
     type: ItemsTypeVarieties
 }
 
-class ItemDataModel implements ItemDataFace {
+class ItemVModel implements ItemDataFace {
     private _code: string = '';
     private _number: string = '';
     public type: ItemsTypeVarieties;
@@ -18,13 +18,15 @@ class ItemDataModel implements ItemDataFace {
     }
 
     set code(code: string) {
-        this._code = StrFilter(code).letters.toUpperCase();
+        this._code = ' '; // disable vue v-model cache
+        this._code = StrFilter(code).latinLetters.toUpperCase();
     }
     get code() {
         return this._code;
     }
 
     set number(number: string) {
+        this._number = ' '; // disable vue v-model cache
         this._number = StrFilter(number).numbers;
     }
     get number() {
@@ -35,5 +37,5 @@ class ItemDataModel implements ItemDataFace {
 export {
     ItemsTypeVarieties,
     ItemDataFace,
-    ItemDataModel,
+    ItemVModel,
 }
