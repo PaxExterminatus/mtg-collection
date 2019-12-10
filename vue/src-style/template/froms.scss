@@ -5,8 +5,8 @@
     .form-input {
         @include color-forms-input;
     }
-    *:focus {
-        background-color: rebeccapurple;
+    .btn {
+        @include color-forms-input;
     }
 }
 

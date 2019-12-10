@@ -24,17 +24,16 @@ const tabTrap: DirectiveOptions = {
 
         firstElement.focus();
 
-        document.addEventListener('keyup', (ev: KeyboardEvent) =>
+        document.addEventListener('keyup', (e: KeyboardEvent) =>
         {
-            if (ev.shiftKey && ev.key === 'Tab')
+            if (e.key === 'Tab')
             {
-                seq.prev();
-                const focused = els[seq.current] as HTMLElement;
-                focused.focus();
-            }
-            else if (ev.key === 'Tab')
-            {
-                seq.next();
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (e.shiftKey) seq.prev();
+                else seq.next();
+
                 const focused = els[seq.current] as HTMLElement;
                 focused.focus();
             }

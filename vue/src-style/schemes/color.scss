@@ -17,4 +17,8 @@ $border-style-panel: solid 1px $color-border-main;
 @mixin color-forms-input {
     background-color: $color-forms-input-background;
     color: $color-text-lighted;
+    border: solid 1px $color-forms-input-background;
+    &:focus {
+        border-color: $color-focus-border;
+    }
 }

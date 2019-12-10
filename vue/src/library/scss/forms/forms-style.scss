@@ -1,7 +1,7 @@
 
 .form-line {
     display: flex;
-    align-items: flex-end;
+
 
     & > * {
         flex: 1;
@@ -13,7 +13,6 @@
 
     .btn {
         flex: 0 150px;
-        height: 38px;
         display: inline-flex;
         justify-content: center;
         align-items: center;
