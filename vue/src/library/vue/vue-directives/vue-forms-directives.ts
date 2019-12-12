@@ -1,6 +1,6 @@
 import { DirectiveOptions } from 'vue'
 import { StrFilter } from '@/library/string-filter/StringFilter'
-import { SequenceLoop } from '@/library/sequences/Sequence'
+import { SequenceLoop } from '@/library/typescript/sequences/Sequence'
 import logger from "vuex/dist/logger";
 
 const onlyNumbers: DirectiveOptions = {

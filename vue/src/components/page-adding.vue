@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { tabTrap } from '@/library/vue-directives/vue-forms-directives'
+import { tabTrap } from '@/library/vue/vue-directives/vue-forms-directives'
 import { ItemDataFace, ItemVModel, ItemVModelDefault,  CardInfo } from '@/store/Collection/CollectionItem'
 
 @Component({

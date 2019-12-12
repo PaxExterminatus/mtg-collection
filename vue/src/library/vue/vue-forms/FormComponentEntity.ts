@@ -1,9 +1,9 @@
-import Sequence from '../sequences'
+import Sequence from 'src/library/typescript/sequences'
 
 import {Vue} from 'vue/types/vue'
-import {Keyboard} from '../keys'
-import {VueComponentEntity, VueEvents} from '../vue'
-import WindowsTabTrap from '../window/WindowsTabTrap'
+import {Keyboard} from 'src/library/keys'
+import {VueComponentEntity, VueEvents} from 'src/library/vue/index'
+import WindowsTabTrap from 'src/library/window/WindowsTabTrap'
 
 class FormComponentEntity extends VueComponentEntity {
     private trap: WindowsTabTrap | null = null;

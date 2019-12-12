@@ -2,7 +2,7 @@ import {
     SequenceFace,
     SequenceState,
     SequenceStateFace,
-} from './'
+} from '@/library/typescript/sequences/index'
 
 class Sequence implements SequenceFace
 {

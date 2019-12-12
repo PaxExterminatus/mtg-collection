@@ -1,4 +1,4 @@
-import {Sequence} from './Sequence'
+import {Sequence} from '@/library/typescript/sequences/Sequence'
 
 type SequenceCurrentValueCase = {value: number, expected: number, name: string};
 

@@ -1,4 +1,4 @@
-import Sequence from '../sequences';
+import Sequence from '../typescript/sequences';
 
 class WindowsTabTrap {
     private seq: Sequence;
