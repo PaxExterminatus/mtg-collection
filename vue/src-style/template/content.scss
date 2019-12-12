@@ -22,3 +22,25 @@
         }
     }
 }
+
+.card-info {
+    display: flex;
+    .card-info-image {
+
+    }
+    .card-info-data {
+        width: 100%;
+        display: grid;
+        grid-template-columns: max-content auto;
+        grid-template-rows: repeat(auto-fill, 50px);
+        & > * {
+            padding: 5px;
+        }
+        & > *:nth-child(3n) {
+            background-color: rebeccapurple;
+        }
+        & > *:nth-child(4n) {
+            background-color: rebeccapurple;
+        }
+    }
+}

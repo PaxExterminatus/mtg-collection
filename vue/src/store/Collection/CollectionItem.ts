@@ -52,8 +52,40 @@ class CardInfo {
     }
 }
 
-class ScryfallInfo {
+interface ScryfallCardFace {
+    object: 'card'
+    name: string
+    lang: 'en' | 'ru'
+    released_at: string
+    highres_image: boolean
+    image_uris: {
+        small: string
+        normal: string
+        large: string
+        png: string
+        art_crop: string
+        border_crop: string
+    }
+}
 
+interface ScryfallSearchResponseFace {
+    data: ScryfallCardFace[] // todo use card interface
+    has_more: boolean
+    object: 'list'
+    total_cards: 1
+}
+
+class ScryfallSearchResponse {
+    private count: number;
+    private readonly items: ScryfallCardFace[]; // todo use card interface
+    constructor(response: ScryfallSearchResponseFace) {
+        this.count = response.total_cards;
+        this.items = response.data;
+    }
+
+    get card() {
+        return this.items[0]
+    }
 }
 
 
@@ -65,4 +97,6 @@ export {
     ItemVModel,
     ItemVModelDefault,
     CardInfo,
+    ScryfallSearchResponse,
+    ScryfallCardFace,
 }
