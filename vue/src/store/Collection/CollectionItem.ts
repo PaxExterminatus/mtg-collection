@@ -9,9 +9,9 @@ interface ItemDataFace {
 }
 
 class ItemVModel implements ItemDataFace {
-    private _code: string = '';
-    private _number: string = '';
-    public type: ItemsTypeVarieties;
+    protected _code: string = '';
+    protected _number: string = '';
+    public readonly type: ItemsTypeVarieties;
 
     constructor(type: ItemsTypeVarieties) {
         this.type = type;
@@ -34,21 +34,35 @@ class ItemVModel implements ItemDataFace {
     }
 }
 
+class ItemVModelDefault extends ItemVModel {
+    protected _code: string = 'AER';
+    protected _number: string = '5';
+}
+
 class CardInfo {
-    constructor(private item: ItemDataFace, private language: string = '') {}
+    constructor(private item: ItemDataFace) {}
 
-    get id() {
-        return `${this.item.code}/${this.item.number}`
-    }
-
-    get link() {
-        return `https://scryfall.com/card/${this.item.code}/${this.item.number}`
+    get url() {
+        return {
+            scryfall: {
+                en: `https://scryfall.com/card/${this.item.code.toLowerCase()}/${this.item.number}/`,
+                ru: `https://scryfall.com/card/${this.item.code.toLowerCase()}/${this.item.number}/ru`
+            }
+        };
     }
 }
+
+class ScryfallInfo {
+
+}
+
+
+// https://api.scryfall.com/cards/search?q=set:aer+number:5
 
 export {
     ItemsTypeVarieties,
     ItemDataFace,
     ItemVModel,
+    ItemVModelDefault,
     CardInfo,
 }

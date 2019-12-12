@@ -1,3 +1,9 @@
+.form-box {
+    & > * {
+        margin-bottom: 10px;
+    }
+}
+
 
 .form-line {
     display: flex;
@@ -14,14 +20,13 @@
     .btn {
         flex: 0 150px;
         display: inline-flex;
+        text-decoration: none;
         justify-content: center;
         align-items: center;
         border: solid 1px;
-        cursor: pointer;
     }
 }
 
 .form-input {
-    border-radius: 4px;
     padding: 5px;
 }

@@ -8,15 +8,21 @@ a {
   @include color-main-link;
 }
 
-h1, h2 {
-  font-size: 42px;
+.title {
   text-transform: uppercase;
 }
 
-h1 {
+.title.header-one {
+  font-size: 42px;
   @include font-decor-bold;
 }
-
-h2 {
+.title.header-two {
+  font-size: 38px;
   @include font-decor;
+}
+
+.title.label {
+  font-size: 28px;
+  @include font-decor;
+  max-width: max-content;
 }

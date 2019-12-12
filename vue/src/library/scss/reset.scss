@@ -7,3 +7,11 @@
 input {
     border: none;
 }
+
+a, button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: underline;
+}
