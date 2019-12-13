@@ -1,4 +1,4 @@
-import { StrFilter } from '@/library/string-filter/StringFilter'
+import { StringExtends } from '@/library/string-filter/StringWebExtends'
 
 type ItemsTypeVarieties = 'card' | 'token'
 
@@ -19,7 +19,7 @@ class ItemVModel implements ItemDataFace {
 
     set code(code: string) {
         this._code = ' '; // disable vue v-model cache
-        this._code = StrFilter(code).latinLetters.toUpperCase();
+        this._code = StringExtends(code).latinLetters.toUpperCase();
     }
     get code() {
         return this._code;
@@ -27,7 +27,7 @@ class ItemVModel implements ItemDataFace {
 
     set number(number: string) {
         this._number = ' '; // disable vue v-model cache
-        this._number = StrFilter(number).numbers;
+        this._number = StringExtends(number).numbers;
     }
     get number() {
         return this._number;
@@ -52,7 +52,7 @@ class CardInfo {
     }
 }
 
-interface ScryfallCardFace {
+interface ScryfallCardModel {
     object: 'card'
     name: string
     lang: 'en' | 'ru'
@@ -66,25 +66,83 @@ interface ScryfallCardFace {
         art_crop: string
         border_crop: string
     }
+    set: string
+    set_name: string
+    rarity: string
+    type_line: string
+    printed_type_line: string
+    oracle_text: string
+    flavor_text: string
+    printed_text: string
 }
 
 interface ScryfallSearchResponseFace {
-    data: ScryfallCardFace[] // todo use card interface
+    data: ScryfallCardModel[]
     has_more: boolean
     object: 'list'
     total_cards: 1
 }
 
+class ScryfallCard  {
+    constructor(private model: ScryfallCardModel) {}
+
+    get object() {
+        return this.model.object
+    }
+
+    get name() {
+        return this.model.name
+    }
+
+    get lang() {
+        return this.model.lang
+    }
+
+    get releasedDate() {
+        return this.model.released_at
+    }
+
+    get images() {
+        return this.model.image_uris
+    }
+
+    get set() {
+        return {
+            code: this.model.set.toUpperCase(),
+            name: this.model.set_name,
+        }
+    }
+
+    get rarity() {
+        return this.model.rarity
+    }
+
+    get type() {
+        return {
+            line: this.model.type_line,
+            printed: this.model.printed_type_line,
+        }
+    }
+
+    get text() {
+        return {
+            oracle: StringExtends(this.model.oracle_text).getSlashNToBr,
+            flavor: this.model.flavor_text,
+            printed: StringExtends(this.model.printed_text).getSlashNToBr,
+        }
+    }
+}
+
 class ScryfallSearchResponse {
     private count: number;
-    private readonly items: ScryfallCardFace[]; // todo use card interface
+    private readonly items: ScryfallCardModel[]; // todo use card interface
     constructor(response: ScryfallSearchResponseFace) {
         this.count = response.total_cards;
         this.items = response.data;
     }
 
     get card() {
-        return this.items[0]
+        return new ScryfallCard(this.items[0]);
     }
 }
 
@@ -98,5 +156,5 @@ export {
     ItemVModelDefault,
     CardInfo,
     ScryfallSearchResponse,
-    ScryfallCardFace,
+    ScryfallCardModel,
 }

@@ -1,19 +1,6 @@
 import { DirectiveOptions } from 'vue'
-import { StrFilter } from '@/library/string-filter/StringFilter'
 import { SequenceLoop } from '@/library/typescript/sequences/Sequence'
-import logger from "vuex/dist/logger";
 
-const onlyNumbers: DirectiveOptions = {
-    inserted(el) {
-        const inp = el as HTMLInputElement;
-    },
-
-    update(el, binding) {
-        const inp = el as HTMLInputElement;
-        inp.value = StrFilter(inp.value).latinLetters.toUpperCase();
-        console.log('update', binding.value, inp.value);
-    }
-};
 
 const tabTrap: DirectiveOptions = {
     inserted(el)
@@ -28,6 +15,8 @@ const tabTrap: DirectiveOptions = {
         {
             if (e.key === 'Tab')
             {
+                e.preventDefault();
+
                 if (e.shiftKey) seq.prev();
                 else seq.next();
 
@@ -45,5 +34,4 @@ const tabTrap: DirectiveOptions = {
 
 export {
     tabTrap,
-    onlyNumbers,
 }

@@ -12,9 +12,15 @@
       </div>
 
       <div class="form-line">
-        <h2 class="title label">scryfall.com</h2>
-        <a class="btn" target="_blank" :href="info.url.scryfall.en">EN</a>
-        <a class="btn" target="_blank" :href="info.url.scryfall.ru">RU</a>
+        <dropdown-menu>
+          <template slot="button">
+            <div class="btn">links</div>
+          </template>
+          <template slot="menu">
+            <a target="_blank" :href="info.url.scryfall.en">scryfall.com [en]</a>
+            <a target="_blank" :href="info.url.scryfall.ru">scryfall.com [ru]</a>
+          </template>
+        </dropdown-menu>
       </div>
 
       <div  v-if="card">
@@ -25,11 +31,28 @@
             <!--          <img :src="card.image_uris.normal" :alt="card.name">-->
             <!--          <img :src="card.image_uris.large" :alt="card.name">-->
             <!--          <img :src="card.image_uris.art_crop" :alt="card.name">-->
-            <img :src="card.image_uris.border_crop" :alt="card.name">
+            <img :src="card.images.border_crop" :alt="card.name">
           </div>
-          <div class="card-info-data">
-            <div>name</div><div>{{card.name}}</div>
-            <div>release</div><div>{{card.released_at}}</div>
+
+          <div class="tbl">
+            <div>Set</div>
+            <div>{{card.set.name}} [{{card.set.code}}]</div>
+            <div>Release</div>
+            <div>{{card.releasedDate}}</div>
+            <div>Name</div>
+            <div>{{card.name}}</div>
+            <div>Type</div>
+            <div>{{card.type.line}}</div>
+            <div>Printed Type</div>
+            <div>{{card.type.printed}}</div>
+            <div>Rarity</div>
+            <div>{{card.rarity}}</div>
+            <div>Oracle Text</div>
+            <div v-html="card.text.oracle"></div>
+            <div>Printed Text</div>
+            <div v-html="card.text.printed"></div>
+            <div>Flavor Text</div>
+            <div v-html="card.text.flavor"></div>
           </div>
         </div>
 
@@ -44,11 +67,15 @@
 import axios from 'axios'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { tabTrap } from '@/library/vue/vue-directives/vue-forms-directives'
-import { ItemDataFace, ItemVModel, ItemVModelDefault,  CardInfo, ScryfallSearchResponse, ScryfallCardFace } from '@/store/Collection/CollectionItem'
+import { ItemDataFace, ItemVModel, ItemVModelDefault,  CardInfo, ScryfallSearchResponse, ScryfallCardModel } from '@/store/Collection/CollectionItem'
+import { DropdownMenu } from '@/library/vue/vue-ui'
 
 @Component({
   directives: {
     tabTrap,
+  },
+  components: {
+    DropdownMenu,
   }
 })
 
@@ -63,7 +90,7 @@ export default class addingPage extends Vue {
   }
 
   show() {
-    axios.get(`https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}`)
+    axios.get(`https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}+lang:ru`)
             .then( resp => {
               this.scryfall = new ScryfallSearchResponse(resp.data);
             })

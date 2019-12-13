@@ -1,0 +1,13 @@
+.dropdown-menu-cmp {
+    .dropdown-menu {
+        margin-top: 5px;
+        padding: 5px;
+        max-width: max-content;
+        & > * {
+            display: block;
+            padding: 5px 5px 5px 0;
+            max-width: max-content;
+            white-space: nowrap;
+        }
+    }
+}

@@ -28,19 +28,22 @@
     .card-info-image {
 
     }
-    .card-info-data {
+    .tbl {
         width: 100%;
         display: grid;
         grid-template-columns: max-content auto;
-        grid-template-rows: repeat(auto-fill, 50px);
+        grid-auto-rows: minmax(50px, min-content);
         & > * {
             padding: 5px;
+            border-bottom: solid 1px #FFFFFF;
+            display: flex;
+            align-items: center;
         }
         & > *:nth-child(3n) {
-            background-color: rebeccapurple;
+            //background-color: rebeccapurple;
         }
         & > *:nth-child(4n) {
-            background-color: rebeccapurple;
+            //background-color: rebeccapurple;
         }
     }
 }

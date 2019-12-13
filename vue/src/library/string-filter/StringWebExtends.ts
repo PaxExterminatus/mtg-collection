@@ -1,8 +1,9 @@
 import { RegexTemplates } from '../regex/RegexTemplates'
 
-class StringFilter {
+class StringWebExtends extends String {
     private str: string;
     constructor(str: string) {
+        super();
         this.str = str;
     }
 
@@ -23,18 +24,28 @@ class StringFilter {
         return this;
     }
 
+    get useSlashNToBr() {
+        this.str = this.str.replace(/\n/g, "<br>");
+        return this;
+    }
+
+    get getSlashNToBr() {
+        return this.str.replace(/\n/g, "<br>");
+    }
+
+
     get value() {
         return this.str;
     }
 }
 
-function StrFilter(str: string) {
-    return new StringFilter(str);
+function StringExtends(str: string) {
+    return new StringWebExtends(str);
 }
 
 export {
-    StringFilter,
-    StrFilter,
+    StringWebExtends,
+    StringExtends,
 }
 
-export default StringFilter
+export default StringWebExtends
