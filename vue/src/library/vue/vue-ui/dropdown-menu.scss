@@ -1,13 +1,17 @@
 .dropdown-menu-cmp {
+    position: relative;
     .dropdown-menu {
+        position: absolute;
         margin-top: 5px;
-        padding: 5px;
-        max-width: max-content;
+
         & > * {
             display: block;
-            padding: 5px 5px 5px 0;
-            max-width: max-content;
+            padding: 5px 5px 7px 5px;
             white-space: nowrap;
+            text-decoration: none;
+            &:hover {
+                background-color: #5A5A5C;
+            }
         }
     }
 }

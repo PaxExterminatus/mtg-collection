@@ -9,7 +9,6 @@ class Sequence implements SequenceFace
     protected state: SequenceStateFace;
     constructor(first: number, last: number, current: number = first) {
         this.state = new SequenceState(first, last, current);
-        console.log('next', this.state);
     }
 
     // Sequences

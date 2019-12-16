@@ -25,14 +25,29 @@
 
 .card-info {
     display: flex;
-    .card-info-image {
-
+    .card-images {
+        width: 480px;
+        min-width: 480px;
+        position: relative;
+        .card-cover {
+            position: absolute;
+            width: 50%;
+            transition-duration: 500ms;
+            cursor: pointer;
+            left: 0;
+        }
+        .card-cover.selected {
+            width: 90%;
+            left: 45px;
+            z-index: 1;
+        }
     }
     .tbl {
         width: 100%;
         display: grid;
         grid-template-columns: max-content auto;
         grid-auto-rows: minmax(50px, min-content);
+        padding-left: 5px;
         & > * {
             padding: 5px;
             border-bottom: solid 1px #FFFFFF;

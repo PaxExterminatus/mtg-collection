@@ -28,7 +28,6 @@ const tabTrap: DirectiveOptions = {
 
     update(el, binding) {
         const inp = el as HTMLInputElement;
-        console.log(inp);
     }
 };
 

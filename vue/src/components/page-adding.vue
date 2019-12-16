@@ -17,8 +17,8 @@
             <div class="btn">links</div>
           </template>
           <template slot="menu">
-            <a target="_blank" :href="info.url.scryfall.en">scryfall.com [en]</a>
-            <a target="_blank" :href="info.url.scryfall.ru">scryfall.com [ru]</a>
+<!--            <a target="_blank" :href="api.scryfall.oracle">scryfall.com api</a>-->
+<!--            <a target="_blank" :href="api.scryfall.printed">scryfall.com api {{item.lang}}</a>-->
           </template>
         </dropdown-menu>
       </div>
@@ -26,12 +26,10 @@
       <div  v-if="card">
         <div>{{card.object}} | {{card.lang}}</div>
         <div class="card-info">
-          <div class="card-info-image">
-            <!--          <img :src="card.image_uris.small" :alt="card.name">-->
-            <!--          <img :src="card.image_uris.normal" :alt="card.name">-->
-            <!--          <img :src="card.image_uris.large" :alt="card.name">-->
-            <!--          <img :src="card.image_uris.art_crop" :alt="card.name">-->
-            <img :src="card.images.border_crop" :alt="card.name">
+
+          <div class="card-images">
+            <img class="card-cover selected" :src="card.images.cover" :alt="card.name" @click="select">
+            <img class="card-cover" :src="card.images.translate" :alt="card.name" @click="select">
           </div>
 
           <div class="tbl">
@@ -43,16 +41,18 @@
             <div>{{card.name}}</div>
             <div>Type</div>
             <div>{{card.type.line}}</div>
-            <div>Printed Type</div>
-            <div>{{card.type.printed}}</div>
+            <div>Type</div>
+            <div>{{card.type.translate}}</div>
             <div>Rarity</div>
             <div>{{card.rarity}}</div>
-            <div>Oracle Text</div>
+            <div>Text</div>
             <div v-html="card.text.oracle"></div>
-            <div>Printed Text</div>
-            <div v-html="card.text.printed"></div>
-            <div>Flavor Text</div>
-            <div v-html="card.text.flavor"></div>
+            <div>Text</div>
+            <div v-html="card.text.translate"></div>
+            <div>Flavor</div>
+            <div v-html="card.flavor.oracle"></div>
+            <div>Flavor</div>
+            <div v-html="card.flavor.translate"></div>
           </div>
         </div>
 
@@ -67,7 +67,8 @@
 import axios from 'axios'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { tabTrap } from '@/library/vue/vue-directives/vue-forms-directives'
-import { ItemDataFace, ItemVModel, ItemVModelDefault,  CardInfo, ScryfallSearchResponse, ScryfallCardModel } from '@/store/Collection/CollectionItem'
+import { ItemDataFace, ItemVModel, ItemVModelDefault } from '@/store/Collection/CollectionItem'
+import { ScryfallCard, ScryfallCardModel } from '@/library/api/scryfall'
 import { DropdownMenu } from '@/library/vue/vue-ui'
 
 @Component({
@@ -80,20 +81,48 @@ import { DropdownMenu } from '@/library/vue/vue-ui'
 })
 
 export default class addingPage extends Vue {
-  @Prop() private msg!: string;
   item: ItemDataFace = new ItemVModelDefault('card');
-  info = new CardInfo(this.item);
-  scryfall: ScryfallSearchResponse | null = null;
+  oracle: ScryfallCardModel | null = null;
+  translate: ScryfallCardModel | null = null;
+  card: ScryfallCard | null = null;
 
-  get card() {
-    return this.scryfall?.card;
+  get api() {
+    return {
+      scryfall: {
+        oracle: `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}`,
+        translate: `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}+lang:${this.item.lang}`
+      }
+    }
   }
 
   show() {
-    axios.get(`https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}+lang:ru`)
+    axios.get(this.api.scryfall.oracle)
             .then( resp => {
-              this.scryfall = new ScryfallSearchResponse(resp.data);
-            })
+              this.oracle = resp.data.data[0];
+              this.init();
+            });
+
+    axios.get(this.api.scryfall.translate)
+            .then( resp => {
+              this.translate = resp.data.data[0];
+              this.init();
+            });
+  }
+
+  init() {
+    if (this.oracle && this.translate) {
+      this.card = new ScryfallCard(this.oracle, this.translate);
+    }
+  }
+
+  select(e: MouseEvent) {
+    const images = document.querySelectorAll('.card-cover');
+    images.forEach(el => {
+      el.classList.remove('selected');
+    });
+
+    const el = e.target as HTMLImageElement;
+    el.classList.add('selected');
   }
 }
 </script>
