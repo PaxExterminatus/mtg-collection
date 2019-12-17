@@ -5,17 +5,15 @@
         <div class="form-box adding">
 
             <div class="form-line" v-tab-trap>
-                <input tabindex class="form-input" title="code" v-model="item.code">
-                <input tabindex class="form-input" title="number" v-model="item.number">
-                <a class="btn" tabindex @click="show">show</a>
+                <input class="form-input" title="code" v-model="item.code" tabindex>
+                <input class="form-input" title="number" v-model="item.number" tabindex>
+                <a class="btn" @click="show" tabindex>show</a>
                 <a class="btn" tabindex>save</a>
             </div>
 
             <div class="form-line">
                 <dropdown-menu>
-                    <template slot="button">
-                        <div class="btn">links</div>
-                    </template>
+                    <div class="btn">links</div>
                     <template slot="menu">
                         <!--            <a target="_blank" :href="api.scryfall.oracle">scryfall.com api</a>-->
                         <!--            <a target="_blank" :href="api.scryfall.printed">scryfall.com api {{item.lang}}</a>-->
@@ -23,55 +21,18 @@
                 </dropdown-menu>
             </div>
 
-            <div  v-if="card">
-                <div>{{card.object}} | {{card.lang}}</div>
-                <div class="card-info">
-
-                    <div class="card-images">
-                        <img class="card-cover selected" :src="card.images.cover" :alt="card.name" @click="select">
-                        <img class="card-cover" :src="card.images.translate" :alt="card.name" @click="select">
-                    </div>
-
-                    <div class="tbl">
-                        <div>Release</div>
-                        <div>{{card.releasedDate}}</div>
-
-                        <div>Set</div>
-                        <div>{{card.set.name}} [{{card.set.code}}]</div>
-
-                        <div>Name</div>
-                        <div>{{card.name}}</div>
-                        <div>Rarity</div>
-                        <div>{{card.rarity}}</div>
-
-                        <div>Type</div>
-                        <div>{{card.type.line}}</div>
-                        <div>Text</div>
-                        <div v-html="card.text.oracle"></div>
-                        <div>Flavor</div>
-                        <div v-html="card.flavor.oracle"></div>
-
-                        <div>Type</div>
-                        <div>{{card.type.translate}}</div>
-                        <div>Text</div>
-                        <div v-html="card.text.translate"></div>
-                        <div>Flavor</div>
-                        <div v-html="card.flavor.translate"></div>
-                    </div>
-                </div>
-
-            </div>
-
+            <card-information-cmp v-if="card" :card="card"/>
         </div>
 
     </div>
 </template>
 
 <script lang="ts">
+    import CardInformationCmp from "@/app/components/card-info/card-info.vue";
     import axios from 'axios'
     import { Component, Prop, Vue } from 'vue-property-decorator'
     import { tabTrap } from '@/library/vue/vue-directives/vue-forms-directives'
-    import { ItemDataFace, ItemVModel, ItemVModelDefault } from '@/store/Collection/CollectionItem'
+    import { ItemDataFace, ItemVModel, ItemVModelDefault } from '@/app/store/Collection/CollectionItem'
     import { ScryfallCard, ScryfallCardModel } from '@/library/api/scryfall'
     import { DropdownMenu } from '@/library/vue/vue-ui'
 
@@ -80,6 +41,7 @@
             tabTrap,
         },
         components: {
+            CardInformationCmp,
             DropdownMenu,
         }
     })
@@ -117,16 +79,6 @@
             if (this.oracle && this.translate) {
                 this.card = new ScryfallCard(this.oracle, this.translate);
             }
-        }
-
-        select(e: Event) {
-            const images = document.querySelectorAll('.card-cover');
-            images.forEach(el => {
-                el.classList.remove('selected');
-            });
-
-            const el = e.target as HTMLImageElement;
-            el.classList.add('selected');
         }
     }
 </script>

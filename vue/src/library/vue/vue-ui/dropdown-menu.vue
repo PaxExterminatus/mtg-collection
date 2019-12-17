@@ -1,6 +1,6 @@
 <template>
     <div class="dropdown-menu-cmp" @click="relay">
-        <slot name="button"></slot>
+        <slot name="default"></slot>
         <div class="dropdown-menu" v-if="state">
             <slot name="menu"></slot>
         </div>

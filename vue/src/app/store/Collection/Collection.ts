@@ -1,4 +1,4 @@
-import store from "@/store"
+import store from "@/app/store"
 import { ItemDataFace } from './CollectionItem'
 import { CollectionMutations } from "./CollectionStore"
 

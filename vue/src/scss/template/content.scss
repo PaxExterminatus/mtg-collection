@@ -1,0 +1,24 @@
+@import '../mixins';
+@import 'template-froms';
+
+.application {
+    .counter-panel {
+        padding: 10px;
+        margin-bottom: 5px;
+        border-bottom: $border-style-panel;
+    }
+    .page {
+        padding: 10px;
+        border-left: $border-style-panel;;
+    }
+    .application-content-box {
+        display: flex;
+        .aside-main {
+            @include aside-left;
+            text-transform: uppercase;
+        }
+        .application-content {
+            width: 100%;
+        }
+    }
+}
