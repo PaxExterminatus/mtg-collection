@@ -12,9 +12,7 @@ function createWindow () {
     });
 
     win.loadURL('http://localhost:9990')
-    .then( () => {
-        console.log('index page loaded');
-    });
+        .then( () => {});
 }
 
 app.on('ready', createWindow);

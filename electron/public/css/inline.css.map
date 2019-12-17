@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///src-style/inline.scss"],"names":[],"mappings":"AAAA,KACI,SAAU","file":"inline.css","sourcesContent":["body {\r\n    color: red;\r\n}\r\n"]}
