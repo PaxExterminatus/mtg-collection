@@ -9,6 +9,7 @@
   "author": "Voronin Vitaliy",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^12.12.19",
     "electron": "^7.1.1"
   },
   "dependencies": {
