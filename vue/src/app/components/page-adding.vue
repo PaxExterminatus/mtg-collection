@@ -1,6 +1,6 @@
 <template>
     <div class="page adding">
-        <h1 class="title header-one">Adding</h1>
+        <h1 class="title h1">Adding</h1>
 
         <div class="form-box adding">
 

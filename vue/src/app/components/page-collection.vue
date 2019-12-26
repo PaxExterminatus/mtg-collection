@@ -1,6 +1,6 @@
 <template>
-    <div>
-        collection
+    <div class="page collection">
+        <h1 class="title h1">Collection</h1>
     </div>
 </template>
 

@@ -9,6 +9,7 @@
             <nav class="aside-main">
                 <router-link to="/">Adding</router-link>
                 <router-link to="/collection">Collection</router-link>
+                <router-link to="/exchange">Exchange</router-link>
                 <router-link to="/about">About</router-link>
             </nav>
             <router-view class="application-content"/>

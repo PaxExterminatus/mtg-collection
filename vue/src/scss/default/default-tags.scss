@@ -12,11 +12,11 @@ a {
   text-transform: uppercase;
 }
 
-.title.header-one {
+.title.h1 {
   font-size: 42px;
   @include font-decor-bold;
 }
-.title.header-two {
+.title.h1 {
   font-size: 38px;
   @include font-decor;
 }
