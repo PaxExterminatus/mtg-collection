@@ -1,6 +1,9 @@
 <template>
     <div class="page collection">
         <h1 class="title h1">Collection</h1>
+        <div>
+            {{collection}}
+        </div>
     </div>
 </template>
 
@@ -12,6 +15,8 @@ import {Component, Vue} from "vue-property-decorator";
     components: {},
 })
 export default class PageCollection extends Vue {
-
+    get collection() {
+        return this.$store.state.collection
+    }
 }
 </script>

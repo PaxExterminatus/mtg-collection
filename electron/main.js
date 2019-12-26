@@ -4,13 +4,12 @@ const ps = fork(`${__dirname}/server.js`);
 
 function createWindow () {
     let win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        darkTheme: true,
         webPreferences: {
             nodeIntegration: true
         }
     });
-
+    win.maximize();
     win.loadURL('http://localhost:9990')
         .then( () => {});
 }
