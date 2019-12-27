@@ -1,9 +1,16 @@
 import {Getters, Actions, Mutations, Module} from 'vuex-smart-module'
 import { ItemDataFace } from './CollectionItem'
 import { CollectionEntity } from './Collection'
+import axios from 'axios'
 
 class CollectionState {
-    collection = new CollectionEntity()
+    collection = new CollectionEntity();
+    constructor() {
+        axios.get('/api/collection/index.json').then( (resp) => {
+            const cards = resp.data.cards as ItemDataFace[];
+            this.collection.load(cards);
+        })
+    }
 }
 class CollectionGetters extends Getters<CollectionState> {}
 class CollectionActions extends Actions<CollectionState, CollectionGetters, CollectionMutations, CollectionActions> {}
