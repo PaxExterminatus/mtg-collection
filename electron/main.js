@@ -7,7 +7,8 @@ function createWindow () {
         darkTheme: true,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        icon: __dirname + '/public/favicon.png',
     });
     win.maximize();
     win.loadURL('http://localhost:9990')
