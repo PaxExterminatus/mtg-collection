@@ -2,9 +2,6 @@ const path = require('path');
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 
 module.exports = {
-    // entry: {
-    //     inline: ['./src-style/inline.scss'],
-    // },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
@@ -15,19 +12,18 @@ module.exports = {
 
     output: {
         filename: 'js/[name].js',
-        chunkFilename: 'js/[name].js'
+        chunkFilename: 'js/[name].js',
     },
 
-
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-    //             use: 'base64-inline-loader?limit=1000&name=[name].[ext]'
-    //         }
-    //     ]
+    // devServer: {
+    //     historyApiFallback: true,
+    //     watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    //     headers: {
+    //         "Access-Control-Allow-Origin": "*",
+    //         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+    //         "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    //     },
     // },
-
 
     plugins: [
         new HTMLInlineCSSWebpackPlugin({

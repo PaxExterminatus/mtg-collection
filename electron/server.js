@@ -6,10 +6,17 @@ http.createServer((req, res) => {
 
     if (/\/api/.test(req.url))
     {
+        res.writeHead(200, {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Request-Method': '*',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*',
+        });
+
         if (/\/collection/.test(req.url))
         {
             let collection = require('./public/api/collection.json');
-            res.writeHead(200, {'Content-Type': 'application/json'});
             res.end(JSON.stringify(collection));
         }
     }

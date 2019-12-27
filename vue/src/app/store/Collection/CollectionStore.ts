@@ -6,9 +6,14 @@ import { CollectionEntity } from './Collection'
 class CollectionState {
     collection = new CollectionEntity();
     constructor() {
-        axios.get('/api/collection.json').then( (resp) => {
-            const cards = resp.data.cards as ItemDataFace[];
-            this.collection.load(cards);
+        axios.get('http://localhost:9990/api/collection', {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+            },
+        })
+            .then( (resp) => {
+                const cards = resp.data.cards as ItemDataFace[];
+                this.collection.load(cards);
         })
     }
 }
