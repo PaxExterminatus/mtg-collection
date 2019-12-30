@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { Getters, Actions, Mutations, Module } from 'vuex-smart-module'
 import { ItemDataFace } from './CollectionItem'
 import { CollectionEntity } from './Collection'
@@ -6,29 +5,20 @@ import { CollectionEntity } from './Collection'
 class CollectionState {
     collection = new CollectionEntity();
     constructor() {
-        axios.get('http://localhost:9990/api/collection', {
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-            },
-        })
-            .then( (resp) => {
-                const cards = resp.data.cards as ItemDataFace[];
-                this.collection.load(cards);
-        })
+        this.collection.load()
     }
 }
 
 class CollectionGetters extends Getters<CollectionState> {}
 class CollectionActions extends Actions<CollectionState, CollectionGetters, CollectionMutations, CollectionActions> {}
 
-const mutations = {
-  add: 'collection.add',
-};
-
 class CollectionMutations extends Mutations<CollectionState> {
-    static mutations = mutations;
 
-    [mutations.add](card: ItemDataFace) {
+    ['collection.load'](cards: ItemDataFace[]) {
+        this.state.collection.cards = cards;
+    }
+
+    ['collection.add'](card: ItemDataFace) {
         this.state.collection.cards.push(card);
     }
 }

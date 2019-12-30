@@ -1,10 +1,13 @@
 const nodeStatic = require('node-static');
 const file = new nodeStatic.Server(`${__dirname}/public`);
 const http = require('http');
+const fs = require('fs');
 
-http.createServer((req, res) => {
+http.createServer((request, res) => {
 
-    if (/\/api/.test(req.url))
+    const { method, url } = request;
+
+    if (/\/api/.test(url))
     {
         res.writeHead(200, {
             'Content-Type': 'application/json',
@@ -14,15 +17,41 @@ http.createServer((req, res) => {
             'Access-Control-Allow-Headers': '*',
         });
 
-        if (/\/collection/.test(req.url))
+        if (method === 'OPTIONS') {
+            res.end();
+        }
+
+        if (/\/api\/collection/.test(url))
         {
             let collection = require('./public/api/collection.json');
-            res.end(JSON.stringify(collection));
+
+            if (method === 'GET')
+            {
+                res.end(JSON.stringify(collection));
+            }
+
+            if (method === 'POST')
+            {
+                let body = [];
+
+                request.on('data', chunk => {
+                    body.push(chunk);
+                }).on('end', () => {
+                    body = Buffer.concat(body).toString();
+                    collection.cards.push(JSON.parse(body));
+
+                    const json = JSON.stringify(collection);
+
+                    fs.writeFile('./public/api/collection.json', json, 'utf8', () => {
+                        res.end();
+                    });
+                });
+            }
         }
     }
 
-    req.addListener('end', () => {
-        file.serve(req, res)
+    request.addListener('end', () => {
+        file.serve(request, res)
     }).resume()
 
 }).listen(9990);

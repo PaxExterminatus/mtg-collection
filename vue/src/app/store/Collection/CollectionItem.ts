@@ -20,7 +20,7 @@ class ItemVModel implements ItemDataFace {
     }
 
     set code(code: string) {
-        this._code = ' '; // disable vue v-model cache
+        this._code = ' '; // reset vue v-model cache
         this._code = StringExtends(code).latinLetters.toUpperCase();
     }
     get code() {
@@ -28,11 +28,17 @@ class ItemVModel implements ItemDataFace {
     }
 
     set number(number: string) {
-        this._number = ' '; // disable vue v-model cache
+        this._number = ' '; // reset vue v-model cache
         this._number = StringExtends(number).numbers;
     }
     get number() {
         return this._number;
+    }
+
+    toJson() {
+        return {
+
+        }
     }
 }
 

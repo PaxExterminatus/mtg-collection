@@ -8,7 +8,7 @@
                 <input class="form-input" title="code" v-model="item.code" tabindex>
                 <input class="form-input" title="number" v-model="item.number" tabindex>
                 <a class="btn" @click="show" tabindex>show</a>
-                <a class="btn" tabindex>save</a>
+                <a class="btn" @click="save" tabindex>add</a>
             </div>
 
             <div class="form-line">
@@ -30,7 +30,7 @@
 <script lang="ts">
     import CardInformationCmp from "@/app/components/card-info/card-info.vue";
     import axios from 'axios'
-    import { Component, Prop, Vue } from 'vue-property-decorator'
+    import { Component, Vue } from 'vue-property-decorator'
     import { tabTrap } from '@/library/vue/vue-directives/vue-forms-directives'
     import { ItemDataFace, ItemVModel, ItemVModelDefault } from '@/app/store/Collection/CollectionItem'
     import { ScryfallCard, ScryfallCardModel } from '@/library/api/scryfall'
@@ -51,6 +51,10 @@
         oracle: ScryfallCardModel | null = null;
         translate: ScryfallCardModel | null = null;
         card: ScryfallCard | null = null;
+
+        get collection() {
+            return this.$store.state.collection;
+        }
 
         get api() {
             return {
@@ -73,6 +77,16 @@
                     this.translate = resp.data.data[0];
                     this.init();
                 });
+        }
+
+        save() {
+            // todo create and use new class
+            this.collection.add({
+                code: this.item.code,
+                number: this.item.number,
+                type: this.item.type,
+                lang: this.item.lang,
+            });
         }
 
         init() {
