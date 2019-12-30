@@ -8,7 +8,7 @@
                 <input class="form-input" title="code" v-model="item.code" tabindex>
                 <input class="form-input" title="number" v-model="item.number" tabindex>
                 <a class="btn" @click="show" tabindex>show</a>
-                <a class="btn" @click="save" tabindex>add</a>
+                <a class="btn" @click="save" tabindex>save</a>
             </div>
 
             <div class="form-line">
