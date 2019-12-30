@@ -32,18 +32,16 @@ http.createServer((request, res) => {
 
             if (method === 'POST')
             {
-                let body = [];
+                let body = '';
 
                 request.on('data', chunk => {
-                    body.push(chunk);
+                    body += chunk;
                 }).on('end', () => {
-                    body = Buffer.concat(body).toString();
-                    collection.cards.push(JSON.parse(body));
+                    const card = JSON.parse(body);
+                    collection.cards.push(card);
 
-                    const json = JSON.stringify(collection);
-
-                    fs.writeFile('./public/api/collection.json', json, 'utf8', () => {
-                        res.end();
+                    fs.writeFile('./public/api/collection.json', JSON.stringify(collection), 'utf8', () => {
+                        res.end('OK');
                     });
                 });
             }
