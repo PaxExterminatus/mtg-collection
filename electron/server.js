@@ -9,25 +9,30 @@ const express = require('express');
 const app = express();
 const port = 9990;
 
-//express.js config
+const api = require('./middleware/api');
+
+// routing
+/// spa urls
 app.use('/', express.static(pub));
 app.use('/collection', express.static(pub));
+app.use('/exchange', express.static(pub));
+app.use('/about', express.static(pub));
+
+app.use('/api', api);
+
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.header('Access-Control-Allow-Headers', '*');
+
     next();
 
     app.options('*', (req, res) => {
-        res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Methods', '*');
         res.send();
     });
 });
 
-//api
-app.get('/api/collection', (req, res) => {
-    let collection = require('./public/api/collection.json');
-    res.json(collection);
-});
+
 
 app.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);
