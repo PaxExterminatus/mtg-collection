@@ -1,8 +1,13 @@
 const { app, BrowserWindow } = require('electron');
+
 const { fork } = require('child_process');
 const ps = fork(`${__dirname}/server.js`);
 
+const express = require('express');
+
 function createWindow () {
+    express();
+
     let win = new BrowserWindow({
         darkTheme: true,
         webPreferences: {
@@ -10,9 +15,9 @@ function createWindow () {
         },
         icon: __dirname + '/public/favicon.png',
     });
+
     win.maximize();
-    win.loadURL('http://localhost:9990')
-        .then( () => {});
+    win.loadURL('http://localhost:9990').then( () => {});
 }
 
 app.on('ready', createWindow);

@@ -1,21 +1,91 @@
-const http = require('http');
+//files
 const fs = require('fs');
-const httpPort = 9990;
 const nodeStatic = require('node-static');
-const index = new nodeStatic.Server(`${__dirname}/public`);
+const pub = `${__dirname}/public`;
+const file = new nodeStatic.Server(pub);
+//server
+const http = require('http');
+const express = require('express');
+const app = express();
+const port = 9990;
 
-http.createServer((req, res) => {
-    fs.readFile('public/index.htm', 'utf-8', (err, content) => {
-        if (err) {
-            console.log('Невозможно открыть файл "index.htm".')
-        }
+//express.js config
+app.use('/', express.static(pub));
+app.use('/collection', express.static(pub));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 
+    app.options('*', (req, res) => {
+        res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
+        res.send();
+    });
+});
+
+//api
+app.get('/api/collection', (req, res) => {
+    let collection = require('./public/api/collection.json');
+    res.json(collection);
+});
+
+app.listen(port, () => {
+    console.log(`server running at http://localhost:${port}`);
+});
+
+/*
+http.createServer((request, res) => {
+
+    const { method, url } = request;
+
+    if (/\/api/.test(url))
+    {
         res.writeHead(200, {
-            'Content-Type': 'text/html; charset=utf-8'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Request-Method': '*',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*',
         });
 
-        res.end(content)
-    })
-}).listen(httpPort, () => {
-    console.log('run: http://localhost:%s', httpPort)
+        if (method === 'OPTIONS') {
+            res.end();
+        }
+
+        if (/\/api\/collection/.test(url))
+        {
+            let collection = require('./public/api/collection.json');
+
+            if (method === 'GET')
+            {
+                res.end(JSON.stringify(collection));
+            }
+
+            if (method === 'POST')
+            {
+                let body = '';
+
+                request.on('data', chunk => {
+                    body += chunk;
+                }).on('end', () => {
+                    const card = JSON.parse(body);
+                    collection.cards.push(card);
+
+                    fs.writeFile('./public/api/collection.json', JSON.stringify(collection), 'utf8', () => {
+                        res.end('OK');
+                    });
+                });
+            }
+        }
+    } else {
+
+    }
+
+    request.addListener('end', () => {
+        file.serve(request, res)
+    }).resume();
+
+}).listen(port, () => {
+    console.log(`server running at http://localhost:${port}`);
 });
+*/
