@@ -9,16 +9,12 @@ const express = require('express');
 const app = express();
 const port = 9990;
 
-const api = require('./middleware/api');
-
 // routing
 /// spa urls
 app.use('/', express.static(pub));
 app.use('/collection', express.static(pub));
 app.use('/exchange', express.static(pub));
 app.use('/about', express.static(pub));
-
-app.use('/api', api);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -32,7 +28,7 @@ app.use((req, res, next) => {
     });
 });
 
-
+app.use('/api', require('./router/api'));
 
 app.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);
