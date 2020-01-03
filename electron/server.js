@@ -16,7 +16,7 @@ app.use('/exchange', express.static(publicPath));
 app.use('/about', express.static(publicPath));
 
 /// middleware
-app.use(require('./server/middleware/requests-all'));
+app.use(require('./server/middleware/application-level'));
 
 /// access for options method
 app.options('*', require('./server/router/accessOptions'));
