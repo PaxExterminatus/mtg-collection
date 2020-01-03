@@ -1,10 +1,7 @@
 //files
 const fs = require('fs');
-const nodeStatic = require('node-static');
 const publicPath = `${__dirname}/public`;
-const file = new nodeStatic.Server(publicPath);
 //server
-const http = require('http');
 const express = require('express');
 const app = express();
 const port = 9990;
