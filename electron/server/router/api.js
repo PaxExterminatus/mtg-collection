@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.route('/collection')
     .get((req, res) => {
-        let collection = require('../public/api/collection.json');
+        let collection = require('../../public/api/collection.json');
         res.json(collection);
     })
     .post((req, res) => {

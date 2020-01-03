@@ -1,34 +1,29 @@
 //files
 const fs = require('fs');
 const nodeStatic = require('node-static');
-const pub = `${__dirname}/public`;
-const file = new nodeStatic.Server(pub);
+const publicPath = `${__dirname}/public`;
+const file = new nodeStatic.Server(publicPath);
 //server
 const http = require('http');
 const express = require('express');
 const app = express();
 const port = 9990;
 
-// routing
-/// spa urls
-app.use('/', express.static(pub));
-app.use('/collection', express.static(pub));
-app.use('/exchange', express.static(pub));
-app.use('/about', express.static(pub));
+/// SPA urls
+app.use('/', express.static(publicPath));
+app.use('/collection', express.static(publicPath));
+app.use('/exchange', express.static(publicPath));
+app.use('/about', express.static(publicPath));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', '*');
+/// middleware
+app.use(require('./server/middleware/logging'));
+app.use(require('./server/middleware/accessCors'));
 
-    next();
+/// access for options method
+app.options('*', require('./server/router/accessOptions'));
 
-    app.options('*', (req, res) => {
-        res.header('Access-Control-Allow-Methods', '*');
-        res.send();
-    });
-});
-
-app.use('/api', require('./router/api'));
+/// routing - api
+app.use('/api', require('./server/router/api'));
 
 app.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);
