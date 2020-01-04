@@ -2,8 +2,8 @@
 <div class="card-info">
 
     <div class="card-images">
-        <img class="card-cover selected" :src="card.images.cover" :alt="card.name" @click="select">
-        <img class="card-cover" :src="card.images.translate" :alt="card.name" @click="select">
+        <img class="card-cover selected" :src="card.images.cover" :alt="card.name.oracle" :title="card.name.oracle" @click="select">
+        <img class="card-cover" :src="card.images.translate" :alt="card.name.translate" :title="card.name.translate" @click="select">
     </div>
 
     <div class="grid-tbl">
