@@ -4,7 +4,6 @@
     }
 }
 
-
 .form-line {
     display: flex;
 
@@ -34,6 +33,9 @@
     cursor: pointer;
     min-width: 100px;
     min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-input {

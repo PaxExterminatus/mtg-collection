@@ -17,7 +17,15 @@
             </div>
 
             <template v-if="card">
-                <div class="form-line">
+                <div class="flex-tbl">
+                    <dropdown-menu>
+                        <div class="btn">scryfall</div>
+                        <template slot="menu">
+                            <a target="_blank" :href="card.url.scryfall.set">Set</a>
+                            <a target="_blank" :href="card.url.scryfall.card">Card</a>
+                        </template>
+                    </dropdown-menu>
+
                     <dropdown-menu>
                         <div class="btn">links</div>
                         <template slot="menu">
