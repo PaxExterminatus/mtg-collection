@@ -1,27 +1,34 @@
 <template>
     <div class="page adding">
-        <h1 class="title h1">Adding</h1>
+        <h1 class="title h1">Adding
+
+        </h1>
 
         <div class="form-box adding">
-
             <div class="form-line" v-tab-trap>
+                <select class="form-input choice" title="Language">
+                    <option>ru</option>
+                    <option>en</option>
+                </select>
                 <input class="form-input" title="code" v-model="item.code" tabindex>
                 <input class="form-input" title="number" v-model="item.number" tabindex>
                 <a class="btn" @click="show" tabindex>show</a>
                 <a class="btn" @click="save" tabindex>save</a>
             </div>
 
-            <div class="form-line">
-                <dropdown-menu>
-                    <div class="btn">links</div>
-                    <template slot="menu">
-                        <!--            <a target="_blank" :href="api.scryfall.oracle">scryfall.com api</a>-->
-                        <!--            <a target="_blank" :href="api.scryfall.printed">scryfall.com api {{item.lang}}</a>-->
-                    </template>
-                </dropdown-menu>
-            </div>
+            <template v-if="card">
+                <div class="form-line">
+                    <dropdown-menu>
+                        <div class="btn">links</div>
+                        <template slot="menu">
+                            <a target="_blank" :href="card.url.scryfall.set">scryfall.com set</a>
+                            <a target="_blank" :href="card.url.scryfall.card">scryfall.com card</a>
+                        </template>
+                    </dropdown-menu>
+                </div>
 
-            <card-information-cmp v-if="card" :card="card"/>
+                <card-information-cmp :card="card"/>
+            </template>
         </div>
 
     </div>

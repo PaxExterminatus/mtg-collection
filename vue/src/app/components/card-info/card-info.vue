@@ -6,31 +6,49 @@
         <img class="card-cover" :src="card.images.translate" :alt="card.name" @click="select">
     </div>
 
-    <div class="card-tbl">
+    <div class="grid-tbl">
         <div>Release</div>
         <div>{{card.releasedDate}}</div>
-
         <div>Set</div>
         <div>{{card.set.name}} [{{card.set.code}}]</div>
-
-        <div>Name</div>
-        <div>{{card.name}}</div>
         <div>Rarity</div>
         <div>{{card.rarity}}</div>
 
+        <div class="tbl-row">Translate</div>
+        <div>Имя</div>
+        <div>{{card.name.translate}}</div>
+        <div>Тип</div>
+        <div>{{card.type.translate}}</div>
+        <div>Текст</div>
+        <div v-html="card.text.translate"></div>
+        <template v-if="card.flavor.translate">
+            <div>Описание</div>
+            <div v-html="card.flavor.translate"></div>
+        </template>
+
+        <div class="tbl-row">Oracle</div>
+        <div>Name</div>
+        <div>{{card.name.oracle}}</div>
         <div>Type</div>
         <div>{{card.type.line}}</div>
         <div>Text</div>
         <div v-html="card.text.oracle"></div>
-        <div>Flavor</div>
-        <div v-html="card.flavor.oracle"></div>
+        <template v-if="card.flavor.oracle">
+            <div>Flavor</div>
+            <div v-html="card.flavor.oracle"></div>
+        </template>
 
-        <div>Type</div>
-        <div>{{card.type.translate}}</div>
-        <div>Text</div>
-        <div v-html="card.text.translate"></div>
-        <div>Flavor</div>
-        <div v-html="card.flavor.translate"></div>
+        <div>Prices</div>
+        <div class="flex-tbl">
+            <div>USD</div>
+            <div>{{card.prices.usd}}</div>
+            <div>FOIL</div>
+            <div>{{card.prices.usd_foil}}</div>
+            <div>EUR</div>
+            <div>{{card.prices.eur}}</div>
+            <div>TIX</div>
+            <div>{{card.prices.tix}}</div>
+        </div>
     </div>
 
 </div>

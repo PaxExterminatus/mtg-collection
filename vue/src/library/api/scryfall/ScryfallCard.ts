@@ -21,7 +21,10 @@ class ScryfallCard  {
     }
 
     get name() {
-        return this.oracle.name
+        return {
+            oracle: this.oracle.name,
+            translate: this.translate.printed_name,
+        }
     }
 
     get lang() {
@@ -61,6 +64,19 @@ class ScryfallCard  {
         return {
             oracle: this.oracle.flavor_text,
             translate: this.translate.flavor_text,
+        }
+    }
+
+    get prices() {
+        return this.oracle.prices;
+    }
+
+    get url() {
+        return {
+            scryfall: {
+                set: this.oracle.scryfall_set_uri,
+                card: this.oracle.scryfall_uri,
+            }
         }
     }
 }
