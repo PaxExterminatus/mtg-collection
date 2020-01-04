@@ -1,1 +1,11 @@
-{"cards":[{"code":"KLD","number":215,"type":"card","lang":"ru"},{"code":"AER","number":"5","type":"card","lang":"ru"},{"code":"AER","number":"6","type":"card","lang":"ru"},{"code":"AER","number":"28","type":"card","lang":"ru"}]}
+{
+  "cards": [
+    {
+      "code": "KLD",
+      "number": "215",
+      "type":"card",
+      "lang": "ru",
+      "foil": false
+    }
+  ]
+}

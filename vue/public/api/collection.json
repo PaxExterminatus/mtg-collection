@@ -2,9 +2,10 @@
   "cards": [
     {
       "code": "KLD",
-      "number": 215,
+      "number": "215",
       "type":"card",
-      "lang": "ru"
+      "lang": "ru",
+      "foil": false
     }
   ]
 }

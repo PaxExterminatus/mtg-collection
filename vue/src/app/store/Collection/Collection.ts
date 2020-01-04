@@ -1,29 +1,27 @@
 import store from '@/app/store'
 import axios from "axios";
-import {ItemDataFace} from './CollectionItem'
+import {CardDataFace} from './CollectionItem'
 
 interface CollectionDataFace {
-    cards: ItemDataFace[];
+    cards: CardDataFace[];
 }
 
 interface CollectionActionFace {
-    add(card: ItemDataFace): void
-    load(data: ItemDataFace[]): void
+    add(card: CardDataFace): void
+    load(data: CardDataFace[]): void
 }
 
 class CollectionEntity implements CollectionDataFace, CollectionActionFace {
-    public cards: ItemDataFace[] = [];
+    public cards: CardDataFace[] = [];
 
-    load():void
-    {
+    load() {
         axios.get('http://localhost:9990/api/collection')
             .then( (resp) => {
                 store.commit('collection.load', resp.data.cards);
             });
     }
 
-    add(card: ItemDataFace):void
-    {
+    add(card: CardDataFace) {
         axios.post('http://localhost:9990/api/collection', card)
             .then( (resp) => {
                 store.commit('collection.add', card);

@@ -1,5 +1,5 @@
 import { Getters, Actions, Mutations, Module } from 'vuex-smart-module'
-import { ItemDataFace } from './CollectionItem'
+import { CardDataFace } from './CollectionItem'
 import { CollectionEntity } from './Collection'
 
 class CollectionState {
@@ -14,11 +14,11 @@ class CollectionActions extends Actions<CollectionState, CollectionGetters, Coll
 
 class CollectionMutations extends Mutations<CollectionState> {
 
-    ['collection.load'](cards: ItemDataFace[]) {
+    ['collection.load'](cards: CardDataFace[]) {
         this.state.collection.cards = cards;
     }
 
-    ['collection.add'](card: ItemDataFace) {
+    ['collection.add'](card: CardDataFace) {
         this.state.collection.cards.push(card);
     }
 }

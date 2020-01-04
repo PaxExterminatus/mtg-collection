@@ -1,55 +1,68 @@
 import { StringExtends } from '@/library/string-filter/StringWebExtends'
 
-type ItemsTypeVarieties = 'card' | 'token'
+type CardTypes = 'card' | 'token'
+type CardLanguages = 'en' | 'ru'
 
-interface ItemDataFace {
+interface CardDataFace {
     code: string
     number: string
-    type: ItemsTypeVarieties
-    lang: string
+    type: CardTypes
+    lang: CardLanguages
+    foil: boolean
 }
 
-class ItemVModel implements ItemDataFace {
-    protected _code: string = '';
-    protected _number: string = '';
-    public readonly type: ItemsTypeVarieties;
-    public lang: string = 'ru';
-
-    constructor(type: ItemsTypeVarieties) {
-        this.type = type;
-    }
+class CardInputModel implements CardDataFace {
+    protected data: CardDataFace = {
+        code: '',
+        number: '',
+        type:'card',
+        lang: 'ru',
+        foil: false,
+    };
 
     set code(code: string) {
-        this._code = ' '; // reset vue v-model cache
-        this._code = StringExtends(code).latinLetters.toUpperCase();
+        this.data.code = ' '; // reset vue v-model cache
+        this.data.code = StringExtends(code).latinLetters.toUpperCase();
     }
     get code() {
-        return this._code;
+        return this.data.code;
     }
 
     set number(number: string) {
-        this._number = ' '; // reset vue v-model cache
-        this._number = StringExtends(number).numbers;
+        this.data.number = ' '; // reset vue v-model cache
+        this.data.number = StringExtends(number).numbers;
     }
     get number() {
-        return this._number;
+        return this.data.number;
     }
 
-    toJson() {
-        return {
-
-        }
+    get type() {
+        return this.data.type;
     }
-}
+    set type(type) {
+        this.data.type = type;
+    }
 
-class ItemVModelDefault extends ItemVModel {
-    protected _code: string = 'AER';
-    protected _number: string = '5';
+    get lang() {
+        return this.data.lang
+    }
+    set lang(lang) {
+        this.data.lang = lang;
+    }
+
+    get foil() {
+        return this.data.foil
+    }
+    set foil(foil) {
+        this.data.foil = foil;
+    }
 }
 
 export {
-    ItemsTypeVarieties,
-    ItemDataFace,
-    ItemVModel,
-    ItemVModelDefault,
+    CardTypes,
+    CardLanguages,
+
+    CardDataFace,
+
+    CardInputModel,
 }
