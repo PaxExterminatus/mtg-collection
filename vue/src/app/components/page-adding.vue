@@ -54,7 +54,7 @@ import { DropdownMenu } from '@/library/vue/vue-ui'
 })
 
 export default class addingPage extends Vue {
-    item: CardDataFace = new CardInputModel();
+    item = new CardInputModel();
     oracle: ScryfallCardModel | null = null;
     translate: ScryfallCardModel | null = null;
     card: ScryfallCard | null = null;
@@ -80,7 +80,7 @@ export default class addingPage extends Vue {
     }
 
     save() {
-        this.collection.add(this.item);
+        this.collection.add(this.item.json);
     }
 
     init() {

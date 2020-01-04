@@ -56,6 +56,10 @@ class CardInputModel implements CardDataFace {
     set foil(foil) {
         this.data.foil = foil;
     }
+
+    get json(): CardDataFace {
+        return this.data;
+    }
 }
 
 export {
