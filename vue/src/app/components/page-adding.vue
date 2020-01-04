@@ -21,16 +21,8 @@
                     <dropdown-menu>
                         <div class="btn">scryfall</div>
                         <template slot="menu">
-                            <a target="_blank" :href="card.url.scryfall.set">Set</a>
-                            <a target="_blank" :href="card.url.scryfall.card">Card</a>
-                        </template>
-                    </dropdown-menu>
-
-                    <dropdown-menu>
-                        <div class="btn">links</div>
-                        <template slot="menu">
-                            <a target="_blank" :href="card.url.scryfall.set">scryfall.com set</a>
-                            <a target="_blank" :href="card.url.scryfall.card">scryfall.com card</a>
+                            <a target="_blank" :href="card.url.scryfall.set">set</a>
+                            <a target="_blank" :href="card.url.scryfall.card">card</a>
                         </template>
                     </dropdown-menu>
                 </div>
