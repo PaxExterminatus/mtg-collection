@@ -1,5 +1,4 @@
 //files
-const fs = require('fs');
 const publicPath = `${__dirname}/public`;
 //server
 const express = require('express');
@@ -14,6 +13,9 @@ app.use('/about', express.static(publicPath));
 
 /// middleware
 app.use(require('./server/middleware/application-level'));
+/// middleware modules
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 /// access for options method
 app.options('*', require('./server/router/accessOptions'));
