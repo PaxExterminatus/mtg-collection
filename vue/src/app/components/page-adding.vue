@@ -10,10 +10,17 @@
             </div>
 
             <div class="form-line" v-tab-trap>
-                <input class="form-input" title="code" v-model="item.code" tabindex>
-                <input class="form-input" title="number" v-model="item.number" tabindex>
-                <a class="btn" @click="show" tabindex>show</a>
-                <a class="btn" @click="save" tabindex>save</a>
+                <input class="form-input" title="code" tabindex
+                       v-model="item.code">
+                <input class="form-input" title="number" tabindex
+                       v-model="item.number"
+                       @keyup.enter="show"
+                       @keydown.arrow-up="item.numberPlus"
+                       @keydown.arrow-down="item.numberMinus">
+                <!--
+                <a class="btn" @keyup.enter="show" @click="show" tabindex>show</a>
+                -->
+                <a class="btn" tabindex @keyup.enter="save" @click="save">save</a>
             </div>
 
             <template v-if="card">

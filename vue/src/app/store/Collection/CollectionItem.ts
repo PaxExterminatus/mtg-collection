@@ -60,6 +60,18 @@ class CardInputModel implements CardDataFace {
     get json(): CardDataFace {
         return this.data;
     }
+
+    get asNumber() {
+        return +this.number;
+    }
+
+    numberPlus() {
+        this.number = String(this.asNumber + 1);
+    }
+    numberMinus() {
+        if (this.asNumber <= 1) this.number = '1';
+        else this.number = String( this.asNumber - 1)
+    }
 }
 
 export {
