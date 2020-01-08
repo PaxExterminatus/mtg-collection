@@ -1,9 +1,16 @@
 <template>
-<div class="history-feed">
+<div class="history-feed" v-if="history.length > 0">
     <div class="title h1">History</div>
 
     <div v-for="it in history">
-        <div>{{it.action.toUpperCase()}}: {{it.object.code}} / {{it.object.number}}</div>
+
+        <div class="flex-tbl" v-if="it">
+            <div>{{it.action}}</div>
+            <div>{{it.object.number}}</div>
+            <div>{{it.object.code}} • {{it.object.lang}}</div>
+            <div v-if="it.object.foil">FOIL</div>
+        </div>
+
     </div>
 </div>
 </template>

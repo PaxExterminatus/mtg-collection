@@ -25,12 +25,12 @@ class StringWebExtends extends String {
     }
 
     get useSlashNToBr() {
-        this.str = this.str.replace(/\n/g, "<br>");
+        this.str = this.str?.replace(/\n/g, "<br>");
         return this;
     }
 
     get getSlashNToBr() {
-        return this.str.replace(/\n/g, "<br>");
+        return this.str?.replace(/\n/g, "<br>");
     }
 
 

@@ -86,7 +86,7 @@ export default class addingPage extends Vue {
     }
 
     save() {
-        this.collection.add(this.item.json);
+        this.collection.add(this.item.json)
     }
 
     init() {

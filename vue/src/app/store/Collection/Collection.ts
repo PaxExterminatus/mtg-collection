@@ -16,14 +16,17 @@ class CollectionEntity implements CollectionDataFace, CollectionActionFace {
     public cards: CardDataFace[] = [];
     public history: CollectionHistory = new CollectionHistory();
 
-    load() {
+    load()
+    {
         axios.get('http://localhost:9990/api/collection')
             .then( (resp) => {
                 store.commit('collection.load', resp.data.cards);
+                this.history.history = resp.data.history;
             });
     }
 
-    add(card: CardDataFace) {
+    add(card: CardDataFace)
+    {
         axios.post('http://localhost:9990/api/collection', card)
             .then( (resp) => {
                 store.commit('collection.add', card);

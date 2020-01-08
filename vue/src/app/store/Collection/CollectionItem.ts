@@ -58,7 +58,13 @@ class CardInputModel implements CardDataFace {
     }
 
     get json(): CardDataFace {
-        return this.data;
+        return {
+            code: this.data.code,
+            number: this.data.number,
+            type: this.data.type,
+            lang: this.data.lang,
+            foil: this.data.foil,
+        }
     }
 
     get asNumber() {
