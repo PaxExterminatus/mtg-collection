@@ -1,6 +1,7 @@
 import store from '@/app/store'
 import axios from "axios";
 import {CardDataFace} from './CollectionItem'
+import {CollectionHistory} from './CollectionHistory'
 
 interface CollectionDataFace {
     cards: CardDataFace[];
@@ -13,6 +14,7 @@ interface CollectionActionFace {
 
 class CollectionEntity implements CollectionDataFace, CollectionActionFace {
     public cards: CardDataFace[] = [];
+    public history: CollectionHistory = new CollectionHistory();
 
     load() {
         axios.get('http://localhost:9990/api/collection')
@@ -25,6 +27,7 @@ class CollectionEntity implements CollectionDataFace, CollectionActionFace {
         axios.post('http://localhost:9990/api/collection', card)
             .then( (resp) => {
                 store.commit('collection.add', card);
+                this.history.add(card);
             });
     }
 }

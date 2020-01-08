@@ -10,7 +10,12 @@ router.route('/collection')
     .post((req, res) => {
         const card = req.body;
         const collection = require('../../public/api/collection.json');
+
+        collection.inc += 1;
+        card.id = collection.inc;
+
         collection.cards.push(card);
+        collection.history.unshift({ action: 'add', object: card });
 
         fileSystem.writeFile('./public/api/collection.json', JSON.stringify(collection), 'utf8', () => {
             res.send();

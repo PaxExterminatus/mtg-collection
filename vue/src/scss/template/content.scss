@@ -9,7 +9,8 @@
     }
     .page {
         padding: 10px;
-        border-left: $border-style-panel;;
+        border-left: $border-style-panel;
+        border-right: $border-style-panel;
     }
     .application-content-box {
         display: flex;
