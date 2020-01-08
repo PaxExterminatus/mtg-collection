@@ -1,4 +1,4 @@
-@import '../mixins';
+@import 'src/scss/mixins';
 
 .form-box {
     @include form-box-template-font-size(24px);

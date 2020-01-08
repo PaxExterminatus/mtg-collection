@@ -1,7 +1,7 @@
 {
-  "cards": [
+  "history": [
     {
-      "code": "KLD",
+      "action": "add",
       "number": "215",
       "type":"card",
       "lang": "ru",

@@ -12,7 +12,12 @@
                 <router-link to="/exchange">Exchange</router-link>
                 <router-link to="/about">About</router-link>
             </nav>
-            <router-view class="application-content"/>
+            <keep-alive>
+                <router-view class="application-content"/>
+            </keep-alive>
+            <div>
+
+            </div>
         </div>
 
     </div>

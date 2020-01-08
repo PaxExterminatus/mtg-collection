@@ -18,10 +18,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 /// access for options method
-app.options('*', require('./server/router/accessOptions'));
+app.options('*', require('./server/controller/options'));
 
 /// routing - api
-app.use('/api', require('./server/router/api'));
+app.use('/api', require('./server/controller/collection'));
 
 app.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);
