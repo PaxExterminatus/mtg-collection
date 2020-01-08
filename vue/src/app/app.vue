@@ -2,7 +2,7 @@
     <div class="application">
 
         <div class="counter-panel">
-            cards: {{counter.cards}}, <a @click="collection.add">add</a>
+            cards: {{counter.cards}},
         </div>
 
         <div class="application-content-box">
@@ -15,8 +15,9 @@
             <keep-alive>
                 <router-view class="application-content"/>
             </keep-alive>
-            <div>
 
+            <div>
+                <history-feed/>
             </div>
         </div>
 
@@ -25,7 +26,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-@Component
+import HistoryFeed from "@/app/components/history-feed/history-feed.vue";
+@Component({
+    components: {HistoryFeed}
+})
 export default class App extends Vue {
     get counter() {
         return {

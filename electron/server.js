@@ -21,7 +21,8 @@ app.use(bodyParser.json());
 app.options('*', require('./server/controller/options'));
 
 /// routing - api
-app.use('/api', require('./server/controller/collection'));
+app.use('/api', [require('./server/controller/collection'), require('./server/controller/history')]);
+
 
 app.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);

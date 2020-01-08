@@ -4,8 +4,8 @@ const fileSystem = require('fs');
 
 router.route('/history')
     .get((req, res) => {
-        const collection = require('../../public/api/history.json');
-        res.json(collection);
+        const history = require('../../public/api/history.json');
+        res.json(history);
     })
     // .post((req, res) => {
     //     const card = req.body;

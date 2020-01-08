@@ -1,5 +1,7 @@
 <template>
-    
+    <div class="history-feed">
+        <div class="title h1">History</div>
+    </div>
 </template>
 
 <script lang="ts">
