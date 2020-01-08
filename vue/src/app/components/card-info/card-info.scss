@@ -28,6 +28,7 @@
         }
         .tbl-row {
             text-transform: uppercase;
+            border-top: solid 1px darkorange;
         }
     }
     .grid-tbl {
@@ -49,12 +50,5 @@
     & > *:first-child {
         margin-left: 0;
         margin-right: $margin;
-    }
-
-}
-
-.flex-tbl.lang {
-    .btn {
-        max-width: 50px !important;
     }
 }

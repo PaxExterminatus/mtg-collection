@@ -7,6 +7,7 @@
                 <a class="btn" :class="{selected: item.lang === 'en'}" @click="item.lang = 'en'">EN</a>
                 <a class="btn" :class="{selected: item.lang === 'ru'}" @click="item.lang = 'ru'">RU</a>
                 <a class="btn" :class="{selected: item.foil}" @click="item.foil = !item.foil">FOIL</a>
+                <a class="btn to-right">?</a>
             </div>
 
             <div class="form-line" v-tab-trap>
@@ -17,9 +18,7 @@
                        @keyup.enter="show"
                        @keydown.arrow-up="item.numberPlus"
                        @keydown.arrow-down="item.numberMinus">
-                <!--
-                <a class="btn" @keyup.enter="show" @click="show" tabindex>show</a>
-                -->
+<!--                <a class="btn" tabindex @keyup.enter="show" @click="show">show</a>-->
                 <a class="btn" tabindex @keyup.enter="save" @click="save">save</a>
             </div>
 
