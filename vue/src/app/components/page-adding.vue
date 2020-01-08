@@ -22,6 +22,10 @@
                 <a class="btn" tabindex @keyup.enter="save" @click="save">save</a>
             </div>
 
+            <div v-if="apiError">
+                [{{apiError.status}}] {{apiError.text}}: {{apiError.details}}
+            </div>
+
             <template v-if="card">
                 <div class="flex-tbl">
                     <dropdown-menu>
@@ -64,14 +68,18 @@ export default class addingPage extends Vue {
     oracle: ScryfallCardModel | null = null;
     translate: ScryfallCardModel | null = null;
     card: ScryfallCard | null = null;
+    apiError: null | any = null;
 
     get collection() {
         return this.$store.state.collection;
     }
 
     show() {
+        this.apiError = null;
+
         const scryfallOracle = `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}`;
         const scryfallTranslate = `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}+lang:${this.item.lang}`;
+
         axios.get(scryfallOracle)
             .then( resp => {
                 this.oracle = resp.data.data[0];
@@ -82,6 +90,15 @@ export default class addingPage extends Vue {
             .then( resp => {
                 this.translate = resp.data.data[0];
                 this.init();
+            })
+            .catch( err => {
+                this.apiError = {
+                    text: err.response.statusText,
+                    object: err.response.data.object,
+                    code: err.response.data.code,
+                    status: err.response.data.status,
+                    details: err.response.data.details,
+                }
             });
     }
 
