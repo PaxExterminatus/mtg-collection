@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
+    "downlevelIteration": true,
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
@@ -16,7 +17,7 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@/*": [ "src/*" ]
+      "@/*": [ "app/*" ]
     },
     "lib": [
       "esnext",
@@ -26,9 +27,9 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "app/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],

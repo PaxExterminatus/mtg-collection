@@ -1,0 +1,22 @@
+@import '../mixins';
+
+.form-box {
+    @include form-box-template-font-size(24px);
+    .form-input {
+        @include color-forms-input;
+    }
+    .btn {
+        @include color-forms-input;
+        @include color-forms-hover;
+        @include fonts-btn;
+    }
+}
+
+.dropdown-menu-cmp {
+    .dropdown-menu {
+        background-color: $color-forms-input-background;
+    }
+}
+
+
+.form-box.adding {}

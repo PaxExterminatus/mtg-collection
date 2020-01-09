@@ -5,7 +5,8 @@ module.exports = {
     outputDir: '../electron/public',
     chainWebpack: config =>
     {
-        config.entry('app').add('./src/scss/app.scss').end();
+        config.entry('app').clear();
+        config.entry('app').add('./scss/app.scss').add('./app/main.ts').end();
 
         //config.module.rule('fonts').uses.clear();
 
