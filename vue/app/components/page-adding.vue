@@ -4,9 +4,9 @@
 
         <div class="form-box adding">
             <div class="flex-tbl lang">
-                <a class="btn" :class="{selected: item.lang === 'en'}" @click="item.lang = 'en'">EN</a>
-                <a class="btn" :class="{selected: item.lang === 'ru'}" @click="item.lang = 'ru'">RU</a>
-                <a class="btn" :class="{selected: item.foil}" @click="item.foil = !item.foil">FOIL</a>
+                <a class="btn" :class="{'is-selected': item.lang === 'en'}" @click="item.lang = 'en'">EN</a>
+                <a class="btn" :class="{'is-selected': item.lang === 'ru'}" @click="item.lang = 'ru'">RU</a>
+                <a class="btn" :class="{'is-selected': item.foil}" @click="item.foil = !item.foil">FOIL</a>
                 <a class="btn to-right">?</a>
             </div>
 
@@ -49,7 +49,7 @@ import CardInformationCmp from "./card-info/card-info.vue";
 import axios from 'axios'
 import { Component, Vue } from 'vue-property-decorator'
 import { tabTrap } from '../../lib/vue/vue-directives/vue-forms-directives'
-import { CardDataFace, CardInputModel, CardLanguages } from '../store/Collection/CollectionItem'
+import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
 import { ScryfallCard, ScryfallCardModel } from '../../lib/api/scryfall'
 import { DropdownMenu } from '../../lib/vue/vue-ui'
 
