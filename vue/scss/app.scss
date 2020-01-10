@@ -1,11 +1,9 @@
 @import '../lib/scss/reset';
 @import '../lib/scss/forms/forms-template';
 @import '../lib/scss/buttons/flex-btn';
+@import '../lib/scss/state-classes';
 
 @import '../lib/vue/vue-ui/dropdown-menu';
-
-@import 'schemes/color-classes';
-@import 'schemes/position-classes';
 
 @import '../app/components/card-info/card-info';
 @import '../app/components/history-feed/history-feed';

@@ -45,13 +45,13 @@
 </template>
 
 <script lang="ts">
-import CardInformationCmp from "./card-info/card-info.vue";
+import CardInformationCmp from "../card-info/card-info.vue";
 import axios from 'axios'
 import { Component, Vue } from 'vue-property-decorator'
-import { tabTrap } from '../../lib/vue/vue-directives/vue-forms-directives'
+import { tabTrap } from '../../../lib/vue/vue-directives/vue-forms-directives'
 import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
-import { ScryfallCard, ScryfallCardModel } from '../../lib/api/scryfall'
-import { DropdownMenu } from '../../lib/vue/vue-ui'
+import { ScryfallCard, ScryfallCardModel } from '../../../lib/api/scryfall'
+import { DropdownMenu } from '../../../lib/vue/vue-ui'
 
 @Component({
     directives: {
