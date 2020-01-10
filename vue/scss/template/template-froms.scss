@@ -1,4 +1,4 @@
-@import '../mixins';
+@import '../mixins-lib';
 
 .form-box {
     @include form-box-template-font-size(24px);

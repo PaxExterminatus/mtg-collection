@@ -21,9 +21,6 @@ $border-style-panel: solid 1px $color-border-main;
     &:focus {
         border-color: $color-focus-border;
     }
-    &.selected {
-        color: darkorange;
-    }
 }
 
 @mixin color-forms-hover {
