@@ -1,4 +1,3 @@
-const path = require("path");
 const configureWebpack = require('./webpack.config');
 
 module.exports = {
@@ -7,8 +6,6 @@ module.exports = {
     {
         config.entry('app').clear();
         config.entry('app').add('./scss/app.scss').add('./app/index.ts').end();
-
-        //config.module.rule('fonts').uses.clear();
 
         if(config.plugins.has('extract-css'))
         {

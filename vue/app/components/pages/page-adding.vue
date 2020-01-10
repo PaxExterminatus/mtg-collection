@@ -4,17 +4,17 @@
 
         <div class="form-box adding">
             <div class="flex-tbl lang">
-                <a class="btn" :class="{'is-selected': item.lang === 'en'}" @click="item.lang = 'en'">EN</a>
-                <a class="btn" :class="{'is-selected': item.lang === 'ru'}" @click="item.lang = 'ru'">RU</a>
-                <a class="btn" :class="{'is-selected': item.foil}" @click="item.foil = !item.foil">FOIL</a>
+                <a class="btn" :class="{'is-selected': cardInp.lang === 'en'}" @click="cardInp.lang = 'en'">EN</a>
+                <a class="btn" :class="{'is-selected': cardInp.lang === 'ru'}" @click="cardInp.lang = 'ru'">RU</a>
+                <a class="btn" :class="{'is-selected': cardInp.foil}" @click="cardInp.foil = !cardInp.foil">FOIL</a>
                 <a class="btn to-right">?</a>
             </div>
 
             <div class="form-line" v-tab-trap>
                 <input class="form-input" title="code" tabindex
-                       v-model="item.code">
+                       v-model="cardInp.code">
                 <input class="form-input" title="number" tabindex
-                       v-model="item.number"
+                       v-model="cardInp.number"
                        @keyup.enter="show"
                        @keydown.arrow-up="item.numberPlus"
                        @keydown.arrow-down="item.numberMinus">
@@ -45,10 +45,10 @@
 </template>
 
 <script lang="ts">
-import CardInformationCmp from "../card-info/card-info.vue";
+import CardInformationCmp from "../cards/card-info.vue";
 import axios from 'axios'
 import { Component, Vue } from 'vue-property-decorator'
-import { tabTrap } from '../../../lib/vue/vue-directives/vue-forms-directives'
+import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
 import { ScryfallCard, ScryfallCardModel } from '../../../lib/api/scryfall'
 import { DropdownMenu } from '../../../lib/vue/vue-ui'
@@ -64,7 +64,7 @@ import { DropdownMenu } from '../../../lib/vue/vue-ui'
 })
 
 export default class addingPage extends Vue {
-    item = new CardInputModel();
+    cardInp = new CardInputModel();
     oracle: ScryfallCardModel | null = null;
     translate: ScryfallCardModel | null = null;
     card: ScryfallCard | null = null;
@@ -76,9 +76,6 @@ export default class addingPage extends Vue {
 
     show() {
         this.apiError = null;
-
-        const scryfallOracle = `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}`;
-        const scryfallTranslate = `https://api.scryfall.com/cards/search?q=set:${this.item.code.toLowerCase()}+number:${this.item.number}+lang:${this.item.lang}`;
 
         axios.get(scryfallOracle)
             .then( resp => {

@@ -55,13 +55,13 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
-import { ScryfallCard } from '../../../lib/api/scryfall'
+import {Component, Prop, Vue} from 'vue-property-decorator'
+import { ScryfallCard } from 'lib/api/scryfall'
 
 @Component({
-    directives: {},
-    components: {},
+    components: {}
 })
+
 export default class CardInformationVue extends Vue {
     @Prop() private card!: ScryfallCard;
 
