@@ -6,7 +6,7 @@ module.exports = {
     chainWebpack: config =>
     {
         config.entry('app').clear();
-        config.entry('app').add('./scss/app.scss').add('./app/main.ts').end();
+        config.entry('app').add('./scss/app.scss').add('./app/index.ts').end();
 
         //config.module.rule('fonts').uses.clear();
 
