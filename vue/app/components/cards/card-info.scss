@@ -33,7 +33,7 @@
     }
     .grid-tbl {
         display: grid;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: max-content 1fr 1fr;
         grid-auto-rows: minmax(45px, min-content);
         .tbl-row {
             grid-column: 1 / span 2;

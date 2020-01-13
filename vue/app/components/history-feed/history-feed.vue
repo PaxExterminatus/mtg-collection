@@ -1,9 +1,8 @@
 <template>
-<div class="history-feed" v-if="history.length > 0">
+<div class="history-feed">
     <div class="title h1">History</div>
 
-    <div v-for="it in history">
-
+    <div v-if="history.length > 0" v-for="it in history">
         <div class="flex-tbl" v-if="it">
             <div>{{it.action}}</div>
             <div>{{it.object.number}}</div>
@@ -16,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import { ScryfallCard } from 'lib/api/scryfall'
 
 @Component({

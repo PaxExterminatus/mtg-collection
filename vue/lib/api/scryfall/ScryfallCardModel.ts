@@ -1,6 +1,6 @@
 import {
     ScryfallObjectTypes,
-    ScryfallLanguagesTypes,
+    SupportedLanguages,
     ScryfallColorsTypes,
     ScryfallLegacyTypes,
     ScryfallGamesTypes,
@@ -19,7 +19,7 @@ interface ScryfallCardModel {
     tcgplayer_id?: number
     name: string
     printed_name?: string
-    lang: ScryfallLanguagesTypes
+    lang: SupportedLanguages
     released_at: string
     uri: string
     scryfall_uri: string

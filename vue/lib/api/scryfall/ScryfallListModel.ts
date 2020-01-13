@@ -2,7 +2,7 @@ import {
     ScryfallCardModel
 } from './'
 
-interface ScryfallSearchResponseModel {
+interface ScryfallListModel {
     has_more: boolean
     object: 'list'
     total_cards: 1
@@ -10,5 +10,5 @@ interface ScryfallSearchResponseModel {
 }
 
 export {
-    ScryfallSearchResponseModel,
+    ScryfallListModel,
 }

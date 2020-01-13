@@ -1,10 +1,13 @@
+// Interfaces
 import {ScryfallCardModel} from './ScryfallCardModel'
-import {ScryfallSearchResponseModel} from './ScryfallSearchResponseModel'
-
+import {ScryfallListModel} from './ScryfallListModel'
+import { SearchQueryFace } from './ScryfallQueryModel'
+// Classes
 import {ScryfallCard} from './ScryfallCard'
-
+import {ScryfallSearch} from './ScryfallSearch'
+// Types
+type SupportedLanguages = 'en' | 'ru'
 type ScryfallObjectTypes = 'card' | 'list'
-type ScryfallLanguagesTypes = 'en' | 'ru'
 type ScryfallColorsTypes = 'W'
 type ScryfallLegacyTypes = 'legal' | 'not_legal'
 type ScryfallGamesTypes = 'mtgo' | 'paper'
@@ -13,10 +16,11 @@ type ScryfallBorderTypes = 'black'
 
 export {
     ScryfallCardModel,
-    ScryfallSearchResponseModel,
+    ScryfallListModel,
+    SearchQueryFace,
 
     ScryfallObjectTypes,
-    ScryfallLanguagesTypes,
+    SupportedLanguages,
     ScryfallColorsTypes,
     ScryfallLegacyTypes,
     ScryfallGamesTypes,
@@ -24,4 +28,5 @@ export {
     ScryfallBorderTypes,
 
     ScryfallCard,
+    ScryfallSearch,
 }

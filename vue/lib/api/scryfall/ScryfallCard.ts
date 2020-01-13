@@ -1,5 +1,5 @@
 import {ScryfallCardModel} from './'
-import {StringExtends} from "lib/string-filter/StringWebExtends";
+import {StringExtends} from 'lib/string-filter/StringWebExtends';
 
 class ScryfallCard  {
     protected oracle: ScryfallCardModel;

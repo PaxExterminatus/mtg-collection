@@ -4,41 +4,43 @@
 
         <div class="form-box adding">
             <div class="flex-tbl lang">
-                <a class="btn" :class="{'is-selected': cardInp.lang === 'en'}" @click="cardInp.lang = 'en'">EN</a>
-                <a class="btn" :class="{'is-selected': cardInp.lang === 'ru'}" @click="cardInp.lang = 'ru'">RU</a>
-                <a class="btn" :class="{'is-selected': cardInp.foil}" @click="cardInp.foil = !cardInp.foil">FOIL</a>
+                <a class="btn" :class="{'is-selected': input.lang === 'en'}" @click="input.lang = 'en'">EN</a>
+                <a class="btn" :class="{'is-selected': input.lang === 'ru'}" @click="input.lang = 'ru'">RU</a>
+                <a class="btn" :class="{'is-selected': input.foil}" @click="input.foil = !input.foil">FOIL</a>
                 <a class="btn to-right">?</a>
             </div>
 
             <div class="form-line" v-tab-trap>
                 <input class="form-input" title="code" tabindex
-                       v-model="cardInp.code">
+                       v-model="input.code">
                 <input class="form-input" title="number" tabindex
-                       v-model="cardInp.number"
-                       @keyup.enter="show"
-                       @keydown.arrow-up="item.numberPlus"
-                       @keydown.arrow-down="item.numberMinus">
-<!--                <a class="btn" tabindex @keyup.enter="show" @click="show">show</a>-->
+                       v-model="input.number"
+                       @keyup.enter="search"
+                       @keydown.arrow-up="input.numberPlus"
+                       @keydown.arrow-down="input.numberMinus">
+                <a class="btn" tabindex @keyup.enter="search" @click="search">search</a>
                 <a class="btn" tabindex @keyup.enter="save" @click="save">save</a>
             </div>
 
-            <div v-if="apiError">
-                [{{apiError.status}}] {{apiError.text}}: {{apiError.details}}
+            <div v-if="error">
+                {{error}}
             </div>
 
-            <template v-if="card">
-                <div class="flex-tbl">
-                    <dropdown-menu>
-                        <div class="btn">scryfall</div>
-                        <template slot="menu">
-                            <a target="_blank" :href="card.url.scryfall.set">set</a>
-                            <a target="_blank" :href="card.url.scryfall.card">card</a>
-                        </template>
-                    </dropdown-menu>
-                </div>
+            <card-grid :msg="'new value'"/>
+
+            <div v-if="card">
+<!--                <div class="flex-tbl">-->
+<!--                    <dropdown-menu>-->
+<!--                        <div class="btn">scryfall</div>-->
+<!--                        <template slot="menu">-->
+<!--                            <a target="_blank" :href="card.url.scryfall.set">set</a>-->
+<!--                            <a target="_blank" :href="card.url.scryfall.card">card</a>-->
+<!--                        </template>-->
+<!--                    </dropdown-menu>-->
+<!--                </div>-->
 
                 <card-information-cmp :card="card"/>
-            </template>
+            </div>
         </div>
 
     </div>
@@ -46,67 +48,55 @@
 
 <script lang="ts">
 import CardInformationCmp from "../cards/card-info.vue";
-import axios from 'axios'
 import { Component, Vue } from 'vue-property-decorator'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
-import { ScryfallCard, ScryfallCardModel } from '../../../lib/api/scryfall'
-import { DropdownMenu } from '../../../lib/vue/vue-ui'
+
+import { DropdownMenu } from 'lib/vue/vue-ui'
+import { ScryfallSearch } from 'lib/api/scryfall'
+import { CardModelLayout } from '@/objects/card'
+
+import CardGrid from '../cards/card-grid.vue'
 
 @Component({
     directives: {
         tabTrap,
     },
     components: {
+        CardGrid,
         CardInformationCmp,
         DropdownMenu,
     }
 })
 
 export default class addingPage extends Vue {
-    cardInp = new CardInputModel();
-    oracle: ScryfallCardModel | null = null;
-    translate: ScryfallCardModel | null = null;
-    card: ScryfallCard | null = null;
-    apiError: null | any = null;
+    scryfall = new ScryfallSearch();
+    input = new CardInputModel();
+    card: CardModelLayout | null = null;
+
+    error: string | null = null;
 
     get collection() {
         return this.$store.state.collection;
     }
 
-    show() {
-        this.apiError = null;
-
-        axios.get(scryfallOracle)
-            .then( resp => {
-                this.oracle = resp.data.data[0];
-                this.init();
-            });
-
-        axios.get(scryfallTranslate)
-            .then( resp => {
-                this.translate = resp.data.data[0];
-                this.init();
-            })
-            .catch( err => {
-                this.apiError = {
-                    text: err.response.statusText,
-                    object: err.response.data.object,
-                    code: err.response.data.code,
-                    status: err.response.data.status,
-                    details: err.response.data.details,
-                }
-            });
+    search()
+    {
+        this.scryfall.search({
+            code: this.input.code,
+            number: this.input.number,
+            language: this.input.lang,
+        }).then( resp => {
+            this.card = new CardModelLayout(resp.data.data[0]);
+        })
+        .catch( error => {
+            const {code, status, details} = error.response.data;
+            this.error = `[${code}] ${status}: ${details}`
+        })
     }
 
     save() {
-        this.collection.add(this.item.json)
-    }
-
-    init() {
-        if (this.oracle && this.translate) {
-            this.card = new ScryfallCard(this.oracle, this.translate);
-        }
+        this.collection.add(this.input.json)
     }
 }
 </script>

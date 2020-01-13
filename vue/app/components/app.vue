@@ -6,7 +6,12 @@
         </div>
 
         <div class="application-content-box">
-            <aside-main/>
+            <nav class="aside-main">
+                <router-link to="/" :class="{'is-selected': $route.path === '/'}">adding</router-link>
+                <router-link to="/collection" :class="{'is-selected': $route.path === '/collection'}">collection</router-link>
+                <router-link to="/exchange" :class="{'is-selected': $route.path === '/exchange'}">exchange</router-link>
+                <router-link to="/about" :class="{'is-selected': $route.path === '/about'}">about</router-link>
+            </nav>
 
             <keep-alive>
                 <router-view class="application-content"/>
@@ -23,10 +28,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import HistoryFeed from "./history-feed/history-feed.vue";
-import AsideMain from "./navs/aside-main.vue";
 
 @Component({
-    components: {AsideMain, HistoryFeed}
+    components: {HistoryFeed},
 })
 export default class App extends Vue {
     get counter() {
