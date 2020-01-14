@@ -26,8 +26,6 @@
                 {{error}}
             </div>
 
-            <card-grid :msg="'new value'"/>
-
             <div v-if="card">
 <!--                <div class="flex-tbl">-->
 <!--                    <dropdown-menu>-->
@@ -39,7 +37,7 @@
 <!--                    </dropdown-menu>-->
 <!--                </div>-->
 
-                <card-information-cmp :card="card"/>
+                <card-info :card="card"/>
             </div>
         </div>
 
@@ -47,32 +45,29 @@
 </template>
 
 <script lang="ts">
-import CardInformationCmp from "../cards/card-info.vue";
-import { Component, Vue } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator'
+import { CardInformationComponent } from "@/components/card";
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
 
 import { DropdownMenu } from 'lib/vue/vue-ui'
-import { ScryfallSearch } from 'lib/api/scryfall'
+import { ScryfallSearch, SupportedLanguages } from 'lib/api/scryfall'
 import { CardModelLayout } from '@/objects/card'
-
-import CardGrid from '../cards/card-grid.vue'
 
 @Component({
     directives: {
         tabTrap,
     },
     components: {
-        CardGrid,
-        CardInformationCmp,
         DropdownMenu,
+        cardInfo: CardInformationComponent,
     }
 })
 
 export default class addingPage extends Vue {
     scryfall = new ScryfallSearch();
     input = new CardInputModel();
-    card: CardModelLayout | null = null;
+    card = new CardModelLayout();
 
     error: string | null = null;
 
@@ -80,8 +75,24 @@ export default class addingPage extends Vue {
         return this.$store.state.collection;
     }
 
+    get languages() {
+        return {
+            oracle: 'en',
+            printed: this.input.lang,
+            translate: 'ru'
+        }
+    }
+
     search()
     {
+        if (this.input.lang === 'en')
+        {
+            this.scryfall.oracle(this.input.code, this.input.number)
+            .then( resp => {
+
+            })
+        }
+
         this.scryfall.search({
             code: this.input.code,
             number: this.input.number,

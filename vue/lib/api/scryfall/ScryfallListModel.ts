@@ -1,12 +1,12 @@
 import {
-    ScryfallCardModel
+    ScryfallCardFace
 } from './'
 
 interface ScryfallListModel {
     has_more: boolean
     object: 'list'
     total_cards: 1
-    data: ScryfallCardModel[]
+    data: ScryfallCardFace[]
 }
 
 export {

@@ -1,10 +1,10 @@
-import {ScryfallCardModel} from './'
+import {ScryfallCardFace} from './'
 import {StringExtends} from 'lib/string-filter/StringWebExtends';
 
 class ScryfallCard  {
-    protected oracle: ScryfallCardModel;
-    protected translate: ScryfallCardModel;
-    constructor(oracle: ScryfallCardModel, translate: ScryfallCardModel) {
+    protected oracle: ScryfallCardFace;
+    protected translate: ScryfallCardFace;
+    constructor(oracle: ScryfallCardFace, translate: ScryfallCardFace) {
         this.oracle = oracle;
         this.translate = translate;
     }

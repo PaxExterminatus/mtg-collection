@@ -3,14 +3,14 @@ import {ScryfallListModel} from "./ScryfallListModel";
 import { SearchQueryFace } from './'
 
 class ScryfallSearch {
-    protected url({code, number, language = 'en'}: SearchQueryFace)
+    oracle(code: string, number: string): Promise<AxiosResponse<ScryfallListModel>>
     {
-        return `https://api.scryfall.com/cards/search?q=set:${code}+number:${number}+lang:${language}`;
+        return axios.get(`https://api.scryfall.com/cards/search?q=set:${code}+number:${number}`) as Promise<AxiosResponse<ScryfallListModel>>
     }
 
-    search({code, number, language= 'en'}: SearchQueryFace): Promise<AxiosResponse<ScryfallListModel>>
+    translate({code, number, language= 'en'}: SearchQueryFace): Promise<AxiosResponse<ScryfallListModel>>
     {
-        return axios.get(this.url({code, number, language})) as Promise<AxiosResponse<ScryfallListModel>>
+        return axios.get(`https://api.scryfall.com/cards/search?q=set:${code}+number:${number}+lang:${language}`) as Promise<AxiosResponse<ScryfallListModel>>
     }
 }
 

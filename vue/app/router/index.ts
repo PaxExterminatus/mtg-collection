@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../components/pages/page-adding.vue'
+import Home from '../components/pages/AddingPage.vue'
 
 Vue.use(VueRouter);
 
@@ -13,17 +13,17 @@ const routes = [
     {
         path: '/collection',
         name: 'collection',
-        component: () => import(/* webpackChunkName: "chunk.page.collection" */ '../components/pages/page-collection.vue')
+        component: () => import(/* webpackChunkName: "chunk.page.collection" */ '../components/pages/collection-page.vue')
     },
     {
         path: '/exchange',
         name: 'exchange',
-        component: () => import(/* webpackChunkName: "chunk.page.exchange" */ '../components/pages/page-exchange.vue')
+        component: () => import(/* webpackChunkName: "chunk.page.exchange" */ '../components/pages/exchange-page.vue')
     },
     {
         path: '/about',
         name: 'about',
-        component: () => import(/* webpackChunkName: "chunk.page.about" */ '../components/pages/page-about.vue')
+        component: () => import(/* webpackChunkName: "chunk.page.about" */ '../components/pages/about-page.vue')
     },
 ];
 

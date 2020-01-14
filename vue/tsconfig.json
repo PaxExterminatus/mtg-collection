@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "downlevelIteration": true,
     "module": "esnext",
+    "moduleResolution": "node",
     "strict": true,
+
+    "downlevelIteration": true,
     "jsx": "preserve",
     "importHelpers": true,
-    "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

@@ -1,5 +1,5 @@
 // Interfaces
-import {ScryfallCardModel} from './ScryfallCardModel'
+import {ScryfallCardFace} from './ScryfallCardFace'
 import {ScryfallListModel} from './ScryfallListModel'
 import { SearchQueryFace } from './ScryfallQueryModel'
 // Classes
@@ -15,7 +15,7 @@ type ScryfallRarityTypes = 'uncommon'
 type ScryfallBorderTypes = 'black'
 
 export {
-    ScryfallCardModel,
+    ScryfallCardFace,
     ScryfallListModel,
     SearchQueryFace,
 
