@@ -7,7 +7,7 @@ class CardModel implements ICardModel {
     public text: string;
     constructor(private model: IDataCard)
     {
-        this.name = model.name;
+        this.name = model.printed_name || model.name;
         this.type = model.printed_type_line || model.type_line;
         this.text = model.printed_text || model.oracle_text;
     }

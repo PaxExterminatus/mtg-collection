@@ -1,7 +1,7 @@
-import CardGridComponent from './CardGrid.vue'
+import CardGrid from './CardGrid.vue'
 import CardInformationComponent from './card-info.vue'
 
 export {
-    CardGridComponent,
+    CardGrid,
     CardInformationComponent,
 }

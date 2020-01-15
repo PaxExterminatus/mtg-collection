@@ -6,6 +6,7 @@
             <div class="flex-tbl lang">
                 <a class="btn" :class="{'is-selected': input.lang === 'en'}" @click="input.lang = 'en'">EN</a>
                 <a class="btn" :class="{'is-selected': input.lang === 'ru'}" @click="input.lang = 'ru'">RU</a>
+                <a class="btn" :class="{'is-selected': input.lang === 'it'}" @click="input.lang = 'it'">IT</a>
                 <a class="btn" :class="{'is-selected': input.foil}" @click="input.foil = !input.foil">FOIL</a>
                 <a class="btn to-right">?</a>
             </div>
@@ -26,24 +27,17 @@
                 {{error}}
             </div>
 
-            <div>
-                <div class="flex-tbl lang">
-                    <a class="btn" :class="{'is-selected': state.tab === 'oracle'}" @click="state.tab = 'oracle'">oracle</a>
-                    <a class="btn" :class="{'is-selected': state.tab === 'printed'}" @click="state.tab = 'printed'">printed</a>
-                    <a class="btn" :class="{'is-selected': state.tab === 'translate'}" @click="state.tab = 'translate'">translate</a>
-                </div>
+            <div class="flex-tbl lang">
+                <a v-if="oracle" class="btn" :class="{'is-selected': state.tab === 'oracle'}" @click="state.tab = 'oracle'">oracle [en]</a>
+                <a v-if="printed" class="btn" :class="{'is-selected': state.tab === 'printed'}" @click="state.tab = 'printed'">printed [{{input.lang}}]</a>
+                <a v-if="translate" class="btn" :class="{'is-selected': state.tab === 'translate'}" @click="state.tab = 'translate'">translate [{{userInterfaceLanguage}}]</a>
+            </div>
 
-                <div class="grid-tbl" v-if="state.tab === 'oracle'">
-                    oracle
-                </div>
-
-                <div class="grid-tbl" v-if="state.tab === 'printed'">
-                    printed
-                </div>
-
-                <div class="grid-tbl" v-if="state.tab === 'translate'">
-                    translate
-                </div>
+            <div class="card-info">
+                <div class="card-images"></div>
+                <card-grid v-if="state.tab === 'oracle' && oracle" :card="oracle"/>
+                <card-grid v-if="state.tab === 'printed' && printed" :card="printed"/>
+                <card-grid v-if="state.tab === 'translate' && translate" :card="translate"/>
             </div>
         </div>
 
@@ -52,22 +46,19 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CardInformationComponent } from "@/components/card";
+import { CardGrid } from '@/components/card';
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
+import { CardDataFace, CardInputModel } from '@/store/Collection/CollectionItem'
 
 import { DropdownMenu } from 'lib/vue/vue-ui'
-import { ScryfallSearchCard } from 'lib/api/scryfall'
+import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
 import { ICardModel, CardModel } from '@/objects/card'
 
 @Component({
     directives: {
         tabTrap,
     },
-    components: {
-        DropdownMenu,
-        cardInfo: CardInformationComponent,
-    }
+    components: {DropdownMenu, CardGrid}
 })
 
 export default class addingPage extends Vue {
@@ -81,8 +72,12 @@ export default class addingPage extends Vue {
     error: string | null = null;
 
     state = {
-        tab: ''
+        tab: 'printed',
     };
+
+    get userInterfaceLanguage(): LanguageEnum {
+        return 'ru';
+    }
 
     get collection() {
         return this.$store.state.collection;
@@ -90,29 +85,41 @@ export default class addingPage extends Vue {
 
     search()
     {
-        let uiLang = 'ru';
+        this.oracle = null;
+        this.printed = null;
+        this.translate = null;
 
-        if (uiLang === 'en')
-        {
-            this.scryfall.oracle({code: this.input.code, number: this.input.number})
+        this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
             .then( resp => {
-                this.oracle = new CardModel(resp.data.data[0]);
+                this.printed = new CardModel(resp.data.data[0]);
             })
             .catch( error => {
                 const {code, status, details} = error.response.data;
                 this.error = `[${code}] ${status}: ${details}`
-            })
-        }
-        else
+            });
+
+        if (this.input.lang !== 'en')
         {
-            this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
+            this.scryfall.oracle({code: this.input.code, number: this.input.number})
+                .then( resp => {
+                    this.oracle = new CardModel(resp.data.data[0]);
+                })
+                .catch( error => {
+                    const {code, status, details} = error.response.data;
+                    this.error = `[${code}] ${status}: ${details}`
+                });
+        }
+
+        if (this.input.lang !== this.userInterfaceLanguage)
+        {
+            this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.userInterfaceLanguage})
                 .then( resp => {
                     this.translate = new CardModel(resp.data.data[0]);
                 })
                 .catch( error => {
                     const {code, status, details} = error.response.data;
                     this.error = `[${code}] ${status}: ${details}`
-                })
+                });
         }
     }
 

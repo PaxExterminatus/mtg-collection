@@ -5,7 +5,7 @@
 <!--        <img class="card-cover selected" :src="card.images.cover" :alt="card.name.oracle" :title="card.name.oracle" @click="select">-->
 <!--        <img class="card-cover" :src="card.images.translate" :alt="card.name.translate" :title="card.name.translate" @click="select">-->
 <!--    </div>-->
-    <grid :card="card.oracle"/>
+    <card-grid :card="card.oracle"/>
 </div>
 </template>
 
@@ -13,12 +13,10 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 // import {CardModelLayout} from '@/objects/card'
 // components
-import { CardGridComponent } from '@/components/card'
+import { CardGrid } from '@/components/card'
 
 @Component({
-    components: {
-        grid: CardGridComponent,
-    }
+    components: {CardGrid}
 })
 export default class CardInformationComponent extends Vue {
     // @Prop() private card!: CardModelLayout;

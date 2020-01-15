@@ -1,13 +1,13 @@
 import { StringExtends } from 'lib/string-filter/StringWebExtends'
+import {LanguageEnum} from "lib/api/scryfall";
 
 type CardTypes = 'card' | 'token'
-type CardLanguages = 'en' | 'ru'
 
 interface CardDataFace {
     code: string
     number: string
     type: CardTypes
-    lang: CardLanguages
+    lang: LanguageEnum
     foil: boolean
 }
 
@@ -82,9 +82,6 @@ class CardInputModel implements CardDataFace {
 
 export {
     CardTypes,
-    CardLanguages,
-
     CardDataFace,
-
     CardInputModel,
 }

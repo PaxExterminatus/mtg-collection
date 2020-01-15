@@ -1,4 +1,4 @@
-type LanguageEnum = 'en' | 'ru'
+type LanguageEnum = 'en' | 'ru' | 'it'
 
 export {
     LanguageEnum
