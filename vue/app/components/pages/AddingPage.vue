@@ -35,9 +35,9 @@
 
             <div class="card-info">
                 <div class="card-images"></div>
-                <card-grid v-if="state.tab === 'oracle' && oracle" :card="oracle"/>
-                <card-grid v-if="state.tab === 'printed' && printed" :card="printed"/>
-                <card-grid v-if="state.tab === 'translate' && translate" :card="translate"/>
+                <card-grid class="grid-tbl" v-if="state.tab === 'oracle' && oracle" :card="oracle"/>
+                <card-grid class="grid-tbl" v-if="state.tab === 'printed' && printed" :card="printed"/>
+                <card-grid class="grid-tbl" v-if="state.tab === 'translate' && translate" :card="translate"/>
             </div>
         </div>
 
