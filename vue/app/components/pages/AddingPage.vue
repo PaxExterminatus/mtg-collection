@@ -54,6 +54,11 @@ import { DropdownMenu } from 'lib/vue/vue-ui'
 import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
 import { ICardModel, CardModel } from '@/objects/card'
 
+type ComponentDataStateTabs = 'oracle' | 'printed' | 'translate'
+type ComponentDataState = {
+    tab: ComponentDataStateTabs
+}
+
 @Component({
     directives: {
         tabTrap,
@@ -71,8 +76,8 @@ export default class addingPage extends Vue {
 
     error: string | null = null;
 
-    state = {
-        tab: 'printed',
+    state: ComponentDataState = {
+        tab: "printed"
     };
 
     get userInterfaceLanguage(): LanguageEnum {
@@ -88,6 +93,7 @@ export default class addingPage extends Vue {
         this.oracle = null;
         this.printed = null;
         this.translate = null;
+        this.state.tab = "printed";
 
         this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
             .then( resp => {
@@ -115,6 +121,7 @@ export default class addingPage extends Vue {
             this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.userInterfaceLanguage})
                 .then( resp => {
                     this.translate = new CardModel(resp.data.data[0]);
+                    this.state.tab = "translate";
                 })
                 .catch( error => {
                     const {code, status, details} = error.response.data;
