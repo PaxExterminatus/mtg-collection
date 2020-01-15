@@ -26,18 +26,24 @@
                 {{error}}
             </div>
 
-            <div v-if="card">
-<!--                <div class="flex-tbl">-->
-<!--                    <dropdown-menu>-->
-<!--                        <div class="btn">scryfall</div>-->
-<!--                        <template slot="menu">-->
-<!--                            <a target="_blank" :href="card.url.scryfall.set">set</a>-->
-<!--                            <a target="_blank" :href="card.url.scryfall.card">card</a>-->
-<!--                        </template>-->
-<!--                    </dropdown-menu>-->
-<!--                </div>-->
+            <div>
+                <div class="flex-tbl lang">
+                    <a class="btn" :class="{'is-selected': state.tab === 'oracle'}" @click="state.tab = 'oracle'">oracle</a>
+                    <a class="btn" :class="{'is-selected': state.tab === 'printed'}" @click="state.tab = 'printed'">printed</a>
+                    <a class="btn" :class="{'is-selected': state.tab === 'translate'}" @click="state.tab = 'translate'">translate</a>
+                </div>
 
-                <card-info :card="card"/>
+                <div class="grid-tbl" v-if="state.tab === 'oracle'">
+                    oracle
+                </div>
+
+                <div class="grid-tbl" v-if="state.tab === 'printed'">
+                    printed
+                </div>
+
+                <div class="grid-tbl" v-if="state.tab === 'translate'">
+                    translate
+                </div>
             </div>
         </div>
 
@@ -51,8 +57,8 @@ import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { CardDataFace, CardInputModel, CardLanguages } from '@/store/Collection/CollectionItem'
 
 import { DropdownMenu } from 'lib/vue/vue-ui'
-import { ScryfallSearch, SupportedLanguages } from 'lib/api/scryfall'
-import { CardModelLayout } from '@/objects/card'
+import { ScryfallSearchCard } from 'lib/api/scryfall'
+import { ICardModel, CardModel } from '@/objects/card'
 
 @Component({
     directives: {
@@ -65,45 +71,49 @@ import { CardModelLayout } from '@/objects/card'
 })
 
 export default class addingPage extends Vue {
-    scryfall = new ScryfallSearch();
+    scryfall = new ScryfallSearchCard();
     input = new CardInputModel();
-    card = new CardModelLayout();
+
+    oracle: ICardModel | null = null;
+    printed: ICardModel | null = null;
+    translate: ICardModel | null = null;
 
     error: string | null = null;
+
+    state = {
+        tab: ''
+    };
 
     get collection() {
         return this.$store.state.collection;
     }
 
-    get languages() {
-        return {
-            oracle: 'en',
-            printed: this.input.lang,
-            translate: 'ru'
-        }
-    }
-
     search()
     {
-        if (this.input.lang === 'en')
-        {
-            this.scryfall.oracle(this.input.code, this.input.number)
-            .then( resp => {
+        let uiLang = 'ru';
 
+        if (uiLang === 'en')
+        {
+            this.scryfall.oracle({code: this.input.code, number: this.input.number})
+            .then( resp => {
+                this.oracle = new CardModel(resp.data.data[0]);
+            })
+            .catch( error => {
+                const {code, status, details} = error.response.data;
+                this.error = `[${code}] ${status}: ${details}`
             })
         }
-
-        this.scryfall.search({
-            code: this.input.code,
-            number: this.input.number,
-            language: this.input.lang,
-        }).then( resp => {
-            this.card = new CardModelLayout(resp.data.data[0]);
-        })
-        .catch( error => {
-            const {code, status, details} = error.response.data;
-            this.error = `[${code}] ${status}: ${details}`
-        })
+        else
+        {
+            this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
+                .then( resp => {
+                    this.translate = new CardModel(resp.data.data[0]);
+                })
+                .catch( error => {
+                    const {code, status, details} = error.response.data;
+                    this.error = `[${code}] ${status}: ${details}`
+                })
+        }
     }
 
     save() {

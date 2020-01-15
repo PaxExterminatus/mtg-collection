@@ -1,7 +1,7 @@
-import { CardModelLayout } from './CardModelLayout'
-import { CardFace } from './CardFace'
+import { CardModel } from './CardModel'
+import { ICardModel } from './ICardModel'
 
 export {
-    CardModelLayout,
-    CardFace,
+    CardModel,
+    ICardModel,
 }

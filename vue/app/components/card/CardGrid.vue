@@ -7,10 +7,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { CardFace } from '@/objects/card'
+import { ICardModel } from '@/objects/card'
 
 @Component
 export default class CardGridComponent extends Vue {
-    @Prop() card!: CardFace
+    @Prop() card!: ICardModel
 }
 </script>

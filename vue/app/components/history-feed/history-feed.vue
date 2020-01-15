@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { ScryfallCard } from 'lib/api/scryfall'
+// import { ScryfallCard } from 'lib/api/scryfall'
 
 @Component({
     directives: {},

@@ -1,27 +1,23 @@
 import {
-    ScryfallObjectTypes,
-    SupportedLanguages,
-    ScryfallColorsTypes,
-    ScryfallLegacyTypes,
-    ScryfallGamesTypes,
-    ScryfallRarityTypes,
+    LanguageEnum,
     ScryfallBorderTypes,
-} from './'
+    ScryfallColorsTypes,
+    ScryfallGamesTypes,
+    ScryfallLegacyTypes,
+    ScryfallObjectTypes,
+    ScryfallRarityTypes,
+} from '..';
 
-interface OracleFace {
+interface IDataCard {
+    // translated card
+    printed_name?: string
+    printed_type_line?: string
+    printed_text?: string
+    // oracle
     id: string
     name: string
     type_line: string
     oracle_text: string
-}
-
-interface TranslateFace extends OracleFace {
-    printed_name: string
-    printed_type_line: string
-    printed_text: string
-}
-
-interface ScryfallCardFace {
     object: ScryfallObjectTypes
     oracle_id: string
     multiverse_ids: number[]
@@ -30,7 +26,7 @@ interface ScryfallCardFace {
     arena_id?: number
     tcgplayer_id?: number
 
-    lang: SupportedLanguages
+    lang: LanguageEnum
     released_at: string
     uri: string
     scryfall_uri: string
@@ -116,5 +112,5 @@ interface ScryfallCardFace {
 }
 
 export {
-    ScryfallCardFace,
+    IDataCard
 }

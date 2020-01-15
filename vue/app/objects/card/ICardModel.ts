@@ -1,9 +1,9 @@
-interface CardFace {
+interface ICardModel {
     name: string
     type: string
     text: string
 }
 
 export {
-    CardFace
+    ICardModel
 }

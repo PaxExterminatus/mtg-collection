@@ -1,12 +1,12 @@
-// Interfaces
-import {ScryfallCardFace} from './ScryfallCardFace'
-import {ScryfallListModel} from './ScryfallListModel'
-import { SearchQueryFace } from './ScryfallQueryModel'
-// Classes
-import {ScryfallCard} from './ScryfallCard'
-import {ScryfallSearch} from './ScryfallSearch'
-// Types
-type SupportedLanguages = 'en' | 'ru'
+import { IQueryCardOracle } from './CardTypes/IQueryCardOracle'
+import { IQueryCardTranslated } from './CardTypes/IQueryCardTranslated'
+import { IResponseList } from './ResponseTypes/IResponseList'
+import { IDataCard } from './CardTypes/IDataCard'
+import { IDataCardTranslated } from './CardTypes/IDataCardTranslated'
+import { LanguageEnum } from './EnumTypes/LanguageEnum'
+
+import { ScryfallSearchCard } from './ScryfallSearchCard'
+
 type ScryfallObjectTypes = 'card' | 'list'
 type ScryfallColorsTypes = 'W'
 type ScryfallLegacyTypes = 'legal' | 'not_legal'
@@ -15,18 +15,20 @@ type ScryfallRarityTypes = 'uncommon'
 type ScryfallBorderTypes = 'black'
 
 export {
-    ScryfallCardFace,
-    ScryfallListModel,
-    SearchQueryFace,
+    ScryfallSearchCard,
+
+    IQueryCardOracle,
+    IQueryCardTranslated,
+    IResponseList,
+    IDataCard,
+    IDataCardTranslated,
+
+    LanguageEnum,
 
     ScryfallObjectTypes,
-    SupportedLanguages,
     ScryfallColorsTypes,
     ScryfallLegacyTypes,
     ScryfallGamesTypes,
     ScryfallRarityTypes,
     ScryfallBorderTypes,
-
-    ScryfallCard,
-    ScryfallSearch,
 }

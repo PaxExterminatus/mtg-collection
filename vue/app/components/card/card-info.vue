@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import {CardModelLayout} from '@/objects/card'
+// import {CardModelLayout} from '@/objects/card'
 // components
 import { CardGridComponent } from '@/components/card'
 
@@ -21,6 +21,6 @@ import { CardGridComponent } from '@/components/card'
     }
 })
 export default class CardInformationComponent extends Vue {
-    @Prop() private card!: CardModelLayout;
+    // @Prop() private card!: CardModelLayout;
 }
 </script>
