@@ -28,9 +28,9 @@
             </div>
 
             <div class="flex-tbl lang">
-                <a v-if="oracle" class="btn" :class="{'is-selected': state.tab === 'oracle'}" @click="state.tab = 'oracle'">oracle [en]</a>
-                <a v-if="printed" class="btn" :class="{'is-selected': state.tab === 'printed'}" @click="state.tab = 'printed'">printed [{{input.lang}}]</a>
-                <a v-if="translate" class="btn" :class="{'is-selected': state.tab === 'translate'}" @click="state.tab = 'translate'">translate [{{userInterfaceLanguage}}]</a>
+                <state-btn v-if="oracle" v-model="state.tab" equate="oracle">Oracle</state-btn>
+                <state-btn v-if="printed" v-model="state.tab" equate="printed">Printed [{{input.lang}}]</state-btn>
+                <state-btn v-if="translate" v-model="state.tab" equate="translate">Translate [{{userInterfaceLanguage}}]</state-btn>
             </div>
 
             <div class="card-info">
@@ -48,9 +48,9 @@
 import { Vue, Component } from 'vue-property-decorator'
 import { CardGrid } from '@/components/card';
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { CardDataFace, CardInputModel } from '@/store/Collection/CollectionItem'
+import { CardInputModel } from '@/store/Collection/CollectionItem'
 
-import { DropdownMenu } from 'lib/vue/vue-ui'
+import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
 import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
 import { ICardModel, CardModel } from '@/objects/card'
 
@@ -63,7 +63,7 @@ type ComponentDataState = {
     directives: {
         tabTrap,
     },
-    components: {DropdownMenu, CardGrid}
+    components: {DropdownMenu, CardGrid, StateBtn}
 })
 
 export default class addingPage extends Vue {
@@ -77,7 +77,7 @@ export default class addingPage extends Vue {
     error: string | null = null;
 
     state: ComponentDataState = {
-        tab: "printed"
+        tab: 'printed'
     };
 
     get userInterfaceLanguage(): LanguageEnum {
@@ -90,6 +90,7 @@ export default class addingPage extends Vue {
 
     search()
     {
+        this.error = null;
         this.oracle = null;
         this.printed = null;
         this.translate = null;
