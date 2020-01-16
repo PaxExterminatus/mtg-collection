@@ -1,6 +1,6 @@
 import { ICardModel } from './'
 import { IDataCard } from 'lib/api/scryfall'
-import { WebString } from 'lib/advanced/WebString'
+import { webstr } from 'lib/advanced/strings'
 
 class CardModel implements ICardModel {
     public name: string;
@@ -11,8 +11,8 @@ class CardModel implements ICardModel {
     {
         this.name = model.printed_name || model.name;
         this.type = model.printed_type_line || model.type_line;
-        this.text = new WebString(model.printed_text || model.oracle_text).getSlashNToBr;
-        this.flower = new WebString(model.flavor_text).getSlashNToBr;
+        this.text = webstr(model.printed_text || model.oracle_text).getSlashNToBr;
+        this.flower = webstr(model.flavor_text).getSlashNToBr;
     }
 }
 

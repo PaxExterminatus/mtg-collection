@@ -1,4 +1,4 @@
-import { RegexTemplates } from '../regex/RegexTemplates'
+import { RegexTemplates } from '../../regex/RegexTemplates'
 
 class WebString extends String {
     private str: string;
@@ -39,13 +39,11 @@ class WebString extends String {
     }
 }
 
-function StringExtends(str: string) {
+function webstr(str: string) {
     return new WebString(str);
 }
 
 export {
     WebString,
-    StringExtends,
+    webstr,
 }
-
-export default WebString
