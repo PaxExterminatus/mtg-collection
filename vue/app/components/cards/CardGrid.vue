@@ -1,7 +1,9 @@
 <template>
-    <div class="card-grid-component">
-        <div>Name</div><div>{{card.name}}</div>
-        <div>Type</div><div>{{card.type}}</div>
+    <div class="card-grid-cmp">
+        <div>Name</div><div v-html="card.name"></div>
+        <div>Type</div><div v-html="card.type"></div>
+        <div>Text</div><div v-html="card.text"></div>
+        <div>Flower</div><div v-html="card.flower"></div>
     </div>
 </template>
 

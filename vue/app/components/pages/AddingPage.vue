@@ -35,9 +35,9 @@
 
             <div class="card-info">
                 <div class="card-images"></div>
-                <card-grid class="grid-tbl" v-if="state.tab === 'oracle' && oracle" :card="oracle"/>
-                <card-grid class="grid-tbl" v-if="state.tab === 'printed' && printed" :card="printed"/>
-                <card-grid class="grid-tbl" v-if="state.tab === 'translate' && translate" :card="translate"/>
+                <card-grid v-if="state.tab === 'oracle' && oracle" :card="oracle"/>
+                <card-grid v-if="state.tab === 'printed' && printed" :card="printed"/>
+                <card-grid v-if="state.tab === 'translate' && translate" :card="translate"/>
             </div>
         </div>
 
@@ -46,11 +46,13 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+
 import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
-import { CardGrid } from 'app/components/cards';
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
+import { LanguageEnum, ScryfallSearchCard } from 'lib/api/scryfall'
+
+import { CardGrid } from 'app/components/cards';
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
-import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
 import { ICardModel, CardModel } from 'app/objects/card'
 
 type ComponentDataStateTabs = 'oracle' | 'printed' | 'translate'
@@ -59,9 +61,7 @@ type ComponentDataState = {
 }
 
 @Component({
-    directives: {
-        tabTrap,
-    },
+    directives: {tabTrap},
     components: {DropdownMenu, CardGrid, StateBtn}
 })
 

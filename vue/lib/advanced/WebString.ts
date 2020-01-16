@@ -1,6 +1,6 @@
 import { RegexTemplates } from '../regex/RegexTemplates'
 
-class StringWebExtends extends String {
+class WebString extends String {
     private str: string;
     constructor(str: string) {
         super();
@@ -40,12 +40,12 @@ class StringWebExtends extends String {
 }
 
 function StringExtends(str: string) {
-    return new StringWebExtends(str);
+    return new WebString(str);
 }
 
 export {
-    StringWebExtends,
+    WebString,
     StringExtends,
 }
 
-export default StringWebExtends
+export default WebString

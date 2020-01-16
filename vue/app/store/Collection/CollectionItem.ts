@@ -1,4 +1,4 @@
-import { StringExtends } from 'lib/string-filter/StringWebExtends'
+import { StringExtends } from 'lib/advanced/WebString'
 import {LanguageEnum} from "lib/api/scryfall";
 
 type CardTypes = 'card' | 'token'
