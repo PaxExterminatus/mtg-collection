@@ -2,18 +2,18 @@
 
 .card-info {
     display: flex;
-    .card-images {
+    .card-image-cmp {
         width: 480px;
         min-width: 480px;
         position: relative;
-        .card-cover {
+        & > * {
             position: absolute;
             width: 50%;
             transition-duration: 500ms;
             cursor: pointer;
             left: 0;
         }
-        .card-cover.selected {
+        & > *.selected {
             width: 90%;
             left: 45px;
             z-index: 1;

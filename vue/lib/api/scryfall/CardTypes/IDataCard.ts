@@ -13,24 +13,20 @@ interface IDataCard {
     printed_name?: string
     printed_type_line?: string
     printed_text?: string
-    // oracle
-    id: string
+    // info
     name: string
     type_line: string
     oracle_text: string
-    object: ScryfallObjectTypes
+    flavor_text: string
+    // ids
+    id: string
     oracle_id: string
-    multiverse_ids: number[]
     mtgo_id?: number
+    multiverse_ids: number[]
     mtgo_foil_id?: number
     arena_id?: number
     tcgplayer_id?: number
-
-    lang: LanguageEnum
-    released_at: string
-    uri: string
-    scryfall_uri: string
-    layout: string
+    // images
     highres_image: boolean
     image_uris: {
         small: string
@@ -40,6 +36,14 @@ interface IDataCard {
         art_crop: string
         border_crop: string
     }
+    //
+    object: ScryfallObjectTypes
+    lang: LanguageEnum
+    released_at: string
+    uri: string
+    scryfall_uri: string
+    layout: string
+
     mana_cost: string
     cmc: number
     power: string
@@ -80,7 +84,7 @@ interface IDataCard {
     collector_number: string
     digital: boolean
     rarity: ScryfallRarityTypes
-    flavor_text: string
+
     card_back_id: string
     artist: string
     artist_ids: string[]

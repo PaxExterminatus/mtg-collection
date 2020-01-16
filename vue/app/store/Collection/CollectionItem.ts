@@ -1,4 +1,4 @@
-import { StringExtends } from 'lib/advanced/strings/WebString'
+import { webstr } from 'lib/advanced/strings/WebString'
 import {LanguageEnum} from "lib/api/scryfall";
 
 type CardTypes = 'card' | 'token'
@@ -22,7 +22,7 @@ class CardInputModel implements CardDataFace {
 
     set code(code: string) {
         this.data.code = ' '; // reset vue v-model cache
-        this.data.code = StringExtends(code).latinLetters.toUpperCase();
+        this.data.code = webstr(code).latinLetters.toUpperCase();
     }
     get code() {
         return this.data.code;
@@ -30,7 +30,7 @@ class CardInputModel implements CardDataFace {
 
     set number(number: string) {
         this.data.number = ' '; // reset vue v-model cache
-        this.data.number = StringExtends(number).numbers;
+        this.data.number = webstr(number).numbers;
     }
     get number() {
         return this.data.number;
