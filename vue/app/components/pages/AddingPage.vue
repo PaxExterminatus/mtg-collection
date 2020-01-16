@@ -47,7 +47,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
-import { CardGrid } from 'app/components/card';
+import { CardGrid } from 'app/components/cards';
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
 import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
