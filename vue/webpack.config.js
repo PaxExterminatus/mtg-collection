@@ -4,7 +4,7 @@ const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").def
 module.exports = {
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './app'),
+            app: path.resolve(__dirname, './app'),
             lib: path.resolve(__dirname, './lib'),
         },
         extensions: [],

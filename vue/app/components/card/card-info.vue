@@ -13,7 +13,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 // import {CardModelLayout} from '@/objects/card'
 // components
-import { CardGrid } from '@/components/card'
+import { CardGrid } from 'app/components/card'
 
 @Component({
     components: {CardGrid}

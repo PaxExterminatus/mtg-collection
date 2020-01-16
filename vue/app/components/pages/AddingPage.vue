@@ -28,9 +28,9 @@
             </div>
 
             <div class="flex-tbl lang">
-                <state-btn v-if="oracle" v-model="state.tab" equate="oracle">Oracle</state-btn>
-                <state-btn v-if="printed" v-model="state.tab" equate="printed">Printed [{{input.lang}}]</state-btn>
-                <state-btn v-if="translate" v-model="state.tab" equate="translate">Translate [{{userInterfaceLanguage}}]</state-btn>
+                <state-btn v-if="oracle" v-model="state.tab" equate="oracle">oracle</state-btn>
+                <state-btn v-if="printed" v-model="state.tab" equate="printed">printed</state-btn>
+                <state-btn v-if="translate" v-model="state.tab" equate="translate">translate</state-btn>
             </div>
 
             <div class="card-info">
@@ -46,13 +46,12 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CardGrid } from '@/components/card';
-import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { CardInputModel } from '@/store/Collection/CollectionItem'
-
 import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
+import { CardGrid } from 'app/components/card';
+import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
+import { CardInputModel } from 'app/store/Collection/CollectionItem'
 import {LanguageEnum, ScryfallSearchCard} from 'lib/api/scryfall'
-import { ICardModel, CardModel } from '@/objects/card'
+import { ICardModel, CardModel } from 'app/objects/card'
 
 type ComponentDataStateTabs = 'oracle' | 'printed' | 'translate'
 type ComponentDataState = {
@@ -88,13 +87,16 @@ export default class addingPage extends Vue {
         return this.$store.state.collection;
     }
 
-    search()
-    {
+    searchReset() {
         this.error = null;
         this.oracle = null;
         this.printed = null;
         this.translate = null;
         this.state.tab = "printed";
+    }
+
+    search() {
+        this.searchReset();
 
         this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
             .then( resp => {
@@ -105,8 +107,7 @@ export default class addingPage extends Vue {
                 this.error = `[${code}] ${status}: ${details}`
             });
 
-        if (this.input.lang !== 'en')
-        {
+        if (this.input.lang !== 'en') {
             this.scryfall.oracle({code: this.input.code, number: this.input.number})
                 .then( resp => {
                     this.oracle = new CardModel(resp.data.data[0]);
@@ -117,8 +118,7 @@ export default class addingPage extends Vue {
                 });
         }
 
-        if (this.input.lang !== this.userInterfaceLanguage)
-        {
+        if (this.input.lang !== this.userInterfaceLanguage) {
             this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.userInterfaceLanguage})
                 .then( resp => {
                     this.translate = new CardModel(resp.data.data[0]);
