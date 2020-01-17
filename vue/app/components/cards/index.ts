@@ -1,9 +1,9 @@
 import CardGrid from './CardGrid.vue'
 import CardGallery from './CardGallery.vue'
-import CardPrices from './CardPrices.vue'
+import CardPrice from './CardPrice.vue'
 
 export {
     CardGrid,
     CardGallery,
-    CardPrices,
+    CardPrice,
 }

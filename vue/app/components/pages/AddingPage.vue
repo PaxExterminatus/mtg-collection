@@ -49,7 +49,9 @@
                         <card-grid :card="translate"/>
                     </template>
 
-                    <card-prices :cards="[oracle, printed, translate]"/>
+                    <card-price :card="oracle">oracle</card-price>
+                    <card-price :card="printed">printed</card-price>
+                    <card-price :card="translate">translate</card-price>
                 </div>
             </div>
 
@@ -66,7 +68,7 @@ import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { EnumLanguages, ScryfallSearchCard } from 'lib/api/scryfall'
 
-import { CardGrid, CardGallery, CardPrices } from 'app/components/cards';
+import { CardGrid, CardGallery, CardPrice } from 'app/components/cards';
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
 import { ICardModel, CardModel } from 'app/objects/card'
 
@@ -77,7 +79,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrices, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn}
 })
 
 export default class addingPage extends Vue {
