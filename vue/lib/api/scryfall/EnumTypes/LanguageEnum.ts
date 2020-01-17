@@ -1,5 +1,9 @@
-type LanguageEnum = 'en' | 'ru' | 'it'
+enum EnumLanguages {
+    en = 'en',
+    ru = 'ru',
+    it = 'it',
+}
 
 export {
-    LanguageEnum
+    EnumLanguages
 }

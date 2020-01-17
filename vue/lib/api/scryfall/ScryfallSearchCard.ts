@@ -4,7 +4,7 @@ import {
     IQueryCardTranslated,
     IResponseList,
     IDataCard,
-    IDataCardTranslated,
+    IDataCardTranslated, EnumLanguages,
 } from './index'
 
 type ListOfOracle = Promise<AxiosResponse<IResponseList<IDataCard>>>;
@@ -16,7 +16,7 @@ class ScryfallSearchCard {
         return axios.get(`https://api.scryfall.com/cards/search?q=set:${code}+number:${number}`) as ListOfOracle
     }
 
-    translate({code, number, language= 'en'}: IQueryCardTranslated): ListOfTranslated
+    translate({code, number, language= EnumLanguages.en}: IQueryCardTranslated): ListOfTranslated
     {
         return axios.get(`https://api.scryfall.com/cards/search?q=set:${code}+number:${number}+lang:${language}`) as ListOfTranslated
     }

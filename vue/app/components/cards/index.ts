@@ -1,7 +1,7 @@
 import CardGrid from './CardGrid.vue'
-import CardImage from './CardImage.vue'
+import CardGallery from './CardGallery.vue'
 
 export {
     CardGrid,
-    CardImage,
+    CardGallery,
 }

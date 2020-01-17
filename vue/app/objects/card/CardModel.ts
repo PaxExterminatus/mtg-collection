@@ -1,5 +1,5 @@
 import { ICardModel, ICardImages } from './'
-import { IDataCard } from 'lib/api/scryfall'
+import { IDataCard, EnumLanguages } from 'lib/api/scryfall'
 import { webstr } from 'lib/advanced/strings'
 
 class CardModel implements ICardModel {
@@ -8,6 +8,7 @@ class CardModel implements ICardModel {
     text: string;
     flower: string;
     images: ICardImages;
+    lang: EnumLanguages;
     constructor(private model: IDataCard)
     {
         this.name = model.printed_name || model.name;
@@ -22,7 +23,8 @@ class CardModel implements ICardModel {
             artCrop: model.image_uris.art_crop,
             borderCrop: model.image_uris.border_crop,
             png: model.image_uris.png,
-        }
+        };
+        this.lang = model.lang
     }
 }
 

@@ -1,3 +1,5 @@
+import {EnumLanguages} from "lib/api/scryfall";
+
 interface ICardImages {
     hq: boolean
     small: string
@@ -14,6 +16,7 @@ interface ICardModel {
     text: string
     flower: string
     images: ICardImages
+    lang: EnumLanguages
 }
 
 export {

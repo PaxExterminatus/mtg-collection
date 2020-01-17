@@ -34,11 +34,7 @@
             </div>
 
             <div class="card-info">
-                <div class="card-image-cmp">
-                    <img v-if="oracle" :src="oracle.images.png" :alt="oracle.name" :title="oracle.name">
-                    <img v-if="printed" :src="printed.images.png" :alt="printed.name" :title="printed.name">
-                    <img v-if="translate" :src="translate.images.png" :alt="translate.name" :title="translate.name">
-                </div>
+                <card-cover :cards="[oracle, printed, translate]"/>
 
                 <div>
                     <template v-if="state.tab === 'oracle' && oracle">
@@ -64,9 +60,9 @@ import { Vue, Component } from 'vue-property-decorator'
 
 import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { LanguageEnum, ScryfallSearchCard } from 'lib/api/scryfall'
+import { EnumLanguages, ScryfallSearchCard } from 'lib/api/scryfall'
 
-import { CardGrid, CardImage } from 'app/components/cards';
+import { CardGrid, CardGallery } from 'app/components/cards';
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
 import { ICardModel, CardModel } from 'app/objects/card'
 
@@ -77,7 +73,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardGrid, CardImage, DropdownMenu, StateBtn}
+    components: {CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn}
 })
 
 export default class addingPage extends Vue {
@@ -94,8 +90,8 @@ export default class addingPage extends Vue {
         tab: 'printed'
     };
 
-    get userInterfaceLanguage(): LanguageEnum {
-        return 'ru';
+    get userInterfaceLanguage(): EnumLanguages {
+        return EnumLanguages.ru;
     }
 
     get collection() {
