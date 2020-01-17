@@ -27,7 +27,7 @@
                 {{error}}
             </div>
 
-            <div class="flex-tbl lang">
+            <div class="flex-tbl card-versions">
                 <state-btn v-if="oracle" v-model="state.tab" equate="oracle">oracle</state-btn>
                 <state-btn v-if="printed" v-model="state.tab" equate="printed">printed</state-btn>
                 <state-btn v-if="translate" v-model="state.tab" equate="translate">translate</state-btn>

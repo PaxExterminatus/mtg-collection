@@ -1,72 +1,79 @@
 @import "mixins-lib";
 
+.card-versions {
+    margin-left: 520px;
+}
+
+.card-gallery {
+    margin: 0 10px;
+    max-width: 500px;
+    min-width: 500px;
+    position: relative;
+    transform: translateY(-50px);
+    .card-cover {
+        position: absolute;
+        cursor: pointer;
+        display: flex;
+        transition-duration: 500ms;
+        max-width: 50%;
+        top: 0;
+        right: 240px;
+        .card-img {
+            max-width: 100%;
+        }
+    }
+    .card-cover.shown {
+        max-width: 90%;
+        z-index: 1;
+        transform: translateY(0) !important;
+        right: 0;
+    }
+    .card-state {
+        text-align: center;
+        min-width: 25px;
+        position: absolute;
+        font-size: .7rem;
+        transform: translateX(-100%);
+        left: -1px;
+        text-transform: uppercase;
+        color: #FFF;
+        height: min-content;
+        padding: 3px;
+        background-color: rgba(12,12,13,.7);
+        border-radius: 3px;
+    }
+}
+
 .card-info {
     display: flex;
-    .card-gallery {
-        margin: 0 10px;
-        max-width: 500px;
-        min-width: 500px;
-        position: relative;
-        .card-cover {
-            position: absolute;
-            cursor: pointer;
-            display: flex;
-            transition-duration: 500ms;
-            max-width: 50%;
-            top: 0;
-            right: 240px;
-            .card-img {
-                max-width: 100%;
-            }
-        }
-        .card-cover.shown {
-            max-width: 90%;
-            z-index: 1;
-            transform: translateY(0) !important;
-            right: 0;
-        }
-        .card-state {
-            text-align: center;
-            min-width: 25px;
-            position: absolute;
-            font-size: .7rem;
-            transform: translateX(-100%);
-            left: -1px;
-            text-transform: uppercase;
-            color: #FFF;
-            height: min-content;
-            padding: 3px;
-            background-color: rgba(12,12,13,.7);
-            border-radius: 3px;
-        }
+}
+
+.card-grid-cmp {
+    width: 100%;
+    & > * {
+        padding: 10px 5px;
+        border-bottom: solid 1px rgba(255,255,255,.2);
+        display: flex;
+        align-items: center;
     }
-    .card-grid-cmp {
-        width: 100%;
-        & > * {
-            padding: 10px 5px;
-            border-bottom: solid 1px rgba(255,255,255,.2);
-            display: flex;
-            align-items: center;
-        }
-        & > *:nth-child(2n-1) {
-            text-transform: uppercase;
-            color: $color-forms-btn-hover-background;
-        }
-        & > *:nth-child(2n) {
-            font-size: 1.15rem;
-        }
-        .tbl-row {
-            text-transform: uppercase;
-            border-top: solid 1px darkorange;
-        }
+    & > *:nth-child(2n-1) {
+        text-transform: uppercase;
+        color: $color-forms-btn-hover-background;
     }
-    .card-grid-cmp {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-auto-rows: minmax(45px, min-content);
-        .tbl-row {
-            grid-column: 1 / span 2;
-        }
+    & > *:nth-child(2n) {
+        font-size: 1.15rem;
+    }
+    .tbl-row {
+        text-transform: uppercase;
+        border-top: solid 1px darkorange;
+    }
+}
+.card-grid-cmp {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    grid-auto-rows: minmax(45px, min-content);
+    .tbl-row {
+        grid-column: 1 / span 2;
     }
 }
 
