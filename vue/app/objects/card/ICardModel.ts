@@ -1,5 +1,12 @@
 import {EnumLanguages} from "lib/api/scryfall";
 
+interface ICardPrices {
+    usd: string | null
+    foil: string | null
+    eur: string | null
+    tix: string | null
+}
+
 interface ICardImages {
     hq: boolean
     small: string
@@ -17,9 +24,13 @@ interface ICardModel {
     flower: string
     images: ICardImages
     lang: EnumLanguages
+    prices: ICardPrices
+    // tests
+    readonly appreciated: boolean
 }
 
 export {
     ICardModel,
     ICardImages,
+    ICardPrices,
 }

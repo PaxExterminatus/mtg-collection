@@ -1,8 +1,9 @@
 import { CardModel } from './CardModel'
-import { ICardModel, ICardImages } from './ICardModel'
+import { ICardModel, ICardImages, ICardPrices } from './ICardModel'
 
 export {
     CardModel,
     ICardModel,
     ICardImages,
+    ICardPrices,
 }

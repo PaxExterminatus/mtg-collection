@@ -1,4 +1,4 @@
-import { ICardModel, ICardImages } from './'
+import { ICardModel, ICardImages, ICardPrices } from './'
 import { IDataCard, EnumLanguages } from 'lib/api/scryfall'
 import { webstr } from 'lib/advanced/strings'
 
@@ -9,8 +9,9 @@ class CardModel implements ICardModel {
     flower: string;
     images: ICardImages;
     lang: EnumLanguages;
-    constructor(private model: IDataCard)
-    {
+    prices: ICardPrices;
+
+    constructor(private model: IDataCard) {
         this.name = model.printed_name || model.name;
         this.type = model.printed_type_line || model.type_line;
         this.text = webstr(model.printed_text || model.oracle_text).getSlashNToBr;
@@ -24,7 +25,17 @@ class CardModel implements ICardModel {
             borderCrop: model.image_uris.border_crop,
             png: model.image_uris.png,
         };
-        this.lang = model.lang
+        this.lang = model.lang;
+        this.prices = {
+            usd: model.prices.usd || '',
+            foil: model.prices.usd_foil || '',
+            eur: model.prices.eur || '',
+            tix: model.prices.tix || '',
+        };
+    }
+
+    get appreciated(): boolean {
+        return this.prices.usd !== '' || this.prices.foil !== '' || this.prices.eur !== '' || this.prices.tix !== '';
     }
 }
 
