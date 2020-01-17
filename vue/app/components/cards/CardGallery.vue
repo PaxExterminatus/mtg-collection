@@ -7,8 +7,8 @@
          @click="show(idx)"
     >
         <div class="card-state">
-            <div>{{card.lang}}</div>
-            <div v-if="card.images.hq">hq</div>
+            <div title="Print language">{{card.lang}}</div>
+            <div v-if="card.images.hq" title="High-quality">hq</div>
         </div>
         <img class="card-img" :src="card.images.png" :alt="card.name" :title="card.name"/>
     </div>
