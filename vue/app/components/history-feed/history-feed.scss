@@ -6,4 +6,17 @@
     .title {
         text-align: center;
     }
+
+    .history-grid {
+        display: grid;
+        gap: 5px;
+
+        .history-action {
+            color: #5A5A5C;
+        }
+        .history-item {
+            padding: 5px;
+            border: solid 1px #BEBEBE;
+        }
+    }
 }

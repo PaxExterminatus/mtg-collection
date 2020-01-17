@@ -1,0 +1,16 @@
+.collection-grid {
+    display: grid;
+    gap: 5px;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    .collection-item {
+        padding: 5px;
+        border: solid 1px #BEBEBE;
+        height: 150px;
+        .card-code {
+            text-transform: uppercase;
+        }
+    }
+}
+

@@ -2,12 +2,17 @@
 <div class="history-feed">
     <div class="title h1">History</div>
 
-    <div v-if="history.length > 0" v-for="it in history">
-        <div class="flex-tbl" v-if="it">
-            <div>{{it.action}}</div>
-            <div>{{it.object.number}}</div>
-            <div>{{it.object.code}} • {{it.object.lang}}</div>
-            <div v-if="it.object.foil">FOIL</div>
+    <div class="history-grid" v-if="history.length > 0" >
+
+        <div class="history-item" v-for="item in history" v-if="item">
+
+            <div class="history-action">{{item.action}}</div>
+
+            <div class="card-code">
+                {{item.object.number}} / {{item.object.code}} 🞄 {{item.object.lang}}
+                <span v-if="item.object.foil">FOIL</span>
+            </div>
+
         </div>
 
     </div>

@@ -13,7 +13,7 @@ const routes = [
     {
         path: '/collection',
         name: 'collection',
-        component: () => import(/* webpackChunkName: "chunk.page.collection" */ '../components/pages/collection-page.vue')
+        component: () => import(/* webpackChunkName: "chunk.page.collection" */ '../components/pages/CollectionPage.vue')
     },
     {
         path: '/exchange',
