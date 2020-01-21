@@ -2,8 +2,8 @@
     <div class="application">
 
         <div class="main-panel">
-            <a class="btn">M</a>
-            <a class="btn to-end">H</a>
+            <a class="btn" title="Menu">M</a>
+            <a class="btn to-right" title="History">H</a>
         </div>
 
         <div class="application-content-box">

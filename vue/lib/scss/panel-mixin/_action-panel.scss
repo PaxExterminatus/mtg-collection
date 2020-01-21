@@ -1,7 +1,7 @@
 @mixin panel-flex($gap: 5px) {
     display: flex;
     gap: $gap;
-    .to-end {
+    .to-right {
         margin-left: auto;
     }
 }

@@ -1,4 +1,4 @@
-@import '../../lib/scss/color-themes/firefox-dark';
+@import '../../lib/scss/color-mixin/theme-firefox-dark';
 
 @mixin color-main-back {
     color: $color-text-main;
@@ -15,9 +15,9 @@
 $border-style-panel: solid 1px $color-border-main;
 
 @mixin color-forms-input {
-    background-color: $color-forms-input-background;
+    background-color: $color-inp-bg;
     color: $color-text-lighted;
-    border: solid 1px $color-forms-input-background;
+    border: solid 1px $color-inp-bg;
     &:focus {
         border-color: $color-focus-border;
     }
