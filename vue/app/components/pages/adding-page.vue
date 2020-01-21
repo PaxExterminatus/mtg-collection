@@ -1,5 +1,5 @@
 <template>
-    <div class="page adding">
+    <div class="adding-page">
         <h1 class="title h1">Adding</h1>
 
         <div class="form-box adding">
