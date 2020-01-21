@@ -1,11 +1,13 @@
 @import '../mixins-lib';
+@import '../mixins-app';
 @import 'template-froms';
 
 .application {
-    .counter-panel {
+    .main-panel {
         padding: 10px;
         margin-bottom: 5px;
         border-bottom: $border-style-panel;
+        @include panel-flex;
     }
     .page {
         padding: 10px;

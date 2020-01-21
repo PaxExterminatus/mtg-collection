@@ -76,15 +76,3 @@
         grid-column: 1 / span 2;
     }
 }
-
-.flex-tbl {
-    $margin: 5px;
-    display: flex;
-    & > * {
-        margin: 0 $margin;
-    }
-    & > *:first-child {
-        margin-left: 0;
-        margin-right: $margin;
-    }
-}

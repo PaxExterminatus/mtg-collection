@@ -7,3 +7,11 @@
         padding: 5px;
     }
 }
+
+@mixin panel-flex {
+    display: flex;
+    gap: 5px;
+    .to-right {
+        align-self: flex-end;
+    }
+}

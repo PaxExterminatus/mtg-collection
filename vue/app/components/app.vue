@@ -1,8 +1,9 @@
 <template>
     <div class="application">
 
-        <div class="counter-panel">
-            cards: {{counter.cards}},
+        <div class="main-panel">
+            <a class="btn">M</a>
+            <a class="btn to-right">H</a>
         </div>
 
         <div class="application-content-box">
