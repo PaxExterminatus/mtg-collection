@@ -3,7 +3,7 @@
 
         <div class="main-panel">
             <a class="btn">M</a>
-            <a class="btn to-right">H</a>
+            <a class="btn to-end">H</a>
         </div>
 
         <div class="application-content-box">

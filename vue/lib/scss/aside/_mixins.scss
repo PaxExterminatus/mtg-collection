@@ -8,10 +8,10 @@
     }
 }
 
-@mixin panel-flex {
+@mixin panel-flex($gap: 5px) {
     display: flex;
-    gap: 5px;
-    .to-right {
-        align-self: flex-end;
+    gap: $gap;
+    .to-end {
+        margin-left: auto;
     }
 }
