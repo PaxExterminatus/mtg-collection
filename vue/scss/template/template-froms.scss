@@ -7,7 +7,6 @@
     }
     .btn {
         @include color-forms-input;
-        @include color-forms-hover;
         @include fonts-btn;
     }
 }

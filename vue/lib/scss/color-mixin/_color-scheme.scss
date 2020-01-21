@@ -2,4 +2,7 @@
 
 @mixin btn-color-scheme {
     background-color: $color-btn-bg;
+    &:hover {
+        background-color: $color-btn-bg-hover;
+    }
 }

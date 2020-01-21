@@ -1,7 +1,7 @@
 $color1: #0C0C0D;
 $color2: #313133;
-$color3: #474749;
-$color4: #5A5A5C;
+
+
 $color5: #4D4D4F;
 $color6: #BEBEBE;
 $color7: #323234;
@@ -12,11 +12,13 @@ $color10: #0A84FF;
 $color-background-main: $color7;
 $color-text-main: $color8;
 $color-text-lighted: $color9;
-$color-border-main: $color4;
 
-$color-forms-btn-hover-background: $color4;
 $color-focus-border: $color10;
 
-// color3
+$color3: #474749;
 $color-btn-bg: $color3;
 $color-inp-bg: $color3;
+
+$color4: #5A5A5C;
+$color-border: $color4;
+$color-btn-bg-hover: $color4;

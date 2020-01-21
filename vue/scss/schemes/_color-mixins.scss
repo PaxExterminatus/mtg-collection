@@ -12,7 +12,7 @@
     }
 }
 
-$border-style-panel: solid 1px $color-border-main;
+$border-style-panel: solid 1px $color-border;
 
 @mixin color-forms-input {
     background-color: $color-inp-bg;
@@ -22,10 +22,3 @@ $border-style-panel: solid 1px $color-border-main;
         border-color: $color-focus-border;
     }
 }
-
-@mixin color-forms-hover {
-    &:hover {
-        background-color: $color-forms-btn-hover-background;
-    }
-}
-
