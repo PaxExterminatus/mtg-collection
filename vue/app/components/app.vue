@@ -1,5 +1,5 @@
 <template>
-<div class="app">
+<div class="app-template">
     <app-actions/>
     <app-menu/>
     <app-content/>
