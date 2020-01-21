@@ -1,0 +1,58 @@
+@import '../mixins-lib';
+@import '../mixins-app';
+@import '../template/template-froms';
+
+
+
+.app {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "actions actions actions"
+            "main main history";
+
+    .app-actions
+    {
+        grid-area: actions;
+        padding: 5px;
+        margin-bottom: 5px;
+        border-bottom: $border-style-panel;
+        @include panel-flex;
+    }
+    .page {
+        padding: 10px;
+        border-left: $border-style-panel;
+        border-right: $border-style-panel;
+    }
+    .app-aside {
+        @include aside-left;
+        text-transform: uppercase;
+    }
+    .app-content {
+
+    }
+
+    .app-history {
+        width: 200px;
+        height: 100%;
+        padding: 0 5px;
+        text-transform: uppercase;
+        .title {
+            text-align: center;
+        }
+
+        .history-grid {
+            display: grid;
+            gap: 5px;
+
+            .history-action {
+                color: #5A5A5C;
+            }
+            .history-item {
+                padding: 5px;
+                border: solid 1px #BEBEBE;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 <template>
-<div class="history-feed">
+<div class="app-history">
     <div class="title h1">History</div>
 
     <div class="history-grid" v-if="history.length > 0" >
@@ -21,14 +21,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-// import { ScryfallCard } from 'lib/api/scryfall'
 
 @Component({
+    name: 'app-history',
     directives: {},
     components: {},
 })
 
-export default class HistoryFeed extends Vue {
+export default class AppHistory extends Vue {
     get history() {
         return this.$store.state.collection.history.history
     }
