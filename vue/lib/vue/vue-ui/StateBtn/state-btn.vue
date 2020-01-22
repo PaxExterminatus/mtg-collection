@@ -9,7 +9,7 @@ import { Vue,  Component, Prop} from 'vue-property-decorator'
 
 @Component
 export default class StateBtn extends Vue {
-    @Prop() value!: string;
-    @Prop() equate!: string;
+    @Prop() value!: any;
+    @Prop() equate!: any;
 }
 </script>

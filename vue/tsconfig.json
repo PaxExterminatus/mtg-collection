@@ -4,11 +4,11 @@
     "module": "esnext",
     "moduleResolution": "node",
     "strict": true,
+    "experimentalDecorators": true,
 
     "downlevelIteration": true,
     "jsx": "preserve",
     "importHelpers": true,
-    "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -32,6 +32,11 @@
     "app/**/*.ts",
     "app/**/*.tsx",
     "app/**/*.vue",
+
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "lib/**/*.vue",
+
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],

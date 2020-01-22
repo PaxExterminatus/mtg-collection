@@ -3,8 +3,11 @@
         <h1 class="title h1">Adding</h1>
 
         <div class="form-box adding">
-            <div class="adding-actions">
-                <select-languages-inp v-model="input.lang"/>
+            <div class="input-actions">
+                <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
+
+<!--                <select-languages-inp v-model="input.lang"/>-->
+                <state-btn v-model="input.foil" :equate="true">FOIL!</state-btn>
                 <a class="btn" :class="{'is-selected': input.foil}" @click="input.foil = !input.foil">FOIL</a>
             </div>
 
@@ -60,9 +63,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { SelectLanguagesInp } from './inputs'
 
-import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
+import { DropdownMenu, StateBtn, StatusSelectors } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { LanguagesType, ScryfallSearchCard } from 'lib/api/scryfall'
 
@@ -77,7 +79,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, SelectLanguagesInp}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, SelectLanguagesInp, ButtonsSelector: StatusSelectors}
 })
 
 export default class ContentAdding extends Vue {
@@ -89,6 +91,8 @@ export default class ContentAdding extends Vue {
     translate: ICardModel | null = null;
 
     error: string | null = null;
+
+    languages: LanguagesType[] = ['en', 'ru', 'it'];
 
     state: ComponentDataState = {
         tab: 'printed'

@@ -1,11 +1,11 @@
 @import '../mixins-lib';
 
 .content-adding {
-    .adding-actions {
+    .input-actions {
         @include panel-flex-inline;
     }
-}
 
-.select-language-inp {
-    @include panel-flex;
+    .buttons-languages {
+        @include panel-flex-inline;
+    }
 }
