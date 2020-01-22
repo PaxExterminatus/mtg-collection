@@ -79,7 +79,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, SelectLanguagesInp, ButtonsSelector: StatusSelectors}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, ButtonsSelector: StatusSelectors}
 })
 
 export default class ContentAdding extends Vue {
