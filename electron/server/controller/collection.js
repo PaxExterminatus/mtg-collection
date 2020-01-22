@@ -15,7 +15,7 @@ router.route('/collection')
         card.id = collection.inc;
 
         collection.cards.push(card);
-        collection.history.unshift({ action: 'add', object: card });
+        //collection.history.unshift({ action: 'add', object: card });
 
         fileSystem.writeFile('./public/api/collection.json', JSON.stringify(collection), 'utf8', () => {
             res.send();

@@ -1,10 +1,10 @@
 import {
     IQueryCardOracle,
-    EnumLanguages,
+    LanguagesType,
 } from '..';
 
 interface IQueryCardTranslated extends IQueryCardOracle {
-    language: EnumLanguages
+    language: LanguagesType
 }
 
 export {

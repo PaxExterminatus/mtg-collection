@@ -1,1 +1,14 @@
-{"inc":4,"cards":[{"id":1,"code":"KLD","number":"215","type":"card","lang":"ru","foil":false},{"code":"WAR","number":"224","type":"card","lang":"ru","foil":false,"id":2},{"code":"WAR","number":"215","type":"card","lang":"ru","foil":false,"id":3},{"code":"WAR","number":"1","type":"card","lang":"ru","foil":false,"id":4}],"history":[{"action":"add","object":{"code":"WAR","number":"1","type":"card","lang":"ru","foil":false,"id":4}},{"action":"add","object":{"code":"WAR","number":"215","type":"card","lang":"ru","foil":false,"id":3}},{"action":"add","object":{"code":"WAR","number":"224","type":"card","lang":"ru","foil":false,"id":2}}]}
+{
+  "inc": 1,
+  "cards": [
+    {
+      "id": 1,
+      "code": "KLD",
+      "number": "215",
+      "type":"card",
+      "lang": "ru",
+      "foil": false
+    }
+  ],
+  "history": []
+}

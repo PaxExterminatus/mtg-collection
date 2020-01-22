@@ -1,5 +1,5 @@
 import { webstr } from 'lib/advanced/strings/WebString'
-import { EnumLanguages } from "lib/api/scryfall";
+import { LanguagesType } from "lib/api/scryfall";
 
 type CardTypes = 'card' | 'token'
 
@@ -7,7 +7,7 @@ interface CardDataFace {
     code: string
     number: string
     type: CardTypes
-    lang: EnumLanguages
+    lang: LanguagesType
     foil: boolean
 }
 
@@ -16,7 +16,7 @@ class CardInputModel implements CardDataFace {
         code: '',
         number: '',
         type:'card',
-        lang: EnumLanguages.ru,
+        lang: 'ru',
         foil: false,
     };
 

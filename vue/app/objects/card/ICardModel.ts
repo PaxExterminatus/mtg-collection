@@ -1,4 +1,4 @@
-import {EnumLanguages} from "lib/api/scryfall";
+import {LanguagesType} from "lib/api/scryfall";
 
 interface ICardPrices {
     usd: string | null
@@ -23,7 +23,7 @@ interface ICardModel {
     text: string
     flower: string
     images: ICardImages
-    lang: EnumLanguages
+    lang: LanguagesType
     prices: ICardPrices
     // tests
     readonly appreciated: boolean

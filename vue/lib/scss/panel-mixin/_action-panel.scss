@@ -5,3 +5,8 @@
         margin-left: auto;
     }
 }
+
+@mixin panel-flex-inline($gap: 5px) {
+    display: inline-flex;
+    @include panel-flex($gap);
+}

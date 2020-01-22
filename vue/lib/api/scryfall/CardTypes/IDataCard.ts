@@ -1,5 +1,5 @@
 import {
-    EnumLanguages,
+    LanguagesType,
     ScryfallBorderTypes,
     ScryfallColorsTypes,
     ScryfallGamesTypes,
@@ -11,7 +11,7 @@ import {
 interface IDataCard {
     // info
     object: ScryfallObjectTypes
-    lang: EnumLanguages
+    lang: LanguagesType
     // translated card
     printed_name?: string
     printed_type_line?: string

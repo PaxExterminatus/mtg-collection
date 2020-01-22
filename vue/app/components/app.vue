@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { AppActions, AppHistory, AppMenu, AppContent } from './app-template'
+import { AppActions, AppHistory, AppMenu, AppContent } from './application'
 
 @Component({
     components: {AppContent, AppActions, AppHistory, AppMenu},

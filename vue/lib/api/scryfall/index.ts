@@ -3,7 +3,7 @@ import { IQueryCardTranslated } from './CardTypes/IQueryCardTranslated'
 import { IResponseList } from './ResponseTypes/IResponseList'
 import { IDataCard } from './CardTypes/IDataCard'
 import { IDataCardTranslated } from './CardTypes/IDataCardTranslated'
-import { EnumLanguages } from './EnumTypes/LanguageEnum'
+import { LanguagesType, languages } from './EnumTypes/LanguagesType'
 
 import { ScryfallSearchCard } from './ScryfallSearchCard'
 
@@ -23,7 +23,8 @@ export {
     IDataCard,
     IDataCardTranslated,
 
-    EnumLanguages,
+    LanguagesType,
+    languages,
 
     ScryfallObjectTypes,
     ScryfallColorsTypes,

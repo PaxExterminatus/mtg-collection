@@ -1,5 +1,5 @@
 import { ICardModel, ICardImages, ICardPrices } from './'
-import { IDataCard, EnumLanguages } from 'lib/api/scryfall'
+import { IDataCard, LanguagesType } from 'lib/api/scryfall'
 import { webstr } from 'lib/advanced/strings'
 
 class CardModel implements ICardModel {
@@ -8,7 +8,7 @@ class CardModel implements ICardModel {
     text: string;
     flower: string;
     images: ICardImages;
-    lang: EnumLanguages;
+    lang: LanguagesType;
     prices: ICardPrices;
 
     constructor(private model: IDataCard) {

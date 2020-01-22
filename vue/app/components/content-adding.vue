@@ -1,14 +1,11 @@
 <template>
-    <div class="adding-page">
+    <div class="content-adding">
         <h1 class="title h1">Adding</h1>
 
         <div class="form-box adding">
-            <div class="flex-tbl lang">
-                <a class="btn" :class="{'is-selected': input.lang === 'en'}" @click="input.lang = 'en'">EN</a>
-                <a class="btn" :class="{'is-selected': input.lang === 'ru'}" @click="input.lang = 'ru'">RU</a>
-                <a class="btn" :class="{'is-selected': input.lang === 'it'}" @click="input.lang = 'it'">IT</a>
+            <div class="adding-actions">
+                <select-languages-inp v-model="input.lang"/>
                 <a class="btn" :class="{'is-selected': input.foil}" @click="input.foil = !input.foil">FOIL</a>
-                <a class="btn to-right">?</a>
             </div>
 
             <div class="form-line" v-tab-trap>
@@ -63,10 +60,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { SelectLanguagesInp } from './inputs'
 
 import { DropdownMenu, StateBtn } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { EnumLanguages, ScryfallSearchCard } from 'lib/api/scryfall'
+import { LanguagesType, ScryfallSearchCard } from 'lib/api/scryfall'
 
 import { CardGrid, CardGallery, CardPrice } from 'app/components/cards';
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
@@ -79,10 +77,10 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, SelectLanguagesInp}
 })
 
-export default class addingPage extends Vue {
+export default class ContentAdding extends Vue {
     scryfall = new ScryfallSearchCard();
     input = new CardInputModel();
 
@@ -96,8 +94,8 @@ export default class addingPage extends Vue {
         tab: 'printed'
     };
 
-    get userInterfaceLanguage(): EnumLanguages {
-        return EnumLanguages.ru;
+    get userInterfaceLanguage(): LanguagesType {
+        return 'ru';
     }
 
     get collection() {
