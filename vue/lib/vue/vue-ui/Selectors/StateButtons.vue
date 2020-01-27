@@ -10,7 +10,7 @@ import StatusSelector from './StatusSelector'
 import { StateBtn } from 'lib/vue/vue-ui'
 
 @Component({
-    components: {StateBtn}
+    components: { StateBtn }
 })
 export default class StatusSelectors extends StatusSelector {}
 </script>
