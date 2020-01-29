@@ -1,7 +1,7 @@
 const configureWebpack = require('./webpack.config');
 
 module.exports = {
-    outputDir: '../electron/public',
+    outputDir: '../server/public',
     chainWebpack: config =>
     {
         config.entry('app').clear();

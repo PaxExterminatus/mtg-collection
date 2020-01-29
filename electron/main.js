@@ -1,13 +1,8 @@
 const { app, BrowserWindow } = require('electron');
-
 const { fork } = require('child_process');
-const ps = fork(`${__dirname}/server.js`);
-
-const express = require('express');
+fork('../server/dist/main.js');
 
 function createWindow () {
-    express();
-
     let win = new BrowserWindow({
         darkTheme: true,
         webPreferences: {
