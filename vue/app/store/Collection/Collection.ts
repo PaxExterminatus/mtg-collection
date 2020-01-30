@@ -20,8 +20,7 @@ class CollectionEntity implements CollectionDataFace, CollectionActionFace {
     {
         axios.get('http://localhost:9990/api/collection')
             .then( (resp) => {
-                store.commit('collection.load', resp.data.cards);
-                this.history.history = resp.data.history;
+                store.commit('collection.load', resp.data);
             });
     }
 

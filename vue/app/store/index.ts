@@ -6,8 +6,6 @@ import {LanguagesType} from "lib/api/scryfall";
 
 Vue.use(Vuex);
 
-
-
 const store = createStore(
     CollectionModule,
 );

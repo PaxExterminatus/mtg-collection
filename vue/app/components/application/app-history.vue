@@ -1,5 +1,5 @@
 <template>
-<div class="app-history">
+<div class="app-history" v-if="history">
     <div class="title h1">History</div>
 
     <div class="history-grid" v-if="history.length > 0" >
