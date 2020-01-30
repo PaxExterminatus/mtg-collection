@@ -1,26 +1,29 @@
 import { Module } from '@nestjs/common'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { ApiCollectionController } from './api.collection.controller'
-import { ApiCollectionService } from './api.collection.service'
-import { join } from 'path'
+import { CollectionController } from './collection/collection.controller'
+
 import { Connection } from 'typeorm'
+import { CollectionEntity, CollectionModule } from './collection'
+
+import { join } from 'path'
+
+const rootPath = join(__dirname, '..', 'public');
+const database = join(__dirname, '..', 'db', 'db.db');
 
 @Module({
     imports: [
         ServeStaticModule.forRoot({
-            rootPath: join(__dirname, '..', 'public')
+            rootPath
         }),
         TypeOrmModule.forRoot({
             type: 'sqlite',
-            database: join(__dirname, '..', 'db.db')
+            database,
+            entities: [CollectionEntity]
         }),
+        CollectionModule,
     ],
-    controllers: [ApiCollectionController],
-    providers: [ApiCollectionService]
 })
 export class AppModule {
-    constructor(private readonly connection: Connection) {
-        console.log(this.connection);
-    }
+    constructor(private readonly connection: Connection) {}
 }

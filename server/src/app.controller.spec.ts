@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ApiCollectionController } from './api.collection.controller';
-import { ApiCollectionService } from './api.collection.service';
+import { CollectionController } from './collection/collection.controller';
+import { CollectionService } from './collection/collection.service';
 
 describe('AppController', () => {
-  let appController: ApiCollectionController;
+  let appController: CollectionController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [ApiCollectionController],
-      providers: [ApiCollectionService],
+      controllers: [CollectionController],
+      providers: [CollectionService],
     }).compile();
 
-    appController = app.get<ApiCollectionController>(ApiCollectionController);
+    appController = app.get<CollectionController>(CollectionController);
   });
 
   describe('root', () => {
