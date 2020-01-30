@@ -1,5 +1,4 @@
 # compiled output
-/dist
 /node_modules
 
 # Logs
@@ -17,4 +16,4 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 /public/
-/db/db.db-journal
+/electron/db/db.db-journal

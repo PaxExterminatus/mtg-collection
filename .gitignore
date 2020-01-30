@@ -2,3 +2,5 @@
 /electron/node_modules/
 /vue/dist/
 /vue/node_modules/
+/electron/server/*
+/electron/render/*

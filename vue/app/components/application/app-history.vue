@@ -30,7 +30,7 @@ import { Component, Vue } from 'vue-property-decorator'
 
 export default class AppHistory extends Vue {
     get history() {
-        return this.$store.state.collection.history.history
+        return null;
     }
 }
 </script>

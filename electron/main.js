@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const { fork } = require('child_process');
-fork('../server/dist/main.js');
+fork('./server/main.js');
 
 function createWindow () {
     let win = new BrowserWindow({
