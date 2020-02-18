@@ -11,4 +11,7 @@
 @import 'components';
 
 @import '../lib/vue/vue-ui/DropdownMenu/dropdown-menu';
-@import '../lib/vue/vue-ui/ButtonsValueSetter/buttons-value-setter';
+
+.btn.selected {
+  color: darkorange;
+}

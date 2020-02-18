@@ -6,6 +6,8 @@
             <div class="actions-panel">
                 <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
                 <btn-bool v-model="input.foil">FOIL</btn-bool>
+
+                <checkbox-bool title="change foil value" id="foil-input" v-model="input.foil" >FOIL</checkbox-bool>
             </div>
 
             <div class="form-line" v-tab-trap>
@@ -59,96 +61,115 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+    import {Vue, Component} from 'vue-property-decorator'
 
-import { DropdownMenu, BtnSetter, BtnBool, StatusSelectors } from 'lib/vue/vue-ui'
-import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
-import { LanguagesType, ScryfallSearchCard } from 'lib/api/scryfall'
+    import {
+        DropdownMenu,
+        BtnSetter,
+        BtnBool,
+        StatusSelectors,
+        CheckboxBool,
+    } from 'lib/vue/vue-ui'
+    import {tabTrap} from 'lib/vue/vue-directives/vue-forms-directives'
+    import {LanguagesType, ScryfallSearchCard} from 'lib/api/scryfall'
 
-import { CardGrid, CardGallery, CardPrice } from 'app/components/cards'
-import { CardInputModel } from 'app/store/Collection/CollectionItem'
-import { ICardModel, CardModel } from 'app/objects/card'
+    import {CardGrid, CardGallery, CardPrice} from 'app/components/cards'
+    import {CardInputModel} from 'app/store/Collection/CollectionItem'
+    import {ICardModel, CardModel} from 'app/objects/card'
 
-type ComponentDataStateTabs = 'oracle' | 'printed' | 'translate'
-type ComponentDataState = {
-    tab: ComponentDataStateTabs
-}
-
-@Component({
-    directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, BtnSetter, BtnBool, ButtonsSelector: StatusSelectors}
-})
-
-export default class ContentAdding extends Vue {
-    scryfall = new ScryfallSearchCard();
-    input = new CardInputModel();
-
-    oracle: ICardModel | null = null;
-    printed: ICardModel | null = null;
-    translate: ICardModel | null = null;
-
-    error: string | null = null;
-
-    languages: LanguagesType[] = ['en', 'ru', 'it'];
-
-    state: ComponentDataState = {
-        tab: 'printed'
-    };
-
-    get userInterfaceLanguage(): LanguagesType {
-        return 'ru';
+    type ComponentDataStateTabs = 'oracle' | 'printed' | 'translate'
+    type ComponentDataState = {
+        tab: ComponentDataStateTabs
     }
 
-    get collection() {
-        return this.$store.state.collection;
-    }
+    @Component({
+        directives: {tabTrap},
+        components: {
+            CardPrice,
+            CardGrid,
+            CardCover: CardGallery,
+            DropdownMenu,
+            BtnSetter,
+            BtnBool,
+            ButtonsSelector: StatusSelectors,
+            CheckboxBool,
+        }
+    })
 
-    searchReset() {
-        this.error = null;
-        this.oracle = null;
-        this.printed = null;
-        this.translate = null;
-        this.state.tab = "printed";
-    }
+    export default class ContentAdding extends Vue {
+        scryfall = new ScryfallSearchCard();
+        input = new CardInputModel();
 
-    search() {
-        this.searchReset();
+        oracle: ICardModel | null = null;
+        printed: ICardModel | null = null;
+        translate: ICardModel | null = null;
 
-        this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
-            .then( resp => {
-                this.printed = new CardModel(resp.data.data[0]);
-            })
-            .catch( error => {
-                const {code, status, details} = error.response.data;
-                this.error = `[${code}] ${status}: ${details}`
-            });
+        error: string | null = null;
 
-        if (this.input.lang !== 'en') {
-            this.scryfall.oracle({code: this.input.code, number: this.input.number})
-                .then( resp => {
-                    this.oracle = new CardModel(resp.data.data[0]);
+        languages: LanguagesType[] = ['en', 'ru', 'it'];
+
+        state: ComponentDataState = {
+            tab: 'printed'
+        };
+
+        get userInterfaceLanguage(): LanguagesType {
+            return 'ru';
+        }
+
+        get collection() {
+            return this.$store.state.collection;
+        }
+
+        searchReset() {
+            this.error = null;
+            this.oracle = null;
+            this.printed = null;
+            this.translate = null;
+            this.state.tab = "printed";
+        }
+
+        search() {
+            this.searchReset();
+
+            this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.input.lang})
+                .then(resp => {
+                    this.printed = new CardModel(resp.data.data[0]);
                 })
-                .catch( error => {
+                .catch(error => {
                     const {code, status, details} = error.response.data;
                     this.error = `[${code}] ${status}: ${details}`
                 });
-        }
 
-        if (this.input.lang !== this.userInterfaceLanguage) {
-            this.scryfall.translate({code: this.input.code, number: this.input.number, language: this.userInterfaceLanguage})
-                .then( resp => {
-                    this.translate = new CardModel(resp.data.data[0]);
-                    this.state.tab = "translate";
+            if (this.input.lang !== 'en') {
+                this.scryfall.oracle({code: this.input.code, number: this.input.number})
+                    .then(resp => {
+                        this.oracle = new CardModel(resp.data.data[0]);
+                    })
+                    .catch(error => {
+                        const {code, status, details} = error.response.data;
+                        this.error = `[${code}] ${status}: ${details}`
+                    });
+            }
+
+            if (this.input.lang !== this.userInterfaceLanguage) {
+                this.scryfall.translate({
+                    code: this.input.code,
+                    number: this.input.number,
+                    language: this.userInterfaceLanguage
                 })
-                .catch( error => {
-                    const {code, status, details} = error.response.data;
-                    this.error = `[${code}] ${status}: ${details}`
-                });
+                    .then(resp => {
+                        this.translate = new CardModel(resp.data.data[0]);
+                        this.state.tab = "translate";
+                    })
+                    .catch(error => {
+                        const {code, status, details} = error.response.data;
+                        this.error = `[${code}] ${status}: ${details}`
+                    });
+            }
+        }
+
+        save() {
+            this.collection.add(this.input.json)
         }
     }
-
-    save() {
-        this.collection.add(this.input.json)
-    }
-}
 </script>
