@@ -1,12 +1,13 @@
 import { Vue, Prop, Component } from 'vue-property-decorator'
+import {ISelected} from './ISelected'
 
 @Component
-class ValueToggle extends Vue {
+class ValueToggle extends Vue implements ISelected {
     @Prop() value!: any;
     @Prop() on!: any;
     @Prop() off!: any;
 
-    protected get classes() {
+    get classes() {
         return {
             selected: this.value === this.on
         }

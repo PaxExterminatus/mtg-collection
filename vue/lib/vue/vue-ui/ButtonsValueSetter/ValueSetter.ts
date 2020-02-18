@@ -1,11 +1,12 @@
 import { Vue, Prop, Component } from 'vue-property-decorator'
+import {ISelected} from './ISelected'
 
 @Component
-class ValueSetter extends Vue {
+class ValueSetter extends Vue implements ISelected {
     @Prop() value!: any;
     @Prop() set!: any;
 
-    protected get classes() {
+    get classes() {
         return {
             selected: this.value === this.set
         }
