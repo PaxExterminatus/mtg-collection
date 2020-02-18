@@ -3,8 +3,8 @@ import { Vue, Prop, Component } from 'vue-property-decorator'
 @Component
 class ValueToggle extends Vue {
     @Prop() value!: any;
-    @Prop() on: any = true;
-    @Prop() off: any = false;
+    @Prop() on!: any;
+    @Prop() off!: any;
 
     protected get classes() {
         return {
