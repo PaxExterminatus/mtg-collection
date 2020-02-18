@@ -5,7 +5,7 @@
         <div class="form-box adding">
             <div class="actions-panel">
                 <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
-                <btn-toggle v-model="input.foil" :on="true" :off="false">FOIL</btn-toggle>
+                <btn-toggle v-model="input.foil">FOIL</btn-toggle>
             </div>
 
             <div class="form-line" v-tab-trap>
