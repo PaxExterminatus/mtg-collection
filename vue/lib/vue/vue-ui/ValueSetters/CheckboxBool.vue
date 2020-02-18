@@ -1,5 +1,5 @@
 <template>
-    <label :for="id" :title="title" class="checkbox-bool">
+    <label :for="id" :title="title" class="checkbox-bool-component">
         <input :value="value" @input="emitInput" type="checkbox" :id="id"/> <slot></slot>
     </label>
 </template>
@@ -15,8 +15,8 @@ export default class CheckboxBool extends ValueToggleBool {
 }
 </script>
 
-<style>
-    .checkbox-bool {
+<style scoped>
+    .checkbox-bool-component {
         user-select: none;
     }
 </style>
