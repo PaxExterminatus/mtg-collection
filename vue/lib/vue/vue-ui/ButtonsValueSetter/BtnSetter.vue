@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import ValueSetter from './ValueSetter'
+import { IVModel, ISelected } from '../_interfaces'
 
-export default class BtnSetter extends ValueSetter {}
+export default class BtnSetter extends ValueSetter implements IVModel, ISelected {}
 </script>
