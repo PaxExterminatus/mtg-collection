@@ -1,9 +1,9 @@
 import DropdownMenu from './DropdownMenu/dropdown-menu.vue'
-import StateBtn from './StateBtn/state-btn.vue'
+import BtnSetter from './ButtonsValueSetter/BtnSetter.vue'
 import StatusSelectors from './Selectors/StateButtons.vue'
 
 export {
-    StateBtn,
+    BtnSetter,
     DropdownMenu,
     StatusSelectors,
 }

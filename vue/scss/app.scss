@@ -1,9 +1,7 @@
 @import '../lib/scss/reset';
 @import '../lib/scss/forms/forms-template';
 @import '../lib/scss/button/button';
-@import '../lib/scss/state-classes';
 
-@import '../lib/vue/vue-ui/DropdownMenu/dropdown-menu';
 
 @import 'card-info';
 @import 'collection-grid';
@@ -11,3 +9,6 @@
 @import 'default/default-tags';
 
 @import 'components';
+
+@import '../lib/vue/vue-ui/DropdownMenu/dropdown-menu';
+@import '../lib/vue/vue-ui/ButtonsValueSetter/buttons-value-setter';

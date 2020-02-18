@@ -1,7 +1,7 @@
 @import '../mixins-lib';
 
 .content-adding {
-    .input-actions {
+    .actions-panel {
         @include panel-flex-inline;
     }
 

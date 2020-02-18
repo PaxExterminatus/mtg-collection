@@ -3,11 +3,9 @@
         <h1 class="title h1">Adding</h1>
 
         <div class="form-box adding">
-            <div class="input-actions">
+            <div class="actions-panel">
                 <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
-
-<!--                <select-languages-inp v-model="input.lang"/>-->
-                <state-btn v-model="input.foil" :equate="true">FOIL!</state-btn>
+                <btn-setter v-model="input.foil" :set="true">FOIL!</btn-setter>
                 <a class="btn" :class="{'is-selected': input.foil}" @click="input.foil = !input.foil">FOIL</a>
             </div>
 
@@ -27,10 +25,10 @@
                 {{error}}
             </div>
 
-            <div class="flex-tbl card-versions">
-                <state-btn v-if="oracle" v-model="state.tab" equate="oracle">oracle</state-btn>
-                <state-btn v-if="printed" v-model="state.tab" equate="printed">printed</state-btn>
-                <state-btn v-if="translate" v-model="state.tab" equate="translate">translate</state-btn>
+            <div class="actions-panel cards-tab">
+                <btn-setter v-if="oracle" v-model="state.tab" set="oracle">oracle</btn-setter>
+                <btn-setter v-if="printed" v-model="state.tab" set="printed">printed</btn-setter>
+                <btn-setter v-if="translate" v-model="state.tab" set="translate">translate</btn-setter>
             </div>
 
             <div class="card-info">
@@ -64,11 +62,11 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-import { DropdownMenu, StateBtn, StatusSelectors } from 'lib/vue/vue-ui'
+import { DropdownMenu, BtnSetter, StatusSelectors } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { LanguagesType, ScryfallSearchCard } from 'lib/api/scryfall'
 
-import { CardGrid, CardGallery, CardPrice } from 'app/components/cards';
+import { CardGrid, CardGallery, CardPrice } from 'app/components/cards'
 import { CardInputModel } from 'app/store/Collection/CollectionItem'
 import { ICardModel, CardModel } from 'app/objects/card'
 
@@ -79,7 +77,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, StateBtn, ButtonsSelector: StatusSelectors}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, BtnSetter, ButtonsSelector: StatusSelectors}
 })
 
 export default class ContentAdding extends Vue {

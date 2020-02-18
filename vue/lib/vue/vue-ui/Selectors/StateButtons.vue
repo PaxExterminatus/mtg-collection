@@ -1,16 +1,22 @@
 <template>
 <span>
-    <state-btn v-for="item in list" @input="$emit('input', item)" :value="value" :equate="item">{{item}}</state-btn>
+    <template v-for="(item, key) in list">
+        <btn-setter @input="input(item)" :value="value" :set="item" :key="key">{{item}}</btn-setter>
+    </template>
 </span>
 </template>
 
 <script lang="ts">
 import { Component } from 'vue-property-decorator'
 import StatusSelector from './StatusSelector'
-import { StateBtn } from 'lib/vue/vue-ui'
+import { BtnSetter } from 'lib/vue/vue-ui'
 
 @Component({
-    components: { StateBtn }
+    components: { BtnSetter }
 })
-export default class StatusSelectors extends StatusSelector {}
+export default class StatusSelectors extends StatusSelector {
+    input(item: any) {
+        this.$emit('input', item);
+    }
+}
 </script>
