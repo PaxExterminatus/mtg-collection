@@ -1,8 +1,7 @@
 import { Vue, Prop, Component } from 'vue-property-decorator'
-import { ISelected, IVModel} from '../_interfaces'
 
 @Component
-class ValueToggle extends Vue implements ISelected, IVModel {
+class ValueToggle extends Vue {
     @Prop() value!: any;
     @Prop() readonly on!: any;
     @Prop() readonly off!: any;

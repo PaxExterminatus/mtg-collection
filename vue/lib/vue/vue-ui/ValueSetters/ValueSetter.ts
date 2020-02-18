@@ -1,8 +1,7 @@
 import { Vue, Prop, Component } from 'vue-property-decorator'
-import { ISelected, IVModel} from '../_interfaces'
 
 @Component
-class ValueSetter extends Vue implements ISelected, IVModel {
+class ValueSetter extends Vue {
     @Prop() value!: any;
     @Prop() set!: any;
 
