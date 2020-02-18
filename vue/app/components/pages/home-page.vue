@@ -5,7 +5,7 @@
         <div class="form-box adding">
             <div class="actions-panel">
                 <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
-                <btn-toggle v-model="input.foil" :on="true" :off="false">FOIL</btn-toggle>
+                <btn-bool v-model="input.foil">FOIL</btn-bool>
             </div>
 
             <div class="form-line" v-tab-trap>
@@ -61,7 +61,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
-import { DropdownMenu, BtnSetter, BtnToggle, StatusSelectors } from 'lib/vue/vue-ui'
+import { DropdownMenu, BtnSetter, BtnBool, StatusSelectors } from 'lib/vue/vue-ui'
 import { tabTrap } from 'lib/vue/vue-directives/vue-forms-directives'
 import { LanguagesType, ScryfallSearchCard } from 'lib/api/scryfall'
 
@@ -76,7 +76,7 @@ type ComponentDataState = {
 
 @Component({
     directives: {tabTrap},
-    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, BtnSetter, BtnToggle, ButtonsSelector: StatusSelectors}
+    components: {CardPrice, CardGrid, CardCover: CardGallery, DropdownMenu, BtnSetter, BtnBool, ButtonsSelector: StatusSelectors}
 })
 
 export default class ContentAdding extends Vue {

@@ -4,8 +4,8 @@ import { ISelected, IVModel} from '../_interfaces'
 @Component
 class ValueToggle extends Vue implements ISelected, IVModel {
     @Prop() value!: any;
-    @Prop() on!: any;
-    @Prop() off!: any;
+    @Prop() readonly on!: any;
+    @Prop() readonly off!: any;
 
     get classes() {
         return {

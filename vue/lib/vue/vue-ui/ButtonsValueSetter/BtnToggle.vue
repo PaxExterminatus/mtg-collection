@@ -5,8 +5,9 @@
 </template>
 
 <script lang="ts">
+import {Component} from 'vue-property-decorator';
 import ValueToggle from './ValueToggle'
-import { IVModel, ISelected } from '../_interfaces'
 
-export default class BtnToggle extends ValueToggle implements IVModel, ISelected {}
+@Component
+export default class BtnToggle extends ValueToggle {}
 </script>
