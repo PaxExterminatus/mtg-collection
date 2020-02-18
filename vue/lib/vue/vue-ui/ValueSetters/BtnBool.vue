@@ -9,5 +9,5 @@ import { Component } from 'vue-property-decorator';
 import ValueToggleBool from './ValueToggleBool'
 
 @Component
-export default class BtnToggleBoolean extends ValueToggleBool {}
+export default class BtnBool extends ValueToggleBool {}
 </script>
