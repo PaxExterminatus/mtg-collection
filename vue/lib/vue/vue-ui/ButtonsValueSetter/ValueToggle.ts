@@ -13,7 +13,7 @@ class ValueToggle extends Vue implements ISelected, IVModel {
         }
     }
 
-    protected click() {
+    emitInput(): void {
         this.$emit('input', this.value === this.on ? this.off : this.on);
     }
 }

@@ -12,7 +12,7 @@ class ValueSetter extends Vue implements ISelected, IVModel {
         }
     }
 
-    protected click() {
+    emitInput(): void {
         this.$emit('input', this.set);
     }
 }
