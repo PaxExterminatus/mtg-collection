@@ -6,8 +6,6 @@
             <div class="actions-panel">
                 <buttons-selector class="buttons-languages" v-model="input.lang" :list="languages"/>
                 <btn-bool v-model="input.foil">FOIL</btn-bool>
-
-                <checkbox-bool title="change foil value" id="foil-input" v-model="input.foil" >FOIL</checkbox-bool>
             </div>
 
             <div class="form-line" v-tab-trap>
@@ -68,7 +66,6 @@
         BtnSetter,
         BtnBool,
         StatusSelectors,
-        CheckboxBool,
     } from 'lib/vue/vue-ui'
     import {tabTrap} from 'lib/vue/vue-directives/vue-forms-directives'
     import {LanguagesType, ScryfallSearchCard} from 'lib/api/scryfall'
@@ -92,7 +89,6 @@
             BtnSetter,
             BtnBool,
             ButtonsSelector: StatusSelectors,
-            CheckboxBool,
         }
     })
 
