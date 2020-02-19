@@ -6,8 +6,9 @@
 
 <script lang="ts">
 import { Component } from 'vue-property-decorator';
-import ValueToggleBool from './ValueToggleBool'
+import BooleanValueToggle from './BooleanValueToggle'
+import { IVModel, ISelected} from '../_interfaces'
 
 @Component
-export default class BtnBool extends ValueToggleBool {}
+export default class BtnBool extends BooleanValueToggle implements IVModel, ISelected {}
 </script>
