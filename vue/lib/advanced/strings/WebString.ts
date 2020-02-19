@@ -1,4 +1,4 @@
-import { RegexTemplates } from '../../regex/RegexTemplates'
+import { RegexTemplates } from 'lib/regex/RegexTemplates'
 
 class WebString extends String {
     private str: string;

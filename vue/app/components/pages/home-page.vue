@@ -11,6 +11,7 @@
             <div class="form-line" v-tab-trap>
                 <input class="form-input" title="code" tabindex
                        v-model="input.code">
+                <input-number class="form-input" v-model="input.number"/>
                 <input class="form-input" title="number" tabindex
                        v-model="input.number"
                        @keyup.enter="search"
@@ -66,6 +67,7 @@
         BtnSetter,
         BtnBool,
         StatusSelectors,
+        InputNumber,
     } from 'lib/vue/vue-ui'
     import {tabTrap} from 'lib/vue/vue-directives/vue-forms-directives'
     import {LanguagesType, ScryfallSearchCard} from 'lib/api/scryfall'
@@ -89,6 +91,7 @@
             BtnSetter,
             BtnBool,
             ButtonsSelector: StatusSelectors,
+            InputNumber,
         }
     })
 
