@@ -10,7 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.12.19",
-    "electron": "^7.1.1"
+    "electron": "^15.5.5"
   },
   "dependencies": {
     "base64-inline-loader": "^1.1.1",
